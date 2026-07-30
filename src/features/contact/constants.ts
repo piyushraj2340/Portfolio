@@ -1,0 +1,3 @@
+/**
+ * Contact feature constants.
+ */
