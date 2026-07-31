@@ -1,52 +1,58 @@
-import Link from "next/link";
-import { profile } from "@/content/profile";
-import { socialLinks } from "@/content/social";
+import { profile as defaultProfile } from "@/content/profile";
+import { socialLinks as defaultSocialLinks } from "@/content/social";
 import { siteConfig } from "@/config/site";
 import { Section } from "@/components/layout/Section";
+import { HeroContent } from "@/features/hero/components/HeroContent";
+import { HeroHighlights } from "@/features/hero/components/HeroHighlights";
+import type { HeroSectionProps } from "@/features/hero/types";
 
-export function HeroSection() {
+/**
+ * Hero section — the first screen visitors see.
+ *
+ * Answers three questions immediately:
+ * 1. Who are you?
+ * 2. What do you build?
+ * 3. Why should I continue?
+ *
+ * Layout:
+ * - Desktop: 60/40 two-column split (content | highlights card)
+ * - Tablet:  Stacked, content first
+ * - Mobile:  Single column, content → highlights
+ *
+ * @see docs/06 UI Designer.md § 7. Hero Section
+ * @see docs/04 Component Planning.md § HeroSection
+ */
+export function HeroSection({
+  profile = defaultProfile,
+  socialLinks = defaultSocialLinks,
+  availabilityText = "Available for product-focused roles",
+  primaryAction = { label: "View Projects", href: "/projects" },
+  secondaryAction = {
+    label: "Download Resume",
+    href: siteConfig.resumeUrl,
+    external: false,
+  },
+}: HeroSectionProps = {}) {
   return (
-    <Section id="hero" className="section-surface py-20 md:py-28">
-      <div className="grid gap-10 md:grid-cols-[1.25fr_0.75fr] md:items-center">
-        <div className="space-y-6">
-          <p className="text-sm font-semibold uppercase tracking-[0.16em] text-primary">Available for product-focused roles</p>
-          <h1 className="text-balance text-4xl font-bold md:text-7xl">{profile.name}</h1>
-          <p className="text-xl font-semibold text-text-secondary md:text-2xl">{profile.role}</p>
-          <p className="max-w-3xl text-base text-text-secondary md:text-lg">{profile.summary}</p>
-          <div className="flex flex-wrap gap-4">
-            <Link
-              href="/projects"
-              className="rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition hover:bg-primary-hover"
-            >
-              View Projects
-            </Link>
-            <Link
-              href={siteConfig.resumeUrl}
-              className="rounded-lg border border-border bg-surface px-6 py-3 text-sm font-semibold text-foreground transition hover:bg-muted"
-            >
-              Download Resume
-            </Link>
-          </div>
-          <ul className="flex flex-wrap items-center gap-4 pt-2">
-            {socialLinks.map((link) => (
-              <li key={link.href}>
-                <Link href={link.href} className="text-sm font-medium text-text-secondary hover:text-foreground">
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div className="surface-card mx-auto w-full max-w-md p-6 md:mx-0">
-          <p className="text-sm font-semibold uppercase tracking-[0.12em] text-text-muted">Engineering focus</p>
-          <ul className="mt-4 space-y-3">
-            {profile.highlights.map((item) => (
-              <li key={item} className="text-sm text-text-secondary">
-                - {item}
-              </li>
-            ))}
-          </ul>
-        </div>
+    <Section
+      id="hero"
+      className="py-20 md:py-28 lg:py-32"
+    >
+      <div className="grid items-center gap-12 lg:grid-cols-[1.2fr_0.8fr] lg:gap-16">
+        {/* Left column — identity & CTAs */}
+        <HeroContent
+          profile={profile}
+          socialLinks={socialLinks}
+          availabilityText={availabilityText}
+          primaryAction={primaryAction}
+          secondaryAction={secondaryAction}
+        />
+
+        {/* Right column — highlights card */}
+        <HeroHighlights
+          items={profile.highlights}
+          className="lg:justify-self-end lg:max-w-md"
+        />
       </div>
     </Section>
   );
