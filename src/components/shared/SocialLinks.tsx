@@ -41,20 +41,18 @@ export function SocialLinks({ links, className }: SocialLinksProps) {
   );
 }
 
+const iconMap: Record<string, React.ElementType> = {
+  github: Code2,
+  linkedin: Globe,
+  x: AtSign,
+  twitter: AtSign,
+};
+
 /** Maps social labels to Lucide icons. Falls back to ExternalLink. */
 function SocialIcon({ label }: { label: string }) {
   const iconClass = "size-4 shrink-0";
   const normalized = label.toLowerCase();
+  const Icon = iconMap[normalized] || ExternalLink;
 
-  switch (normalized) {
-    case "github":
-      return <Code2 className={iconClass} aria-hidden="true" />;
-    case "linkedin":
-      return <Globe className={iconClass} aria-hidden="true" />;
-    case "x":
-    case "twitter":
-      return <AtSign className={iconClass} aria-hidden="true" />;
-    default:
-      return <ExternalLink className={iconClass} aria-hidden="true" />;
-  }
+  return <Icon className={iconClass} aria-hidden="true" />;
 }

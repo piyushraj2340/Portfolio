@@ -4,4 +4,5 @@ export type Profile = {
   summary: string;
   philosophy: string;
   highlights: string[];
+  availability: string | null;
 };

@@ -25,7 +25,7 @@ import type { HeroSectionProps } from "@/features/hero/types";
 export function HeroSection({
   profile = defaultProfile,
   socialLinks = defaultSocialLinks,
-  availabilityText = "Available for product-focused roles",
+  availabilityText = defaultProfile.availability,
   primaryAction = { label: "View Projects", href: "/projects" },
   secondaryAction = {
     label: "Download Resume",

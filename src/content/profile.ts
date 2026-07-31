@@ -12,4 +12,5 @@ export const profile: Profile = {
     "Strong foundation in modern full-stack web development",
     "Experience turning ambiguity into shippable outcomes",
   ],
+  availability: "Available for product-focused roles",
 };

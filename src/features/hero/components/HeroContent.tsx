@@ -1,6 +1,6 @@
-import { Badge } from "@/components/ui/badge";
+import { AvailabilityBadge } from "@/components/shared/AvailabilityBadge";
 import { HeroActions } from "./HeroActions";
-import { SocialLinks } from "./SocialLinks";
+import { SocialLinks } from "@/components/shared/SocialLinks";
 import type { Profile } from "@/types/profile";
 import type { SocialLink } from "@/types/social";
 import type { HeroAction } from "@/features/hero/types";
@@ -31,21 +31,7 @@ export function HeroContent({
     <div className="flex flex-col gap-6">
       {/* Availability indicator */}
       {availabilityText ? (
-        <div>
-          <Badge
-            variant="outline"
-            className="gap-1.5 border-primary/20 bg-primary/5 px-3 py-1 text-xs font-semibold text-primary"
-          >
-            <span
-              className="relative flex size-2"
-              aria-hidden="true"
-            >
-              <span className="absolute inline-flex size-full animate-ping rounded-full bg-primary/60" />
-              <span className="relative inline-flex size-2 rounded-full bg-primary" />
-            </span>
-            {availabilityText}
-          </Badge>
-        </div>
+        <AvailabilityBadge text={availabilityText} />
       ) : null}
 
       {/* Heading cluster */}

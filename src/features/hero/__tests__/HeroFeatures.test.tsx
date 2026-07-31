@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event';
 import { HeroContent } from '../components/HeroContent';
 import { HeroActions } from '../components/HeroActions';
 import { HeroHighlights } from '../components/HeroHighlights';
-import { SocialLinks } from '../components/SocialLinks';
+import { SocialLinks } from '@/components/shared/SocialLinks';
 
 const mockProfile = {
   name: 'Jane Doe',
