@@ -19,10 +19,20 @@ export const siteMetadata: Metadata = {
     description: siteConfig.description,
     type: "website",
     url: siteConfig.url,
+    images: [
+      {
+        url: "/opengraph-image.png",
+        width: 1200,
+        height: 630,
+        alt: `${siteConfig.name} - Software Engineer Portfolio`,
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: defaultTitle,
     description: siteConfig.description,
+    creator: "@yourhandle",
+    images: ["/twitter-image.png"],
   },
 };
