@@ -34,6 +34,9 @@ export function HeroActions({
         >
           <Download data-icon="inline-start" className="size-4" aria-hidden="true" />
           {secondaryAction.label}
+          {secondaryAction.external && (
+            <span className="sr-only">(opens in a new tab)</span>
+          )}
         </Link>
       </Button>
     </div>

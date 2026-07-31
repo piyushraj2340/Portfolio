@@ -50,7 +50,7 @@ export function HeroContent({
 
       {/* Heading cluster */}
       <div className="space-y-3">
-        <h1 className="text-balance text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
+        <h1 id="hero-heading" className="text-balance text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
           {profile.name}
         </h1>
         <p className="text-lg font-semibold text-muted-foreground sm:text-xl md:text-2xl">

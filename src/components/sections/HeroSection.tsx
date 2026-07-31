@@ -36,6 +36,7 @@ export function HeroSection({
   return (
     <Section
       id="hero"
+      aria-labelledby="hero-heading"
       className="py-20 md:py-28 lg:py-32"
     >
       <div className="grid items-center gap-12 lg:grid-cols-[1.2fr_0.8fr] lg:gap-16">

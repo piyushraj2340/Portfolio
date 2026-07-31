@@ -33,6 +33,7 @@ export function SocialLinks({ links, className }: SocialLinksProps) {
           >
             <SocialIcon label={link.label} />
             <span>{link.label}</span>
+            <span className="sr-only">(opens in a new tab)</span>
           </Link>
         </li>
       ))}
