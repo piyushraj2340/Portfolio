@@ -14,11 +14,9 @@ export function StructuredData() {
     jobTitle: profile.role,
     url: siteConfig.url,
     description: profile.summary,
-    sameAs: socialLinks.map((link) => link.href),
-    worksFor: {
-      "@type": "Organization",
-      name: "Independent", // Or dynamically derived if applicable
-    },
+    sameAs: socialLinks
+      .filter((link) => !link.href.startsWith("mailto:"))
+      .map((link) => link.href),
   };
 
   return (

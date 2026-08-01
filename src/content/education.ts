@@ -5,9 +5,19 @@ export const education: Education[] = [
     institution: "University Name",
     degree: "Bachelor of Technology",
     field: "Computer Science and Engineering",
-    startDate: "2017-08",
-    endDate: "2021-05",
+    startDate: "2018-08",
+    endDate: "2022-05",
     description:
-      "Focused on data structures, algorithms, software engineering, and web development fundamentals.",
+      "Graduated with distinction. Active member of the coding club and participated in multiple hackathons.",
+    coursework: [
+      "Data Structures & Algorithms",
+      "Object-Oriented Programming",
+      "Database Management Systems",
+      "Operating Systems",
+      "Computer Networks",
+      "Software Engineering",
+      "Cloud Computing",
+      "Web Development",
+    ],
   },
 ];

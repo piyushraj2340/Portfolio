@@ -2,30 +2,32 @@ import type { Experience } from "@/types/experience";
 
 export const experiences: Experience[] = [
   {
-    company: "Acme Product Labs",
+    company: "TechCorp Solutions",
     role: "Software Engineer",
-    startDate: "2023-01",
+    startDate: "2023-06",
     endDate: "Present",
     summary:
-      "Delivered product features across onboarding, billing, and analytics while improving system reliability.",
+      "Building enterprise-grade microservices and cloud-native applications serving thousands of concurrent users.",
     achievements: [
-      "Designed and shipped high-impact product workflows used by thousands of users",
-      "Reduced production incidents through stronger observability and release safeguards",
-      "Collaborated with product and design to scope and deliver iterative value",
+      "Designed and implemented RESTful APIs handling 10K+ daily requests with Spring Boot",
+      "Migrated monolithic application to microservices architecture, improving deployment frequency by 3x",
+      "Implemented CI/CD pipelines with Jenkins and GitHub Actions reducing release cycle from days to hours",
+      "Built real-time notification system using WebSockets and Redis pub/sub",
     ],
-    technologies: ["TypeScript", "React", "Next.js", "PostgreSQL"],
+    technologies: ["Java", "Spring Boot", "AWS", "Docker", "Kubernetes", "PostgreSQL", "Redis"],
   },
   {
-    company: "Nova Digital",
-    role: "Frontend Engineer",
-    startDate: "2021-06",
-    endDate: "2022-12",
+    company: "InnovateTech",
+    role: "Junior Software Engineer",
+    startDate: "2022-01",
+    endDate: "2023-05",
     summary:
-      "Built and maintained enterprise dashboards with a strong focus on accessibility and performance.",
+      "Developed full-stack web applications with focus on backend reliability and frontend performance.",
     achievements: [
-      "Improved dashboard load performance for core views",
-      "Established component patterns used by multiple product teams",
+      "Built employee management module with role-based access control using Spring Security",
+      "Developed responsive dashboards with React and TypeScript used by 500+ internal users",
+      "Optimized database queries reducing average response time by 40%",
     ],
-    technologies: ["React", "TypeScript", "Sass"],
+    technologies: ["Java", "Spring Boot", "React", "MySQL", "Docker"],
   },
 ];

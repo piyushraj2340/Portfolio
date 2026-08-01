@@ -5,4 +5,5 @@ export type Education = {
   startDate: string;
   endDate: string;
   description?: string;
+  coursework?: string[];
 };

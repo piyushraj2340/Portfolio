@@ -1,3 +1,0 @@
-/**
- * Hero feature constants.
- */

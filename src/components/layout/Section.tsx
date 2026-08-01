@@ -1,8 +1,7 @@
-import type { ReactNode } from "react";
-import { SECTION_SPACING } from "@/lib/constants";
+import type { ReactNode, HTMLAttributes } from "react";
 import { Container } from "./Container";
 
-type SectionProps = {
+type SectionProps = HTMLAttributes<HTMLElement> & {
   id?: string;
   children: ReactNode;
   className?: string;
@@ -14,9 +13,14 @@ export function Section({
   children,
   className = "",
   containerClassName = "",
+  ...rest
 }: SectionProps) {
   return (
-    <section id={id} className={`${SECTION_SPACING} ${className}`}>
+    <section
+      id={id}
+      className={`py-20 md:py-28 lg:py-32 ${className}`}
+      {...rest}
+    >
       <Container className={containerClassName}>{children}</Container>
     </section>
   );
