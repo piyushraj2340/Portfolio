@@ -1,16 +1,10 @@
 import Link from "next/link";
-import { Award, Cloud, Code2, Leaf, ExternalLink } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 import { certifications } from "@/content/certifications";
 import { Section } from "@/components/layout/Section";
 import { SectionHeading } from "@/components/shared/SectionHeading";
 import { ScrollReveal } from "@/components/shared/ScrollReveal";
-
-const certIconMap: Record<string, React.ElementType> = {
-  Cloud,
-  Container: Cloud,
-  Leaf,
-  Code2,
-};
+import { Card } from "@/components/shared/Card";
 
 function formatDate(date: string): string {
   const [year, month] = date.split("-");
@@ -26,34 +20,27 @@ export function CertificationsSection() {
     <Section id="certifications">
       <ScrollReveal>
         <SectionHeading
-          eyebrow="Certifications"
-          title="Professional credentials"
-          description="Industry-recognized certifications validating expertise."
+          eyebrow="Achievements"
+          title="Problem solving milestones"
+          description="Consistent practice and algorithmic problem solving across various platforms."
         />
       </ScrollReveal>
 
       <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {certifications.map((cert, index) => {
-          const Icon = certIconMap[cert.icon] || Award;
-          return (
-            <ScrollReveal key={cert.name} delay={index * 100}>
-              <div className="glass-card-hover group flex h-full flex-col p-6">
-                <div className="flex items-center gap-4">
-                  <div className="flex size-12 shrink-0 items-center justify-center rounded-xl bg-accent/10 transition-colors duration-200 group-hover:bg-accent/20">
-                    <Icon className="size-6 text-accent" />
-                  </div>
-                  <div>
-                    <h3 className="text-sm font-semibold text-foreground">
-                      {cert.name}
-                    </h3>
-                    <p className="mt-0.5 text-xs text-text-muted">
-                      {cert.issuer}
-                    </p>
-                  </div>
+        {certifications.map((cert, index) => (
+          <ScrollReveal key={cert.name} delay={index * 100}>
+              <Card hoverable className="flex h-full flex-col p-6 md:p-8">
+                <div>
+                  <h3 className="text-lg font-bold tracking-tight text-foreground">
+                    {cert.name}
+                  </h3>
+                  <p className="mt-1 text-sm font-semibold text-primary">
+                    {cert.issuer}
+                  </p>
                 </div>
 
-                <div className="mt-auto flex items-center justify-between pt-5">
-                  <span className="text-xs text-text-muted">
+                <div className="mt-auto flex items-center justify-between pt-6">
+                  <span className="text-xs font-medium text-text-muted">
                     {formatDate(cert.date)}
                   </span>
                   {cert.credentialUrl && (
@@ -61,17 +48,16 @@ export function CertificationsSection() {
                       href={cert.credentialUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 text-xs font-medium text-primary transition-colors hover:text-primary-hover"
+                      className="inline-flex items-center gap-1.5 text-xs font-semibold text-foreground transition-colors hover:text-primary"
                     >
                       Verify
-                      <ExternalLink className="size-3" />
+                      <ExternalLink className="size-3.5" />
                     </Link>
                   )}
                 </div>
-              </div>
+              </Card>
             </ScrollReveal>
-          );
-        })}
+        ))}
       </div>
     </Section>
   );

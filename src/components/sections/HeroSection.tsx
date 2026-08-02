@@ -1,6 +1,5 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -8,7 +7,6 @@ import {
   Code2,
   Globe,
   Mail,
-  Sparkles,
 } from "lucide-react";
 import { profile } from "@/content/profile";
 import { socialLinks } from "@/content/social";
@@ -21,55 +19,14 @@ const socialIconMap: Record<string, React.ElementType> = {
   email: Mail,
 };
 
-function TypingEffect({ text }: { text: string }) {
-  const [displayText, setDisplayText] = useState("");
-  const [showCursor, setShowCursor] = useState(true);
-
-  useEffect(() => {
-    let i = 0;
-    const timer = setInterval(() => {
-      if (i < text.length) {
-        setDisplayText(text.slice(0, i + 1));
-        i++;
-      } else {
-        clearInterval(timer);
-        // Hide cursor after 2 seconds
-        setTimeout(() => setShowCursor(false), 2000);
-      }
-    }, 80);
-    return () => clearInterval(timer);
-  }, [text]);
-
-  return (
-    <span>
-      {displayText}
-      {showCursor && (
-        <span className="animate-typing-cursor text-primary">|</span>
-      )}
-    </span>
-  );
-}
 
 export function HeroSection() {
   return (
     <section
       id="hero"
-      className="hero-gradient grid-pattern relative min-h-screen"
+      className="relative min-h-screen grid-pattern"
       aria-labelledby="hero-heading"
     >
-      {/* Floating Blobs */}
-      <div
-        className="animate-float pointer-events-none absolute left-[10%] top-[20%] size-72 rounded-full bg-primary/5 blur-3xl"
-        aria-hidden="true"
-      />
-      <div
-        className="animate-float-delayed pointer-events-none absolute right-[15%] top-[40%] size-96 rounded-full bg-secondary/5 blur-3xl"
-        aria-hidden="true"
-      />
-      <div
-        className="animate-float pointer-events-none absolute bottom-[20%] left-[30%] size-64 rounded-full bg-accent/5 blur-3xl"
-        aria-hidden="true"
-      />
 
       <Container className="relative z-10 flex min-h-screen items-center pb-20 pt-32">
         <div className="grid w-full items-center gap-12 lg:grid-cols-2 lg:gap-16">
@@ -91,13 +48,13 @@ export function HeroSection() {
             {/* Greeting */}
             <div className="animate-fade-in-up space-y-2">
               <p className="text-lg font-medium text-text-secondary">
-                <TypingEffect text="Hi, I'm" />
+                Hi, I&apos;m
               </p>
               <h1
                 id="hero-heading"
                 className="text-balance text-5xl font-bold tracking-tight sm:text-6xl md:text-7xl lg:text-8xl"
               >
-                <span className="gradient-text">{profile.name}</span>
+                {profile.name}
               </h1>
             </div>
 
@@ -162,18 +119,13 @@ export function HeroSection() {
             </div>
           </div>
 
-          {/* Right Column — Profile Image / Visual */}
+          {/* Right Column — Profile Visual (Simplified) */}
           <div className="animate-fade-in-up delay-300 hidden items-center justify-center opacity-0 lg:flex">
             <div className="relative">
-              {/* Glow Ring */}
-              <div
-                className="animate-pulse-glow absolute -inset-4 rounded-full bg-gradient-to-r from-primary/20 via-secondary/20 to-accent/20 blur-2xl"
-                aria-hidden="true"
-              />
               {/* Profile Image Placeholder */}
-              <div className="relative size-80 overflow-hidden rounded-full border-2 border-white/10 bg-gradient-to-br from-white/5 to-white/[0.02]">
+              <div className="relative size-80 overflow-hidden rounded-full border border-white/10 bg-white/5 backdrop-blur-sm">
                 <div className="flex h-full items-center justify-center">
-                  <Sparkles className="size-16 text-primary/40" />
+                  <Code2 className="size-16 text-primary/40" />
                 </div>
               </div>
               {/* Floating Stats */}
@@ -182,10 +134,6 @@ export function HeroSection() {
                   {profile.yearsOfExperience}+
                 </p>
                 <p className="text-xs text-text-muted">Years Exp.</p>
-              </div>
-              <div className="glass-card absolute -left-8 bottom-16 px-4 py-2.5 text-center">
-                <p className="text-2xl font-bold text-secondary">10+</p>
-                <p className="text-xs text-text-muted">Projects</p>
               </div>
             </div>
           </div>

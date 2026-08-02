@@ -2,32 +2,33 @@ import type { Experience } from "@/types/experience";
 
 export const experiences: Experience[] = [
   {
-    company: "TechCorp Solutions",
-    role: "Software Engineer",
+    company: "Ariel Software Solutions Pvt. Ltd.",
+    role: "Junior Software Engineer",
     startDate: "2023-06",
-    endDate: "Present",
+    endDate: "2024-03",
     summary:
-      "Building enterprise-grade microservices and cloud-native applications serving thousands of concurrent users.",
+      "Engineered full-stack features using ASP.NET Core and React for enterprise clients. Improved application architecture and database efficiency.",
     achievements: [
-      "Designed and implemented RESTful APIs handling 10K+ daily requests with Spring Boot",
-      "Migrated monolithic application to microservices architecture, improving deployment frequency by 3x",
-      "Implemented CI/CD pipelines with Jenkins and GitHub Actions reducing release cycle from days to hours",
-      "Built real-time notification system using WebSockets and Redis pub/sub",
+      "Designed and implemented RESTful APIs using ASP.NET Core.",
+      "Developed interactive UI components with React.js and Tailwind CSS.",
+      "Optimized SQL Server queries, significantly reducing data retrieval times.",
+      "Integrated third-party APIs and managed cloud deployments via Azure.",
     ],
-    technologies: ["Java", "Spring Boot", "AWS", "Docker", "Kubernetes", "PostgreSQL", "Redis"],
+    technologies: ["C#", "ASP.NET Core", "React", "SQL Server", "Azure"],
   },
   {
-    company: "InnovateTech",
-    role: "Junior Software Engineer",
-    startDate: "2022-01",
+    company: "Protolabz eServices",
+    role: "Assistant Web Developer",
+    startDate: "2022-05",
     endDate: "2023-05",
     summary:
-      "Developed full-stack web applications with focus on backend reliability and frontend performance.",
+      "Collaborated in an agile team to build and maintain web applications, focusing on robust backends and seamless user experiences.",
     achievements: [
-      "Built employee management module with role-based access control using Spring Security",
-      "Developed responsive dashboards with React and TypeScript used by 500+ internal users",
-      "Optimized database queries reducing average response time by 40%",
+      "Built dynamic, responsive web interfaces using modern JavaScript frameworks.",
+      "Assisted in backend development using C# and .NET MVC.",
+      "Implemented database schemas and stored procedures in SQL Server.",
+      "Participated in code reviews and agile sprint planning sessions.",
     ],
-    technologies: ["Java", "Spring Boot", "React", "MySQL", "Docker"],
+    technologies: ["C#", ".NET MVC", "JavaScript", "SQL Server", "HTML/CSS"],
   },
 ];

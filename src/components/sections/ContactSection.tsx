@@ -8,6 +8,7 @@ import { socialLinks } from "@/content/social";
 import { Section } from "@/components/layout/Section";
 import { SectionHeading } from "@/components/shared/SectionHeading";
 import { ScrollReveal } from "@/components/shared/ScrollReveal";
+import { Card } from "@/components/shared/Card";
 
 const socialIconMap: Record<string, React.ElementType> = {
   github: Code2,
@@ -41,7 +42,7 @@ export function ContactSection() {
   };
 
   const inputClass =
-    "w-full rounded-xl border border-white/8 bg-white/4 px-4 py-3 text-sm text-foreground placeholder:text-text-muted transition-all duration-200 focus:border-primary/40 focus:bg-white/6 focus:outline-none focus:ring-2 focus:ring-primary/20";
+    "w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3.5 text-sm text-foreground placeholder:text-text-muted transition-all duration-200 focus:border-primary focus:bg-white/10 focus:outline-none focus:ring-1 focus:ring-primary";
 
   return (
     <Section id="contact">
@@ -55,9 +56,9 @@ export function ContactSection() {
 
       <div className="mx-auto mt-12 max-w-2xl">
         <ScrollReveal delay={150}>
-          <div className="glass-card p-8 md:p-10">
-            <form onSubmit={handleSubmit} className="space-y-5">
-              <div className="grid gap-5 sm:grid-cols-2">
+          <Card className="p-8 md:p-10">
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="grid gap-6 sm:grid-cols-2">
                 <div>
                   <label
                     htmlFor="contact-name"
@@ -163,7 +164,7 @@ export function ContactSection() {
                 );
               })}
             </div>
-          </div>
+          </Card>
         </ScrollReveal>
       </div>
     </Section>
