@@ -28,9 +28,18 @@ export function ProjectsSection() {
                 <h3 className="text-xl font-bold tracking-tight text-foreground">
                   {project.title}
                 </h3>
-                <p className="mt-4 flex-1 text-base leading-relaxed text-text-secondary">
+                <p className="mt-4 text-base leading-relaxed text-text-secondary">
                   {project.description}
                 </p>
+                
+                {project.impact && (
+                  <div className="mt-4 flex-1">
+                    <h4 className="text-sm font-semibold uppercase tracking-wider text-text-muted mb-2">Key Impact</h4>
+                    <p className="text-sm leading-relaxed text-text-secondary whitespace-pre-line border-l-2 border-primary/20 pl-3">
+                      {project.impact}
+                    </p>
+                  </div>
+                )}
 
                 {/* Tech Badges */}
                 <div className="mt-6 flex flex-wrap gap-x-4 gap-y-2">

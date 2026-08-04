@@ -4,25 +4,23 @@ export const projects: Project[] = [
   {
     slug: "taskflow",
     title: "TaskFlow: Project & Workflow Automation",
-    description: "A comprehensive SaaS platform built to automate project management and workflow scheduling. Utilizes Clean Architecture to maintain a decoupled, scalable codebase. Features include automated background jobs, real-time status updates, and a responsive modern UI.",
+    description: "SaaS platform automating project management and workflow scheduling using Clean Architecture.",
     technologies: ["ASP.NET Core", "React", "Clean Architecture", "Hangfire", "SQL Server", "Tailwind CSS"],
     repositoryUrl: "https://github.com/",
     liveUrl: "https://taskflow.example.com",
-    problem: "Many teams struggle with managing complex projects and workflows, leading to inefficiencies and missed deadlines. Existing tools often lack automation and real-time updates.",
-    impact: "TaskFlow has improved project completion rates by 30% for early adopters, reduced manual task management by 50%, and enhanced team collaboration through real-time updates.",
+    problem: "Teams struggled with inefficient task management and a lack of real-time visibility into workflow progress.",
+    impact: "• Improved project completion rates by 30% for early adopters.\n• Reduced manual task management overhead by 50% through automated background jobs.\n• Enhanced cross-functional collaboration via real-time status synchronization.",
+    featured: true,
   },
   {
     slug: "plant-seller",
     title: "Plant Seller",
     description:
-      "A full-stack multi-vendor e-commerce platform that connects customers, nurseries, and administrators in a unified marketplace. The platform enables vendors to manage storefronts, inventory, and orders while providing customers with a seamless shopping experience backed by secure authentication, online payments, and real-time order management.",
-
+      "A full-stack multi-vendor e-commerce platform connecting customers, nurseries, and administrators in a unified marketplace.",
     problem:
-      "Traditional plant-selling businesses often rely on single-vendor stores or manual order management, making it difficult for multiple nurseries to sell through a centralized platform. Customers have limited options to compare products from different vendors, while sellers lack efficient tools for inventory, order processing, analytics, and storefront management. The project addresses these challenges by building a scalable multi-vendor marketplace with role-based dashboards for customers, vendors, and administrators.",
-
+      "Traditional nurseries lacked centralized platforms for inventory and order management, while customers struggled to compare products across multiple vendors.",
     impact:
-      "Built a production-ready MERN application with a scalable multi-vendor architecture supporting role-based access for customers, vendors, and administrators. Implemented secure JWT authentication, Stripe payment integration, Cloudinary image management, vendor storefront customization, order tracking, inventory management, analytics dashboards, and administrative controls, providing a complete end-to-end e-commerce solution.",
-
+      "• Engineered a scalable MERN architecture supporting robust role-based access control.\n• Integrated secure JWT authentication and Stripe payment processing.\n• Deployed custom dashboards for inventory, analytics, and storefront management, streamlining vendor operations.",
     technologies: [
       "React.js",
       "Redux Toolkit",
@@ -30,81 +28,54 @@ export const projects: Project[] = [
       "Node.js",
       "Express.js",
       "MongoDB",
-      "Mongoose",
       "JWT Authentication",
       "Stripe",
       "Cloudinary",
-      "Bootstrap",
-      "Sass",
-      "Ant Design",
-      "Chart.js",
       "REST API"
     ],
-
     repositoryUrl: "https://github.com/piyushraj2340/Plant-Selling-Website",
-
     liveUrl: "https://plantseller.vercel.app/",
-
     featured: true,
   },
   {
     slug: "whatsapp-privacy-extension",
-
     title: "WhatsApp Privacy Extension",
-
     description:
-      "A Chrome extension that enhances privacy while using WhatsApp Web by allowing users to selectively blur sensitive information such as chats, profile pictures, contact names, and chat lists. Designed for users working in public spaces, it provides quick privacy controls without affecting the overall browsing experience.",
-
+      "A Chrome extension enhancing privacy on WhatsApp Web by selectively blurring sensitive information like chats and profile pictures.",
     problem:
-      "WhatsApp Web exposes private conversations and personal information to anyone nearby, making it difficult to use in offices, coworking spaces, classrooms, or public environments. Users often need a simple way to hide sensitive content without logging out or closing the application. This extension addresses that need by providing configurable privacy controls directly within the browser.",
-
+      "Using WhatsApp Web in public workspaces exposed private conversations and contact details to shoulder-surfing.",
     impact:
-      "Developed a lightweight Chrome extension that allows users to instantly protect sensitive information on WhatsApp Web through selective blur effects and one-click privacy toggles. The extension improves user privacy in shared environments while offering customizable controls for different UI elements, delivering a seamless and non-intrusive user experience.",
-
+      "• Developed a lightweight Chrome Extension using Manifest V3.\n• Implemented real-time DOM manipulation to blur specific UI elements.\n• Improved user privacy in shared environments without degrading the native application experience.",
     technologies: [
       "JavaScript",
       "HTML5",
       "CSS3",
       "Chrome Extension API",
       "Manifest V3",
-      "DOM Manipulation",
-      "Local Storage"
+      "DOM Manipulation"
     ],
-
-    repositoryUrl:
-      "https://github.com/piyushraj2340/Whatsapp-Privacy-Extension",
-
+    repositoryUrl: "https://github.com/piyushraj2340/Whatsapp-Privacy-Extension",
     featured: false,
-  }, {
+  }, 
+  {
     slug: "file-sharing-app-backend",
-
     title: "File Sharing App Backend",
-
     description:
-      "A RESTful backend service for a file-sharing platform built with Node.js, Express.js, and MongoDB. The application provides secure file upload capabilities, manages file metadata and download information, and is pre-configured for deployment across multiple hosting environments including Vercel Serverless Functions and Windows IIS.",
-
+      "A RESTful backend service for a secure file-sharing platform, pre-configured for diverse hosting environments.",
     problem:
-      "Many file-sharing applications require a reliable backend to handle file uploads, metadata management, download tracking, and scalable deployment across different environments. This project addresses these challenges by providing a lightweight, extensible API that simplifies file handling while supporting both cloud-native and traditional Windows server deployments.",
-
+      "File-sharing applications require robust infrastructure to handle large multipart uploads and metadata tracking seamlessly.",
     impact:
-      "Developed a cross-platform backend capable of handling multipart file uploads, managing file metadata in MongoDB, and supporting production deployments on both Vercel and IIS without application changes. The architecture enables rapid deployment, simplified maintenance, and provides a solid foundation for scalable file-sharing applications.",
-
+      "• Architected a Node.js/Express REST API supporting multipart file uploads and MongoDB metadata storage.\n• Designed the system to be environment-agnostic, supporting both Vercel Serverless and Windows IIS deployments.\n• Ensured scalable and maintainable file handling with robust error management.",
     technologies: [
       "Node.js",
       "Express.js",
       "MongoDB",
       "Mongoose",
-      "Express FileUpload",
       "REST API",
-      "JavaScript",
-      "Nodemon",
       "Vercel",
-      "IIS",
-      "iisnode"
+      "IIS"
     ],
-
     repositoryUrl: "https://github.com/piyushraj2340/File-Sharing-App-Backend",
-
     featured: false,
   }
 ];
