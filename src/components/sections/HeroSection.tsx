@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, Download, Send } from "lucide-react";
+import { ArrowRight, ArrowDown, Download, Send } from "lucide-react";
 import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
 import { FiGlobe } from "react-icons/fi";
 import { motion, Variants } from "framer-motion";
@@ -57,7 +57,7 @@ export function HeroSection() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen overflow-hidden bg-background"
+      className="relative min-h-screen overflow-hidden bg-background pt-32 pb-20 sm:pt-40 sm:pb-28"
       aria-labelledby="hero-heading"
     >
       {/* Animated Background Mesh Gradients */}
@@ -84,148 +84,120 @@ export function HeroSection() {
         <div className="absolute inset-0 bg-background/50 backdrop-blur-[1px] grid-pattern mix-blend-overlay" />
       </div>
 
-      <Container className="relative z-10 flex min-h-screen items-center pb-20 pt-32">
-        <motion.div 
-          className="grid w-full items-center gap-12 lg:grid-cols-12 lg:gap-8"
+      <Container className="relative z-10 mx-auto w-full max-w-6xl">
+        <motion.div
+          className="grid items-center gap-14 lg:grid-cols-[1.25fr_1fr] lg:gap-16"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
         >
           {/* Left Column — Content */}
-          <div className="flex flex-col gap-8 lg:col-span-7 xl:col-span-6">
-            
-            {/* Info Card (Availability + Experience) */}
-            <motion.div variants={itemVariants}>
-              <div className="inline-flex items-center gap-4 rounded-2xl border border-white/10 bg-white/5 p-2 pr-6 backdrop-blur-md shadow-2xl">
-                {profile.availability && (
-                  <span className="inline-flex items-center gap-2 rounded-xl bg-primary/10 px-3 py-1.5 text-xs font-semibold text-primary">
-                    <span className="relative flex size-2" aria-hidden="true">
-                      <span className="absolute inline-flex size-full animate-ping rounded-full bg-primary/60" />
-                      <span className="relative inline-flex size-2 rounded-full bg-primary" />
-                    </span>
-                    {profile.availability}
-                  </span>
-                )}
-                <span className="text-sm font-medium text-text-secondary border-l border-white/10 pl-4">
-                  <span className="text-foreground font-bold">{profile.yearsOfExperience}+</span> Years Experience
+          <div className="flex flex-col gap-7">
+            {profile.availability && (
+              <motion.p variants={itemVariants} className="glass inline-flex w-fit items-center gap-2 rounded-full px-3 py-1.5 text-xs text-text-muted">
+                <span className="relative flex size-2">
+                  <span className="absolute inline-flex size-full animate-[ping_2s_cubic-bezier(0,0,0.2,1)_infinite] rounded-full bg-accent opacity-75" />
+                  <span className="relative inline-flex size-2 rounded-full bg-accent" />
                 </span>
-              </div>
-            </motion.div>
+                {profile.availability}
+              </motion.p>
+            )}
 
-            {/* Greeting & Headline */}
-            <motion.div variants={itemVariants} className="space-y-4">
-              <p className="text-xl font-medium tracking-wide text-primary">
-                Hi, I&apos;m {profile.name.split(" ")[0]}
+            <motion.div variants={itemVariants} className="flex flex-col gap-4">
+              <p className="font-mono text-sm tracking-widest text-text-muted uppercase">
+                {profile.greeting}
               </p>
               <h1
                 id="hero-heading"
-                className="text-balance text-5xl font-extrabold tracking-tight sm:text-6xl md:text-7xl lg:text-7xl xl:text-8xl bg-gradient-to-br from-foreground to-foreground/60 bg-clip-text text-transparent"
+                className="text-4xl leading-[1.05] font-semibold tracking-tight text-balance sm:text-6xl lg:text-7xl"
               >
-                {profile.role}
+                {profile.name}
               </h1>
-              <div className="text-2xl font-semibold tracking-tight sm:text-4xl h-10">
+              <p className="text-2xl font-semibold tracking-tight sm:text-4xl h-10">
                 <TypingRoles roles={typingRoles} />
-              </div>
+              </p>
+              <p className="font-mono text-sm text-text-muted">
+                {profile.yearsOfExperience}+ Years Experience &middot; {profile.location}
+              </p>
             </motion.div>
 
-            {/* Summary */}
-            <motion.p variants={itemVariants} className="max-w-xl text-lg leading-relaxed text-text-secondary md:text-xl">
+            <motion.p variants={itemVariants} className="max-w-xl text-base leading-relaxed text-pretty text-text-secondary sm:text-lg">
               {profile.summary}
             </motion.p>
 
-            {/* CTAs */}
-            <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-4 pt-2">
+            <motion.div variants={itemVariants} className="flex flex-col gap-3 sm:flex-row sm:items-center">
               <Link
                 href="#projects"
-                className="group relative inline-flex items-center gap-2 rounded-xl bg-primary px-8 py-4 text-base font-semibold text-primary-foreground transition-all duration-300 hover:bg-primary-hover hover:shadow-[0_0_30px_rgba(59,130,246,0.4)] hover:-translate-y-1 overflow-hidden"
+                className="group relative inline-flex h-12 items-center justify-center gap-2 overflow-hidden rounded-xl bg-primary px-6 text-sm font-medium text-primary-foreground transition-transform duration-300 hover:-translate-y-0.5 hover:shadow-[0_16px_40px_-16px_var(--primary)]"
               >
+                <span
+                  aria-hidden="true"
+                  className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-primary-foreground/25 to-transparent transition-transform duration-700 group-hover:translate-x-full"
+                />
                 View Projects
-                <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+                <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
               </Link>
-              <Link
-                href="#contact"
-                className="group inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-8 py-4 text-base font-semibold text-foreground transition-all duration-300 hover:border-white/20 hover:bg-white/10 hover:-translate-y-1"
-              >
-                <Send className="size-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-                Contact Me
-              </Link>
-            </motion.div>
-
-            {/* Social Links & Download Resume */}
-            <motion.div variants={itemVariants} className="flex items-center gap-6 pt-4 border-t border-white/5">
-              <div className="flex items-center gap-3">
-                {socialLinks.map((link) => {
-                  const normalized = link.label.toLowerCase();
-                  const Icon = socialIconMap[normalized] || FiGlobe;
-                  return (
-                    <Link
-                      key={link.href}
-                      href={link.href}
-                      target={normalized === "email" ? undefined : "_blank"}
-                      rel={normalized === "email" ? undefined : "noopener noreferrer"}
-                      className="inline-flex size-11 items-center justify-center rounded-full border border-white/5 text-text-secondary transition-all duration-300 hover:border-primary/30 hover:bg-primary/5 hover:text-primary hover:-translate-y-1 shadow-lg"
-                      aria-label={link.label}
-                    >
-                      <Icon className="size-5" />
-                    </Link>
-                  );
-                })}
-              </div>
-              <div className="w-px h-8 bg-white/10" />
               <Link
                 href={siteConfig.resumeUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center gap-2 text-sm font-medium text-text-muted transition-colors hover:text-foreground"
+                className="glass inline-flex h-12 items-center justify-center gap-2 rounded-xl px-6 text-sm font-medium transition-all duration-300 hover:-translate-y-0.5 hover:border-foreground/25"
               >
-                <Download className="size-4 transition-transform group-hover:-translate-y-1" />
+                <Download className="size-4" aria-hidden="true" />
                 Download Resume
               </Link>
             </motion.div>
+
+            <motion.ul variants={itemVariants} className="flex items-center gap-3">
+              {socialLinks.map((link) => {
+                const normalized = link.label.toLowerCase();
+                const Icon = socialIconMap[normalized] || FiGlobe;
+                return (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      target={normalized === "email" ? undefined : "_blank"}
+                      rel={normalized === "email" ? undefined : "noopener noreferrer"}
+                      className="glass group grid size-11 place-items-center rounded-xl text-text-muted transition-all duration-300 hover:-translate-y-0.5 hover:text-foreground"
+                      aria-label={link.label}
+                    >
+                      <Icon className="size-5" aria-hidden="true" />
+                      <span className="sr-only">{link.label}</span>
+                    </Link>
+                  </li>
+                );
+              })}
+            </motion.ul>
           </div>
 
           {/* Right Column — Developer Illustration */}
-          <div className="hidden lg:col-span-5 xl:col-span-6 lg:flex items-center justify-center relative min-h-[600px]">
-            <motion.div 
-              variants={{
-                hidden: { opacity: 0, scale: 0.8 },
-                visible: { 
-                  opacity: 1, 
-                  scale: 1,
-                  transition: { type: "spring", delay: 0.4, duration: 1.5, bounce: 0.4 }
-                }
-              }}
-              className="relative w-full max-w-[500px] aspect-square"
-            >
-              {/* Central Profile Image with Glowing Animated Border */}
-              <div className="absolute inset-0 flex items-center justify-center z-20">
-                <div className="relative">
-                  {/* Glowing pulses */}
-                  <motion.div 
-                    className="absolute inset-[-10px] rounded-full bg-primary/20 blur-xl"
-                    animate={{ scale: [1, 1.2, 1], opacity: [0.5, 0.8, 0.5] }}
-                    transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                  />
-                  <motion.div 
-                    className="absolute inset-[-2px] rounded-full bg-gradient-to-r from-primary to-secondary"
-                    animate={{ rotate: 360 }}
-                    transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-                  />
-                  
-                  {/* Profile Image */}
-                  <div className="relative size-[280px] xl:size-[340px] overflow-hidden rounded-full border-4 border-background bg-surface z-10 shadow-2xl">
-                    <img
-                      src="/images/1731513824864.jpg"
-                      alt="Profile"
-                      className="size-full object-cover"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-background/40 to-transparent mix-blend-overlay" />
-                  </div>
-                </div>
+          <motion.div variants={itemVariants} className="justify-self-center lg:justify-self-end w-full max-w-[400px]">
+            <div className="relative aspect-square">
+              {/* Glowing background blur */}
+              <div
+                aria-hidden="true"
+                className="absolute -inset-6 rounded-[2.5rem] bg-gradient-to-br from-primary/30 via-secondary/20 to-accent/30 blur-2xl"
+              />
+              
+              {/* Profile Image in Glass Frame */}
+              <div className="glass relative overflow-hidden rounded-[2rem] p-2 z-10 shadow-2xl h-full w-full">
+                <img
+                  src="/images/1731513824864.jpg"
+                  alt={`Portrait of ${profile.name}`}
+                  className="size-full rounded-[1.6rem] object-cover"
+                />
+              </div>
+
+              {/* Floating Badge */}
+              <div className="glass absolute -bottom-5 -left-5 z-20 rounded-2xl px-4 py-3 shadow-[0_20px_60px_-20px_rgba(0,0,0,0.9)]">
+                <p className="font-mono text-xs text-text-muted">
+                  Currently
+                </p>
+                <p className="text-sm font-medium text-foreground">Backend · Cloud · APIs</p>
               </div>
 
               {/* Floating Tech Icons Orbiting */}
-              <div className="absolute inset-0 z-30 pointer-events-none">
+              <div className="absolute inset-[-4rem] z-30 pointer-events-none">
                 {techStack.map((tech, idx) => {
                   const Icon = getTechIcon(tech.name);
                   return (
@@ -254,12 +226,54 @@ export function HeroSection() {
               </div>
               
               {/* Decorative Orbital Rings */}
-              <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-20">
+              <div className="absolute inset-[-4rem] flex items-center justify-center pointer-events-none opacity-20">
                 <div className="absolute size-full rounded-full border border-dashed border-white/20 animate-[spin_60s_linear_infinite]" />
                 <div className="absolute size-[75%] rounded-full border border-white/10 animate-[spin_40s_linear_infinite_reverse]" />
               </div>
-            </motion.div>
-          </div>
+            </div>
+          </motion.div>
+        </motion.div>
+
+        {/* Stats Grid */}
+        {profile.stats && (
+          <motion.ul 
+            className="mt-16 grid grid-cols-2 gap-3 sm:mt-20 sm:grid-cols-4"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={containerVariants}
+          >
+            {profile.stats.map((stat, index) => (
+              <motion.li
+                key={stat.label}
+                variants={itemVariants}
+                className="glass rounded-2xl p-5 transition-colors duration-300 hover:border-white/20"
+              >
+                <p className="text-2xl font-semibold tracking-tight sm:text-3xl">
+                  {stat.value}
+                </p>
+                <p className="mt-1 text-xs leading-relaxed text-text-muted sm:text-sm">
+                  {stat.label}
+                </p>
+              </motion.li>
+            ))}
+          </motion.ul>
+        )}
+
+        {/* Scroll To Explore */}
+        <motion.div 
+          className="mt-14"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1 }}
+        >
+          <Link
+            href="#about"
+            className="inline-flex items-center gap-2 text-sm text-text-muted transition-colors hover:text-foreground"
+          >
+            <ArrowDown className="size-4 animate-bounce" aria-hidden="true" />
+            Scroll to explore
+          </Link>
         </motion.div>
       </Container>
     </section>

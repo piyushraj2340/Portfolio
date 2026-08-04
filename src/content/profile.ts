@@ -16,4 +16,12 @@ export const profile: Profile = {
   ],
   availability: "Available for Opportunities",
   yearsOfExperience: 2,
+  location: "India",
+  greeting: "Hello, world",
+  stats: [
+    { label: "Years Experience", value: "2+" },
+    { label: "Projects Completed", value: "10+" },
+    { label: "Algorithms Solved", value: "700+" },
+    { label: "Technologies", value: "15+" },
+  ],
 };
