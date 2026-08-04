@@ -5,61 +5,67 @@ export const skills: SkillCategory[] = [
   {
     category: "Languages",
     icon: "Code",
+    blurb: "Core programming languages I use to build scalable systems and interactive applications.",
     items: [
-      { name: "C#", proficiency: 95 },
-      { name: "JavaScript/TypeScript", proficiency: 90 },
-      { name: "SQL", proficiency: 85 },
-      { name: "HTML/CSS", proficiency: 95 },
+      "C#",
+      "JavaScript/TypeScript",
+      "SQL",
+      "HTML/CSS"
     ],
   },
   {
     category: "Backend",
     icon: "Server",
+    blurb: "Architecting high-performance enterprise backends and RESTful services.",
     items: [
-      { name: "ASP.NET Core (MVC/Web API)", proficiency: 95 },
-      { name: "Entity Framework Core", proficiency: 90 },
-      { name: "REST APIs", proficiency: 95 },
-      { name: "Hangfire", proficiency: 80 },
+      "ASP.NET Core (MVC/Web API)",
+      "Entity Framework Core",
+      "REST APIs",
+      "Hangfire"
     ],
   },
   {
     category: "Frontend",
     icon: "Monitor",
+    blurb: "Crafting intuitive and responsive user interfaces with modern JavaScript frameworks.",
     items: [
-      { name: "React.js", proficiency: 90 },
-      { name: "Next.js", proficiency: 85 },
-      { name: "Tailwind CSS", proficiency: 95 },
-      { name: "Redux", proficiency: 80 },
+      "React.js",
+      "Next.js",
+      "Tailwind CSS",
+      "Redux"
     ],
   },
   {
     category: "Database & Cloud",
     icon: "Database",
+    blurb: "Designing robust database schemas and deploying scalable services to the cloud.",
     items: [
-      { name: "MS SQL Server", proficiency: 90 },
-      { name: "Azure Services", proficiency: 85 },
-      { name: "Redis", proficiency: 75 },
-      { name: "Azure SQL", proficiency: 85 },
+      "MS SQL Server",
+      "Azure Services",
+      "Redis",
+      "Azure SQL"
     ],
   },
   {
     category: "Architecture",
     icon: "Layers",
+    blurb: "Structuring codebases for maintainability, testability, and enterprise scale.",
     items: [
-      { name: "Clean Architecture", proficiency: 90 },
-      { name: "Microservices", proficiency: 80 },
-      { name: "SOLID Principles", proficiency: 95 },
-      { name: "Design Patterns", proficiency: 90 },
+      "Clean Architecture",
+      "Microservices",
+      "SOLID Principles",
+      "Design Patterns"
     ],
   },
   {
     category: "DevOps & Tools",
     icon: "Wrench",
+    blurb: "Automating workflows, managing source control, and ensuring reliable deliveries.",
     items: [
-      { name: "Git & GitHub", proficiency: 90 },
-      { name: "Docker", proficiency: 75 },
-      { name: "CI/CD", proficiency: 80 },
-      { name: "Postman", proficiency: 95 },
+      "Git & GitHub",
+      "Docker",
+      "CI/CD",
+      "Postman"
     ],
   },
 ];
