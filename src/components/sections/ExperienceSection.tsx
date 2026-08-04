@@ -35,7 +35,7 @@ export function ExperienceSection() {
   });
 
   return (
-    <Section id="experience" aria-labelledby="experience-heading" className="bg-background py-24 sm:py-32">
+    <Section id="experience" aria-labelledby="experience-heading" className="bg-background">
       <Container>
         <ScrollReveal>
           <SectionHeading

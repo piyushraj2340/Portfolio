@@ -9,7 +9,7 @@ const valueIcons = [Sparkles, Compass, Gauge];
 
 export function AboutSection() {
   return (
-    <Section id="about" aria-labelledby="about-heading" className="bg-surface py-24 sm:py-32">
+    <Section id="about" aria-labelledby="about-heading" className="bg-surface">
       <Container>
         <ScrollReveal>
           <SectionHeading

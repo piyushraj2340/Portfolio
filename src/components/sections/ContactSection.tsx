@@ -16,7 +16,7 @@ const socialIconMap: Record<string, React.ElementType> = {
 
 export function ContactSection() {
   return (
-    <Section id="contact" className="relative overflow-hidden py-32 sm:py-40">
+    <Section id="contact" className="relative overflow-hidden">
       {/* Background visual flair */}
       <div className="absolute inset-0 z-0 flex items-center justify-center pointer-events-none opacity-40">
         <div className="w-[100vw] h-[100vw] sm:w-[60vw] sm:h-[60vw] rounded-full bg-primary/10 blur-[100px] mix-blend-screen" />
