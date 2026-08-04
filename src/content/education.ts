@@ -19,7 +19,7 @@ export const education: Education[] = [
     startDate: "2017-04",
     endDate: "2018-06",
     location: "Patna, Bihar",
-    description: "Graduated with 55.3% in the CBSE board examinations.",
+    description: "Completed Higher Secondary education under the CBSE curriculum with a focus on the Science stream.",
     coursework: ["Mathematics", "Physics", "Chemistry", "Computer Science"],
     isVisible: true
   }
