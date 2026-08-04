@@ -10,6 +10,8 @@ import { socialLinks } from "@/content/social";
 import { siteConfig } from "@/config/site";
 import { Container } from "@/components/layout/Container";
 import { getTechIcon } from "@/lib/icon-map";
+import { TypingRoles } from "@/components/shared/TypingRoles";
+import { FloatingParticles } from "@/components/shared/FloatingParticles";
 
 const socialIconMap: Record<string, React.ElementType> = {
   github: FaGithub,
@@ -27,6 +29,8 @@ const techStack = [
   { name: "Docker", position: { top: "60%", right: "-5%" }, size: 48, delay: 1 },
   { name: "Git", position: { top: "-5%", left: "50%" }, size: 36, delay: 2.5 },
 ];
+
+const typingRoles = ["Full Stack Engineer", "Backend Specialist", ".NET Core & React"];
 
 // Stagger orchestration variants
 const containerVariants: Variants = {
@@ -58,6 +62,7 @@ export function HeroSection() {
     >
       {/* Animated Background Mesh Gradients */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+        <FloatingParticles />
         <motion.div
           className="absolute -top-[20%] -left-[10%] w-[50vw] h-[50vw] rounded-full bg-primary/20 blur-[120px] mix-blend-screen"
           animate={{
@@ -118,6 +123,9 @@ export function HeroSection() {
               >
                 {profile.role}
               </h1>
+              <div className="text-2xl font-semibold tracking-tight sm:text-4xl h-10">
+                <TypingRoles roles={typingRoles} />
+              </div>
             </motion.div>
 
             {/* Summary */}
