@@ -4,6 +4,7 @@ import {
   FaReact,
   FaNodeJs,
   FaGithub,
+  FaGitAlt,
   FaDocker,
   FaStripe,
   FaSass,
@@ -25,6 +26,7 @@ import {
   TbApi,
 } from "react-icons/tb";
 import { DiRedis, DiMongodb } from "react-icons/di";
+import { SiDotnet } from "react-icons/si";
 import { IconType } from "react-icons";
 
 const techIconMap: Record<string, IconType> = {
@@ -37,7 +39,7 @@ const techIconMap: Record<string, IconType> = {
   "HTML5/CSS3": FaHtml5,
   "HTML5": FaHtml5,
   "CSS3": FaHtml5,
-  
+
   // Database & Cloud
   "SQL": FaDatabase,
   "MS SQL Server": FaDatabase,
@@ -49,18 +51,20 @@ const techIconMap: Record<string, IconType> = {
   "MongoDB": DiMongodb,
   "Mongoose": DiMongodb,
   "Cloudinary": FaCloud,
-  
+
   // Backend
-  "ASP.NET Core": TbBrandCSharp,
-  "ASP.NET Core (MVC/Web API)": TbBrandCSharp,
-  ".NET MVC": TbBrandCSharp,
-  "Entity Framework Core": TbBrandCSharp,
+  "ASP.NET Core": SiDotnet,
+  "ASP.NET Core (MVC/Web API)": SiDotnet,
+  ".NET Core": SiDotnet,
+  ".NET": SiDotnet,
+  ".NET MVC": SiDotnet,
+  "Entity Framework Core": SiDotnet,
   "REST APIs": TbApi,
   "Hangfire": FaCode,
   "Node.js": FaNodeJs,
   "Express.js": FaNodeJs,
   "JWT Authentication": FaKey,
-  
+
   // Frontend
   "React.js": FaReact,
   "React": FaReact,
@@ -71,9 +75,11 @@ const techIconMap: Record<string, IconType> = {
   "Sass": FaSass,
   "Ant Design": FaCode,
   "Chart.js": FaChartBar,
-  
+
   // DevOps & Tools
+  "Git": FaGitAlt,
   "Git & GitHub": FaGithub,
+  "GitHub": FaGithub,
   "Docker": FaDocker,
   "CI/CD": FaGithub,
   "Postman": TbApi,
@@ -82,7 +88,7 @@ const techIconMap: Record<string, IconType> = {
   "Manifest V3": TbApi,
   "DOM Manipulation": FaCode,
   "Local Storage": FaDatabase,
-  
+
   // Architecture
   "Clean Architecture": FaCode,
   "Microservices": FaCode,

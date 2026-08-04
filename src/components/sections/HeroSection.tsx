@@ -21,7 +21,7 @@ const socialIconMap: Record<string, React.ElementType> = {
 
 // Floating tech stack icons setup
 const techStack = [
-  { name: "C#", position: { top: "5%", left: "15%" }, size: 40, delay: 0 },
+  { name: ".NET Core", position: { top: "5%", left: "15%" }, size: 40, delay: 0 },
   { name: "Node.js", position: { top: "15%", right: "10%" }, size: 48, delay: 1.5 },
   { name: "React", position: { bottom: "25%", left: "5%" }, size: 56, delay: 3 },
   { name: "SQL", position: { bottom: "10%", right: "15%" }, size: 40, delay: 0.5 },
@@ -200,26 +200,34 @@ export function HeroSection() {
               <div className="absolute inset-[-4rem] z-30 pointer-events-none">
                 {techStack.map((tech, idx) => {
                   const Icon = getTechIcon(tech.name);
+                  // Alternating animation values for more organic feel
+                  const yFloat = idx % 2 === 0 ? -25 : 25;
+                  const xFloat = idx % 3 === 0 ? 15 : -15;
+                  
                   return (
                     <motion.div
                       key={tech.name}
-                      className="absolute flex items-center justify-center rounded-2xl border border-white/10 bg-surface/80 p-3 shadow-2xl backdrop-blur-md"
+                      className="absolute flex items-center justify-center rounded-2xl border border-white/20 bg-black/40 p-3 shadow-[0_0_30px_-5px_rgba(255,255,255,0.15)] backdrop-blur-xl pointer-events-auto cursor-pointer transition-all duration-300 hover:scale-125 hover:border-primary/50 hover:bg-white/10 group"
                       style={tech.position}
                       initial={{ opacity: 0, scale: 0 }}
                       animate={{ 
                         opacity: 1, 
                         scale: 1,
-                        y: [0, -15, 0],
-                        x: [0, (idx % 2 === 0 ? 10 : -10), 0]
+                        y: [0, yFloat, 0],
+                        x: [0, xFloat, 0],
+                        rotate: [0, (idx % 2 === 0 ? 10 : -10), 0]
                       }}
                       transition={{
                         opacity: { delay: 0.8 + (idx * 0.1), duration: 0.5 },
                         scale: { delay: 0.8 + (idx * 0.1), type: "spring" },
-                        y: { duration: 4 + (idx % 3), repeat: Infinity, ease: "easeInOut", delay: tech.delay },
-                        x: { duration: 5 + (idx % 3), repeat: Infinity, ease: "easeInOut", delay: tech.delay }
+                        y: { duration: 5 + (idx % 3), repeat: Infinity, ease: "easeInOut", delay: tech.delay },
+                        x: { duration: 6 + (idx % 2), repeat: Infinity, ease: "easeInOut", delay: tech.delay },
+                        rotate: { duration: 7, repeat: Infinity, ease: "easeInOut", delay: tech.delay }
                       }}
                     >
-                      <Icon className="text-text-secondary" style={{ width: tech.size, height: tech.size }} />
+                      {/* Glow Behind Icon on Hover */}
+                      <div className="absolute inset-0 rounded-2xl bg-primary/20 opacity-0 blur-xl transition-opacity duration-300 group-hover:opacity-100" />
+                      <Icon className="relative z-10 text-text-secondary transition-colors duration-300 group-hover:text-foreground drop-shadow-sm group-hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.5)]" style={{ width: tech.size, height: tech.size }} />
                     </motion.div>
                   );
                 })}
@@ -228,7 +236,8 @@ export function HeroSection() {
               {/* Decorative Orbital Rings */}
               <div className="absolute inset-[-4rem] flex items-center justify-center pointer-events-none opacity-20">
                 <div className="absolute size-full rounded-full border border-dashed border-white/20 animate-[spin_60s_linear_infinite]" />
-                <div className="absolute size-[75%] rounded-full border border-white/10 animate-[spin_40s_linear_infinite_reverse]" />
+                <div className="absolute size-[85%] rounded-full border border-solid border-white/5 animate-[spin_80s_linear_infinite]" />
+                <div className="absolute size-[70%] rounded-full border border-dotted border-white/30 animate-[spin_40s_linear_infinite_reverse]" />
               </div>
             </div>
           </motion.div>
