@@ -41,16 +41,66 @@ export function ContactSection() {
           Currently looking for new opportunities. Whether you have a question or just want to say hi, I&apos;ll try my best to get back to you!
         </p>
 
-        <a
-          href={`mailto:${siteConfig.email}`}
-          className="group relative mt-8 inline-flex items-center gap-2 rounded-2xl bg-primary px-8 py-5 text-lg font-bold text-primary-foreground transition-all duration-300 hover:bg-primary-hover hover:shadow-[0_0_40px_rgba(59,130,246,0.5)] hover:-translate-y-1 overflow-hidden"
+        <form 
+          className="mt-12 flex w-full max-w-xl flex-col gap-5 text-left"
+          onSubmit={(e) => e.preventDefault()}
         >
-          <span className="relative z-10 flex items-center gap-2">
-            <Send className="size-5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-            Say Hello
-          </span>
-          <div className="absolute inset-0 z-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:animate-[shimmer_1.5s_infinite]" />
-        </a>
+          <div className="grid gap-5 sm:grid-cols-2">
+            <div className="flex flex-col gap-2">
+              <label htmlFor="name" className="text-xs font-semibold uppercase tracking-wider text-text-muted">Name</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                required
+                className="rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-foreground outline-none transition-all placeholder:text-text-muted/50 hover:border-white/20 focus:border-primary focus:bg-white/10 focus:ring-1 focus:ring-primary"
+                placeholder="John Doe"
+              />
+            </div>
+            <div className="flex flex-col gap-2">
+              <label htmlFor="email" className="text-xs font-semibold uppercase tracking-wider text-text-muted">Email</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                className="rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-foreground outline-none transition-all placeholder:text-text-muted/50 hover:border-white/20 focus:border-primary focus:bg-white/10 focus:ring-1 focus:ring-primary"
+                placeholder="john@example.com"
+              />
+            </div>
+          </div>
+          <div className="flex flex-col gap-2">
+            <label htmlFor="message" className="text-xs font-semibold uppercase tracking-wider text-text-muted">Message</label>
+            <textarea
+              id="message"
+              name="message"
+              required
+              rows={5}
+              className="resize-none rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-foreground outline-none transition-all placeholder:text-text-muted/50 hover:border-white/20 focus:border-primary focus:bg-white/10 focus:ring-1 focus:ring-primary"
+              placeholder="How can we collaborate?"
+            />
+          </div>
+          <button
+            type="submit"
+            className="group relative mt-2 inline-flex w-full items-center justify-center gap-2 overflow-hidden rounded-xl bg-primary px-8 py-4 text-sm font-bold text-primary-foreground transition-all duration-300 hover:-translate-y-0.5 hover:bg-primary-hover hover:shadow-[0_0_30px_rgba(59,130,246,0.3)] sm:w-auto"
+          >
+            <span className="relative z-10 flex items-center gap-2">
+              <Send className="size-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+              Send Message
+            </span>
+            <div className="absolute inset-0 z-0 translate-x-[-100%] bg-gradient-to-r from-transparent via-white/20 to-transparent group-hover:animate-[shimmer_1.5s_infinite]" />
+          </button>
+        </form>
+
+        <div className="mt-8 flex flex-col items-center gap-2 text-sm text-text-muted sm:flex-row">
+          <span>Or reach out directly via</span>
+          <a
+            href={`mailto:${siteConfig.email}`}
+            className="font-medium text-text-secondary underline-offset-4 transition-colors hover:text-primary hover:underline"
+          >
+            {siteConfig.email}
+          </a>
+        </div>
       </motion.div>
 
       {/* Social Links */}
