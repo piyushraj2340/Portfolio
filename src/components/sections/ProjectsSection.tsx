@@ -1,10 +1,12 @@
 import Link from "next/link";
 import { ExternalLink } from "lucide-react";
+import { FaGithub } from "react-icons/fa";
 import { projects } from "@/content/projects";
 import { Section } from "@/components/layout/Section";
 import { SectionHeading } from "@/components/shared/SectionHeading";
 import { ScrollReveal } from "@/components/shared/ScrollReveal";
 import { Card } from "@/components/shared/Card";
+import { getTechIcon } from "@/lib/icon-map";
 
 export function ProjectsSection() {
   return (
@@ -31,15 +33,19 @@ export function ProjectsSection() {
                 </p>
 
                 {/* Tech Badges */}
-                <div className="mt-6 flex flex-wrap gap-2">
-                  {project.technologies.map((tech, i) => (
-                    <span key={tech} className="text-xs font-mono text-text-muted">
-                      {tech}
-                      {i < project.technologies.length - 1 && (
-                        <span className="mx-2 text-text-muted/50">·</span>
-                      )}
-                    </span>
-                  ))}
+                <div className="mt-6 flex flex-wrap gap-x-4 gap-y-2">
+                  {project.technologies.map((tech) => {
+                    const Icon = getTechIcon(tech);
+                    return (
+                      <span
+                        key={tech}
+                        className="inline-flex items-center gap-1.5 text-xs font-mono text-text-muted"
+                      >
+                        <Icon className="size-3.5 opacity-70" />
+                        {tech}
+                      </span>
+                    );
+                  })}
                 </div>
 
                 {/* Links */}
@@ -50,8 +56,8 @@ export function ProjectsSection() {
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-1.5 text-sm font-medium text-text-secondary transition-colors hover:text-primary hover:underline hover:underline-offset-4"
                   >
+                    <FaGithub className="size-4" />
                     GitHub
-                    <ExternalLink className="size-3.5" />
                   </Link>
                   {project.liveUrl && (
                     <Link

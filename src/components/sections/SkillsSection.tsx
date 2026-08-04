@@ -1,6 +1,7 @@
 "use client";
 
 import { skills } from "@/content/skills";
+import { getTechIcon } from "@/lib/icon-map";
 import { Section } from "@/components/layout/Section";
 import { SectionHeading } from "@/components/shared/SectionHeading";
 import { ScrollReveal } from "@/components/shared/ScrollReveal";
@@ -25,17 +26,19 @@ export function SkillsSection() {
               <h3 className="text-lg font-bold tracking-tight text-foreground">
                 {category.category}
               </h3>
-              <div className="mt-6">
-                <p className="text-base leading-relaxed text-text-secondary">
-                  {category.items.map((skill, i) => (
-                    <span key={skill.name}>
+              <div className="mt-6 flex flex-wrap gap-x-4 gap-y-3">
+                {category.items.map((skill) => {
+                  const Icon = getTechIcon(skill.name);
+                  return (
+                    <div
+                      key={skill.name}
+                      className="inline-flex items-center gap-1.5 text-sm font-medium text-text-secondary"
+                    >
+                      <Icon className="size-3.5 opacity-70" />
                       {skill.name}
-                      {i < category.items.length - 1 && (
-                        <span className="mx-2 text-text-muted">·</span>
-                      )}
-                    </span>
-                  ))}
-                </p>
+                    </div>
+                  );
+                })}
               </div>
             </Card>
           </ScrollReveal>

@@ -1,7 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { Globe, Mail, Code2, ArrowUpRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { FiGlobe } from "react-icons/fi";
 import { siteConfig } from "@/config/site";
 import { socialLinks } from "@/content/social";
 import { Section } from "@/components/layout/Section";
@@ -9,9 +11,8 @@ import { SectionHeading } from "@/components/shared/SectionHeading";
 import { ScrollReveal } from "@/components/shared/ScrollReveal";
 
 const socialIconMap: Record<string, React.ElementType> = {
-  github: Code2,
-  linkedin: Globe,
-  email: Mail,
+  github: FaGithub,
+  linkedin: FaLinkedin,
 };
 
 export function ContactSection() {
@@ -48,7 +49,7 @@ export function ContactSection() {
             {socialLinks.map((link) => {
               const normalized = link.label.toLowerCase();
               if (normalized === "email") return null; // Already front and center
-              const Icon = socialIconMap[normalized] || Globe;
+              const Icon = socialIconMap[normalized] || FiGlobe;
               return (
                 <Link
                   key={link.href}

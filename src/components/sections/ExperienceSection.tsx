@@ -4,6 +4,8 @@ import { SectionHeading } from "@/components/shared/SectionHeading";
 import { ScrollReveal } from "@/components/shared/ScrollReveal";
 import { Card } from "@/components/shared/Card";
 
+import { getTechIcon } from "@/lib/icon-map";
+
 function formatDate(date: string): string {
   if (date === "Present") return "Present";
   const [year, month] = date.split("-");
@@ -63,15 +65,19 @@ export function ExperienceSection() {
                   </ul>
 
                   {/* Tech Badges */}
-                  <div className="mt-6 flex flex-wrap gap-2">
-                    {exp.technologies.map((tech) => (
-                      <span
-                        key={tech}
-                        className="text-xs font-mono text-text-muted"
-                      >
-                        {tech}
-                      </span>
-                    ))}
+                  <div className="mt-6 flex flex-wrap gap-x-4 gap-y-2">
+                    {exp.technologies.map((tech) => {
+                      const Icon = getTechIcon(tech);
+                      return (
+                        <span
+                          key={tech}
+                          className="inline-flex items-center gap-1.5 text-xs font-mono text-text-muted"
+                        >
+                          <Icon className="size-3.5 opacity-70" />
+                          {tech}
+                        </span>
+                      );
+                    })}
                   </div>
                 </Card>
               </div>

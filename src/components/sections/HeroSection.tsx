@@ -4,19 +4,18 @@ import Link from "next/link";
 import {
   ArrowRight,
   Download,
-  Code2,
-  Globe,
-  Mail,
 } from "lucide-react";
+import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
+import { FiGlobe } from "react-icons/fi";
 import { profile } from "@/content/profile";
 import { socialLinks } from "@/content/social";
 import { siteConfig } from "@/config/site";
 import { Container } from "@/components/layout/Container";
 
 const socialIconMap: Record<string, React.ElementType> = {
-  github: Code2,
-  linkedin: Globe,
-  email: Mail,
+  github: FaGithub,
+  linkedin: FaLinkedin,
+  email: FaEnvelope,
 };
 
 
@@ -97,7 +96,7 @@ export function HeroSection() {
             <div className="animate-fade-in-up delay-500 flex items-center gap-3 opacity-0">
               {socialLinks.map((link) => {
                 const normalized = link.label.toLowerCase();
-                const Icon = socialIconMap[normalized] || Globe;
+                const Icon = socialIconMap[normalized] || FiGlobe;
                 return (
                   <Link
                     key={link.href}
@@ -138,6 +137,10 @@ export function HeroSection() {
                   {profile.yearsOfExperience}+
                 </p>
                 <p className="text-xs text-text-muted">Years Exp.</p>
+              </div>
+              <div className="glass-card absolute -left-8 bottom-16 px-4 py-2.5 text-center">
+                <p className="text-2xl font-bold text-secondary">10+</p>
+                <p className="text-xs text-text-muted">Projects</p>
               </div>
             </div>
           </div>

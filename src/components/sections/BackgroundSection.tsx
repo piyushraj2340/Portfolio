@@ -48,7 +48,7 @@ export function BackgroundSection() {
                   {edu.description}
                 </p>
                 <div className="mt-6 flex flex-wrap gap-2">
-                  {edu.coursework.map((course) => (
+                  {edu.coursework?.map((course) => (
                     <span
                       key={course}
                       className="text-xs font-mono text-text-muted"
