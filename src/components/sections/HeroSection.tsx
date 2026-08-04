@@ -191,14 +191,17 @@ export function HeroSection() {
               {/* Profile Image in Glass Frame */}
               <div className="glass relative h-full w-full overflow-hidden rounded-[2rem] p-2 z-10 shadow-2xl" style={{ backgroundColor: "rgba(0,0,0,0.43)" }}>
                 <div className="relative h-full w-full overflow-hidden rounded-[1.6rem]">
-                  <Image
-                    src={profile.imgUrl}
-                    alt={`Portrait of ${profile.name}`}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, 400px"
-                    priority
-                  />
+                  <picture>
+                    <source media="(max-width: 640px)" srcSet="/images/piyush_raj_dark_bg%20(Phone).png" />
+                    <source media="(max-width: 768px)" srcSet="/images/piyush_raj_dark_bg%20(Small).png" />
+                    <source media="(max-width: 1024px)" srcSet="/images/piyush_raj_dark_bg%20(Medium).png" />
+                    <source media="(max-width: 1280px)" srcSet="/images/piyush_raj_dark_bg%20(Large).png" />
+                    <img
+                      src={profile.imgUrl}
+                      alt={`Portrait of ${profile.name}`}
+                      className="h-full w-full object-cover"
+                    />
+                  </picture>
                 </div>
               </div>
 
