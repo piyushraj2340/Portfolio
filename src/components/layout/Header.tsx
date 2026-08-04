@@ -23,7 +23,7 @@ export function Header() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "glass-nav" : "bg-transparent"
+        scrolled ? "bg-background border-b border-white/5 shadow-md shadow-black/20" : "bg-transparent"
       }`}
     >
       <Container className="flex h-16 items-center justify-between lg:h-18">
@@ -74,7 +74,7 @@ export function Header() {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="glass-nav border-t border-white/5 lg:hidden">
+        <div className="bg-background border-b border-white/5 lg:hidden">
           <Container className="flex flex-col gap-1 py-4">
             {navigationItems.map((item) => (
               <Link

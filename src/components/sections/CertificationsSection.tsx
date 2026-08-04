@@ -28,7 +28,11 @@ export function CertificationsSection() {
 
       <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {certifications.map((cert, index) => (
-          <ScrollReveal key={cert.name} delay={index * 100}>
+          <ScrollReveal 
+            key={cert.name} 
+            delay={index * 100}
+            className={index === certifications.length - 1 && certifications.length % 3 === 2 ? "lg:col-span-2" : ""}
+          >
               <Card hoverable className="flex h-full flex-col p-6 md:p-8">
                 <div>
                   <h3 className="text-lg font-bold tracking-tight text-foreground">

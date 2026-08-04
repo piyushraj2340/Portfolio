@@ -12,6 +12,16 @@ import {
   SiGithub,
   SiDocker,
   SiPostman,
+  SiNodedotjs,
+  SiExpress,
+  SiMongodb,
+  SiJsonwebtokens,
+  SiStripe,
+  SiCloudinary,
+  SiBootstrap,
+  SiSass,
+  SiAntdesign,
+  SiChartdotjs,
 } from "react-icons/si";
 import { FaDatabase, FaCode, FaCloud } from "react-icons/fa";
 import { IconType } from "react-icons";
@@ -49,6 +59,17 @@ const techIconMap: Record<string, IconType> = {
   "Docker": SiDocker,
   "CI/CD": SiGithub, // Github Actions proxy
   "Postman": SiPostman,
+  "Node.js": SiNodedotjs,
+  "Express.js": SiExpress,
+  "MongoDB": SiMongodb,
+  "Mongoose": SiMongodb,
+  "JWT Authentication": SiJsonwebtokens,
+  "Stripe": SiStripe,
+  "Cloudinary": SiCloudinary,
+  "Bootstrap": SiBootstrap,
+  "Sass": SiSass,
+  "Ant Design": SiAntdesign,
+  "Chart.js": SiChartdotjs,
 };
 
 export function getTechIcon(techName: string): IconType {

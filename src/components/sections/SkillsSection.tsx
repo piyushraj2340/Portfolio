@@ -21,7 +21,11 @@ export function SkillsSection() {
 
       <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {skills.map((category, categoryIndex) => (
-          <ScrollReveal key={category.category} delay={categoryIndex * 100}>
+          <ScrollReveal 
+            key={category.category} 
+            delay={categoryIndex * 100}
+            className={categoryIndex === skills.length - 1 && skills.length % 3 === 2 ? "lg:col-span-2" : ""}
+          >
             <Card hoverable className="h-full p-6 md:p-8">
               <h3 className="text-lg font-bold tracking-tight text-foreground">
                 {category.category}
