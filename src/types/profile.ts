@@ -1,6 +1,8 @@
 export type Profile = {
   name: string;
+  imgUrl: string;
   role: string;
+  roleDescription: string;
   summary: string;
   bio: string[];
   philosophy: string;

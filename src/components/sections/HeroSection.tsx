@@ -24,7 +24,7 @@ const techStack = [
   { name: ".NET Core", position: { top: "5%", left: "15%" }, size: 40, delay: 0 },
   { name: "Node.js", position: { top: "15%", right: "10%" }, size: 48, delay: 1.5 },
   { name: "React", position: { bottom: "25%", left: "5%" }, size: 56, delay: 3 },
-  { name: "SQL", position: { bottom: "10%", right: "15%" }, size: 40, delay: 0.5 },
+  { name: "SQL", position: { bottom: "15%", right: "15%" }, size: 40, delay: 0.5 },
   { name: "MongoDB", position: { top: "45%", left: "-5%" }, size: 32, delay: 2 },
   { name: "Docker", position: { top: "60%", right: "-5%" }, size: 48, delay: 1 },
   { name: "Git", position: { top: "-5%", left: "50%" }, size: 36, delay: 2.5 },
@@ -46,8 +46,8 @@ const containerVariants: Variants = {
 
 const itemVariants: Variants = {
   hidden: { opacity: 0, y: 20 },
-  visible: { 
-    opacity: 1, 
+  visible: {
+    opacity: 1,
     y: 0,
     transition: { type: "spring", stiffness: 100, damping: 20 }
   },
@@ -178,11 +178,11 @@ export function HeroSection() {
                 aria-hidden="true"
                 className="absolute -inset-6 rounded-[2.5rem] bg-gradient-to-br from-primary/30 via-secondary/20 to-accent/30 blur-2xl"
               />
-              
+
               {/* Profile Image in Glass Frame */}
-              <div className="glass relative overflow-hidden rounded-[2rem] p-2 z-10 shadow-2xl h-full w-full">
+              <div className="glass relative overflow-hidden rounded-[2rem] p-2 z-10 shadow-2xl h-full w-full" style={{ backgroundColor: "rgba(0,0,0,0.43)" }}>
                 <img
-                  src="/images/1731513824864.jpg"
+                  src={profile.imgUrl}
                   alt={`Portrait of ${profile.name}`}
                   className="size-full rounded-[1.6rem] object-cover"
                 />
@@ -193,7 +193,7 @@ export function HeroSection() {
                 <p className="font-mono text-xs text-text-muted">
                   Currently
                 </p>
-                <p className="text-sm font-medium text-foreground">Backend · Cloud · APIs</p>
+                <p className="text-sm font-medium text-foreground">{profile.roleDescription}</p>
               </div>
 
               {/* Floating Tech Icons Orbiting */}
@@ -203,15 +203,15 @@ export function HeroSection() {
                   // Alternating animation values for more organic feel
                   const yFloat = idx % 2 === 0 ? -25 : 25;
                   const xFloat = idx % 3 === 0 ? 15 : -15;
-                  
+
                   return (
                     <motion.div
                       key={tech.name}
                       className="absolute flex items-center justify-center rounded-2xl border border-white/20 bg-black/40 p-3 shadow-[0_0_30px_-5px_rgba(255,255,255,0.15)] backdrop-blur-xl pointer-events-auto cursor-pointer transition-all duration-300 hover:scale-125 hover:border-primary/50 hover:bg-white/10 group"
                       style={tech.position}
                       initial={{ opacity: 0, scale: 0 }}
-                      animate={{ 
-                        opacity: 1, 
+                      animate={{
+                        opacity: 1,
                         scale: 1,
                         y: [0, yFloat, 0],
                         x: [0, xFloat, 0],
@@ -232,7 +232,7 @@ export function HeroSection() {
                   );
                 })}
               </div>
-              
+
               {/* Decorative Orbital Rings */}
               <div className="absolute inset-[-4rem] flex items-center justify-center pointer-events-none opacity-20">
                 <div className="absolute size-full rounded-full border border-dashed border-white/20 animate-[spin_60s_linear_infinite]" />
@@ -245,7 +245,7 @@ export function HeroSection() {
 
         {/* Stats Grid */}
         {profile.stats && (
-          <motion.ul 
+          <motion.ul
             className="mt-16 grid grid-cols-2 gap-3 sm:mt-20 sm:grid-cols-4"
             initial="hidden"
             whileInView="visible"
@@ -270,7 +270,7 @@ export function HeroSection() {
         )}
 
         {/* Scroll To Explore */}
-        <motion.div 
+        <motion.div
           className="mt-14"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}

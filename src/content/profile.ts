@@ -2,7 +2,9 @@ import type { Profile } from "@/types/profile";
 
 export const profile: Profile = {
   name: "Piyush Raj",
+  imgUrl: "/images/piyush_raj_dark_bg.png",
   role: "Software Engineer",
+  roleDescription: "Full Stack Developer",
   summary:
     "Software Engineer with 2 years of experience specializing in C#, ASP.NET Core, React, and Azure. Proven track record of building robust, scalable web applications and optimizing backend infrastructure.",
   bio: [
