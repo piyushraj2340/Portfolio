@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { ArrowUp } from "lucide-react";
+import { motion } from "framer-motion";
 import { FaGithub, FaLinkedin, FaEnvelope, FaGlobe } from "react-icons/fa";
 import { siteConfig } from "@/config/site";
 import { navigationItems } from "@/content/navigation";
@@ -58,14 +59,16 @@ export function Footer() {
           </div>
 
           {/* Back to top */}
-          <button
+          <motion.button
+            whileHover={{ y: -5 }}
+            whileTap={{ scale: 0.95 }}
             type="button"
             onClick={scrollToTop}
             className="group flex items-center gap-2 text-sm font-medium text-text-secondary transition-colors hover:text-foreground"
           >
             Back to top
-            <ArrowUp className="size-4 transition-transform duration-200 group-hover:-translate-y-1" />
-          </button>
+            <ArrowUp className="size-4" />
+          </motion.button>
         </div>
       </Container>
     </footer>

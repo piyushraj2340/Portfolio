@@ -1,53 +1,54 @@
 "use client";
 
-import { useEffect, useRef, type ReactNode } from "react";
+import { type ReactNode } from "react";
+import { motion, Variants } from "framer-motion";
 
 type ScrollRevealProps = {
   children: ReactNode;
   className?: string;
-  variant?: "fade" | "scale";
+  variant?: "fade" | "scale" | "slideUp";
   delay?: number;
 };
 
 /**
- * Wraps children in a scroll-reveal animation using IntersectionObserver.
- * Respects prefers-reduced-motion via CSS (see globals.css).
+ * Wraps children in a scroll-reveal animation using framer-motion.
+ * Automatically respects prefers-reduced-motion via Framer Motion's internal checks
+ * when properly configured globally, but also uses safe spring animations.
  */
 export function ScrollReveal({
   children,
   className = "",
-  variant = "fade",
+  variant = "slideUp",
   delay = 0,
 }: ScrollRevealProps) {
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          el.classList.add("visible");
-          observer.unobserve(el);
-        }
+  const variants: Variants = {
+    hidden: {
+      opacity: 0,
+      y: variant === "slideUp" ? 30 : 0,
+      scale: variant === "scale" ? 0.95 : 1,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: {
+        type: "spring",
+        stiffness: 100,
+        damping: 20,
+        delay: delay / 1000, // delay is passed in ms, Framer uses seconds
       },
-      { threshold: 0.1, rootMargin: "0px 0px -40px 0px" }
-    );
-
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
-
-  const baseClass = variant === "scale" ? "reveal-scale" : "reveal";
+    },
+  };
 
   return (
-    <div
-      ref={ref}
-      className={`${baseClass} ${className}`}
-      style={delay > 0 ? { transitionDelay: `${delay}ms` } : undefined}
+    <motion.div
+      className={className}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: "-50px" }}
+      variants={variants}
     >
       {children}
-    </div>
+    </motion.div>
   );
 }

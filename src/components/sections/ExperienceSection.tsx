@@ -1,9 +1,12 @@
+"use client";
+
+import { useRef } from "react";
+import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import { experiences } from "@/content/experience";
 import { Section } from "@/components/layout/Section";
 import { SectionHeading } from "@/components/shared/SectionHeading";
 import { ScrollReveal } from "@/components/shared/ScrollReveal";
 import { Card } from "@/components/shared/Card";
-
 import { getTechIcon } from "@/lib/icon-map";
 
 function formatDate(date: string): string {
@@ -17,6 +20,19 @@ function formatDate(date: string): string {
 }
 
 export function ExperienceSection() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start center", "end center"],
+  });
+
+  const scaleY = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
+
   return (
     <Section id="experience">
       <ScrollReveal>
@@ -27,9 +43,17 @@ export function ExperienceSection() {
         />
       </ScrollReveal>
 
-      <div className="mt-12 relative border-l border-white/10 ml-3 md:ml-4 space-y-12 md:space-y-16 pb-8">
+      <div ref={containerRef} className="mt-12 relative ml-3 md:ml-4 space-y-12 md:space-y-16 pb-8">
+        {/* Animated Vertical Line */}
+        <div className="absolute left-0 top-2 bottom-0 w-px bg-white/10 origin-top">
+          <motion.div 
+            className="absolute top-0 w-full bg-primary origin-top"
+            style={{ scaleY, bottom: 0 }}
+          />
+        </div>
+
         {experiences.map((exp, index) => (
-          <ScrollReveal key={`${exp.company}-${exp.startDate}`} delay={index * 150}>
+          <ScrollReveal key={`${exp.company}-${exp.startDate}`} delay={index * 100} variant="slideUp">
             <div className="relative pl-8 md:pl-12">
               {/* Timeline Node */}
               <span className="absolute -left-[5px] top-1.5 flex h-2.5 w-2.5 items-center justify-center rounded-full bg-primary/20 ring-4 ring-background">
@@ -49,7 +73,7 @@ export function ExperienceSection() {
 
                 {/* Content (Right Column) */}
                 <div className="md:col-span-3">
-                  <Card className="p-6 md:p-8">
+                  <Card hoverable className="p-6 md:p-8">
                     <h3 className="text-xl font-bold tracking-tight text-foreground">
                       {exp.role}
                     </h3>
