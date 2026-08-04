@@ -22,8 +22,8 @@ export function SplashScreen() {
           key="splash"
           initial={{ opacity: 1 }}
           exit={{ opacity: 0, y: -20 }}
-          transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
           className="fixed inset-0 z-[1000] flex flex-col items-center justify-center bg-background"
+          aria-hidden="true"
         >
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}

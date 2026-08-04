@@ -45,7 +45,7 @@ export function ExperienceSection() {
         </ScrollReveal>
 
         <div ref={containerRef} className="relative mt-12 pb-8">
-          <ol className="relative flex flex-col space-y-6 pl-8 sm:pl-12">
+          <div role="list" className="relative flex flex-col space-y-6 pl-8 sm:pl-12">
             {/* Animated Vertical Line */}
             <div className="absolute left-[7px] sm:left-[11px] top-2 bottom-0 w-px bg-white/10 origin-top">
               <motion.div 
@@ -60,7 +60,7 @@ export function ExperienceSection() {
                 delay={index * 120}
                 variant="slideUp"
               >
-                <li className="group relative">
+                <div role="listitem" className="group relative">
                   {/* Timeline Node */}
                   <span className="absolute -left-[29px] sm:-left-[41px] top-7 flex h-2.5 w-2.5 items-center justify-center rounded-full bg-primary/20 ring-4 ring-background">
                     <span className="h-1 w-1 rounded-full bg-primary" />
@@ -143,17 +143,17 @@ export function ExperienceSection() {
                             key={tech}
                             className="inline-flex items-center gap-1.5 text-xs font-mono text-text-muted"
                           >
-                            <Icon className="size-3.5 opacity-70" />
+                            <Icon className="size-3.5 opacity-70" aria-hidden="true" />
                             {tech}
                           </span>
                         );
                       })}
                     </div>
                   </article>
-                </li>
+                </div>
               </ScrollReveal>
             ))}
-          </ol>
+          </div>
         </div>
     </Section>
   );

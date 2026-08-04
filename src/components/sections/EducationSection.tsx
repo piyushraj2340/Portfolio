@@ -44,7 +44,7 @@ export function EducationSection() {
         </ScrollReveal>
 
         <div ref={containerRef} className="relative mt-12 pb-8">
-          <ol className="relative flex flex-col space-y-6 pl-8 sm:pl-12">
+          <div role="list" className="relative flex flex-col space-y-6 pl-8 sm:pl-12">
             {/* Animated Vertical Line */}
             <div className="absolute left-[7px] sm:left-[11px] top-2 bottom-0 w-px bg-white/10 origin-top">
               <motion.div
@@ -59,7 +59,7 @@ export function EducationSection() {
                 delay={index * 120}
                 variant="slideUp"
               >
-                <li className="group relative">
+                <div role="listitem" className="group relative">
                   {/* Timeline Node */}
                   <span className="absolute -left-[29px] sm:-left-[41px] top-7 flex h-2.5 w-2.5 items-center justify-center rounded-full bg-primary/20 ring-4 ring-background">
                     <span className="h-1 w-1 rounded-full bg-primary" />
@@ -99,7 +99,7 @@ export function EducationSection() {
                       {item.coursework && item.coursework.length > 0 && (
                         <div className="mt-6">
                           <h4 className="flex items-center gap-1.5 font-mono text-xs tracking-widest text-text-muted uppercase">
-                            <BookOpen className="size-3.5" />
+                            <BookOpen className="size-3.5" aria-hidden="true" />
                             Relevant Coursework
                           </h4>
                           <div className="mt-3 flex flex-wrap gap-2">
@@ -116,10 +116,10 @@ export function EducationSection() {
                       )}
                     </div>
                   </article>
-                </li>
+                </div>
               </ScrollReveal>
             ))}
-          </ol>
+          </div>
         </div>
     </Section>
   );

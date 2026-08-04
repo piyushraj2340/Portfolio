@@ -82,7 +82,7 @@ export function SkillsSection() {
                         key={skill}
                         className="inline-flex items-center gap-1.5 rounded-lg border border-white/10 bg-white/5 px-2.5 py-1 text-xs text-text-secondary transition-colors duration-300 group-hover:text-foreground"
                       >
-                        <TechIcon className="size-3.5 opacity-70 transition-opacity duration-300 group-hover:opacity-100" />
+                        <TechIcon aria-hidden="true" className="size-3.5 opacity-70 transition-opacity duration-300 group-hover:opacity-100" />
                         {skill}
                       </li>
                     );

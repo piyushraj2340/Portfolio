@@ -58,6 +58,7 @@ export function CustomCursor() {
     <>
       {/* Primary small dot (instant) */}
       <motion.div
+        aria-hidden="true"
         className="pointer-events-none fixed left-0 top-0 z-[100] h-2 w-2 rounded-full bg-primary mix-blend-difference"
         animate={{
           x: mousePosition.x - 4, // Center the 8px dot
@@ -70,6 +71,7 @@ export function CustomCursor() {
 
       {/* Trailing larger circle (spring) */}
       <motion.div
+        aria-hidden="true"
         className="pointer-events-none fixed left-0 top-0 z-[99] flex h-8 w-8 items-center justify-center rounded-full border border-primary/50 mix-blend-difference"
         style={{
           x: cursorX,
