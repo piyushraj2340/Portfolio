@@ -84,7 +84,7 @@ export function HeroSection() {
         <div className="absolute inset-0 bg-background/50 backdrop-blur-[1px] grid-pattern mix-blend-overlay" />
       </div>
 
-      <Container className="relative z-10 mx-auto w-full max-w-6xl">
+      <Container className="relative z-10">
         <motion.div
           className="grid items-center gap-14 lg:grid-cols-[1.25fr_1fr] lg:gap-16"
           variants={containerVariants}
