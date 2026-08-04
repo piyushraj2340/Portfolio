@@ -5,5 +5,5 @@ export const siteConfig = {
   url: "https://example.dev",
   location: "Remote",
   email: "hello@example.dev",
-  resumeUrl: "/resume.pdf",
+  resumeUrl: "/resume/piyush_raj_resume.pdf",
 };

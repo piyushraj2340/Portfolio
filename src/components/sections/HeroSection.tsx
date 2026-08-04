@@ -84,6 +84,8 @@ export function HeroSection() {
               </Link>
               <Link
                 href={siteConfig.resumeUrl}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-6 py-3 text-sm font-semibold text-foreground transition-all duration-200 hover:border-white/20 hover:bg-white/10"
               >
                 <Download className="size-4" />
