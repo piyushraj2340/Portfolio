@@ -8,6 +8,7 @@ export const projects: Project[] = [
     technologies: ["ASP.NET Core", "React", "Clean Architecture", "Hangfire", "SQL Server", "Tailwind CSS"],
     repositoryUrl: "https://github.com/",
     liveUrl: "https://taskflow.example.com",
+    imageUrl: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=2070&auto=format&fit=crop",
     problem: "Teams struggled with inefficient task management and a lack of real-time visibility into workflow progress.",
     impact: "• Improved project completion rates by 30% for early adopters.\n• Reduced manual task management overhead by 50% through automated background jobs.\n• Enhanced cross-functional collaboration via real-time status synchronization.",
     featured: true,
@@ -35,6 +36,7 @@ export const projects: Project[] = [
     ],
     repositoryUrl: "https://github.com/piyushraj2340/Plant-Selling-Website",
     liveUrl: "https://plantseller.vercel.app/",
+    imageUrl: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2426&auto=format&fit=crop",
     featured: true,
   },
   {
@@ -55,6 +57,7 @@ export const projects: Project[] = [
       "DOM Manipulation"
     ],
     repositoryUrl: "https://github.com/piyushraj2340/Whatsapp-Privacy-Extension",
+    imageUrl: "https://images.unsplash.com/photo-1614064641913-6b71a25d2cc7?q=80&w=2574&auto=format&fit=crop",
     featured: false,
   }, 
   {
@@ -76,6 +79,7 @@ export const projects: Project[] = [
       "IIS"
     ],
     repositoryUrl: "https://github.com/piyushraj2340/File-Sharing-App-Backend",
+    imageUrl: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=2668&auto=format&fit=crop",
     featured: false,
   }
 ];

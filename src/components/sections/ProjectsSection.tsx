@@ -13,72 +13,95 @@ export function ProjectsSection() {
     <Section id="projects">
       <ScrollReveal>
         <SectionHeading
-          eyebrow="Projects"
-          title="Featured work"
-          description="Real projects with real constraints and measurable outcomes."
+          eyebrow="Work"
+          title="Featured projects"
+          description="A selection of my best work, from concept to deployment."
         />
       </ScrollReveal>
 
-      <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+      <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-2">
         {projects.map((project, index) => (
-          <ScrollReveal key={project.slug} delay={index * 100}>
-            <Card hoverable className="group flex h-full flex-col p-6 md:p-8">
-              {/* Content */}
-              <div className="flex flex-1 flex-col">
-                <h3 className="text-xl font-bold tracking-tight text-foreground">
+          <ScrollReveal
+            key={project.title}
+            delay={index * 100}
+            variant="slideUp"
+          >
+            <Card hoverable className="group flex h-full flex-col overflow-hidden transition-all duration-500 hover:-translate-y-1 p-0">
+              {/* Project Image Header */}
+              {project.imageUrl && (
+                <div className="relative h-48 w-full overflow-hidden border-b border-white/5 sm:h-60">
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent z-10 mix-blend-multiply" />
+                  <img
+                    src={project.imageUrl}
+                    alt={project.title}
+                    loading="lazy"
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute left-4 top-4 z-20 flex items-center justify-between w-[calc(100%-2rem)]">
+                    <span className="flex size-10 items-center justify-center rounded-xl bg-background/50 backdrop-blur-md border border-white/10 shadow-lg">
+                      <FolderGit2 className="size-4 text-primary transition-transform duration-300 group-hover:scale-110" />
+                    </span>
+                    {/* Links in image header */}
+                    <div className="flex items-center gap-2">
+                      {project.repositoryUrl && (
+                        <Link
+                          href={project.repositoryUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex size-10 items-center justify-center rounded-xl bg-background/50 backdrop-blur-md border border-white/10 text-white transition-all hover:bg-primary hover:border-primary hover:scale-105"
+                          aria-label={`GitHub repository for ${project.title}`}
+                        >
+                          <FaGithub className="size-4" aria-hidden="true" />
+                        </Link>
+                      )}
+                      {project.liveUrl && (
+                        <Link
+                          href={project.liveUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex size-10 items-center justify-center rounded-xl bg-background/50 backdrop-blur-md border border-white/10 text-white transition-all hover:bg-primary hover:border-primary hover:scale-105"
+                          aria-label={`Live demo for ${project.title}`}
+                        >
+                          <ExternalLink className="size-4" aria-hidden="true" />
+                        </Link>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* Project Content */}
+              <div className="flex flex-1 flex-col p-6 sm:p-8">
+                <h3 className="text-2xl font-bold tracking-tight text-foreground transition-colors group-hover:text-primary">
                   {project.title}
                 </h3>
-                <p className="mt-4 text-base leading-relaxed text-text-secondary">
+                <p className="mt-3 text-base leading-relaxed text-text-secondary">
                   {project.description}
                 </p>
-                
+
                 {project.impact && (
-                  <div className="mt-4 flex-1">
-                    <h4 className="text-sm font-semibold uppercase tracking-wider text-text-muted mb-2">Key Impact</h4>
-                    <p className="text-sm leading-relaxed text-text-secondary whitespace-pre-line border-l-2 border-primary/20 pl-3">
+                  <div className="mt-5 flex-1">
+                    <h4 className="text-xs font-semibold uppercase tracking-wider text-text-muted mb-3">Key Highlights</h4>
+                    <p className="text-sm leading-relaxed text-text-secondary whitespace-pre-line border-l-2 border-primary/30 pl-4">
                       {project.impact}
                     </p>
                   </div>
                 )}
 
-                {/* Tech Badges */}
-                <div className="mt-6 flex flex-wrap gap-x-4 gap-y-2">
+                {/* Tech Stack */}
+                <div className="mt-8 flex flex-wrap gap-2 pt-6 border-t border-white/5 mt-auto">
                   {project.technologies.map((tech) => {
                     const Icon = getTechIcon(tech);
                     return (
                       <span
                         key={tech}
-                        className="inline-flex items-center gap-1.5 text-xs font-mono text-text-muted"
+                        className="inline-flex items-center gap-1.5 rounded-lg border border-white/5 bg-white/5 px-3 py-1.5 font-mono text-xs text-text-muted transition-colors group-hover:bg-white/10 group-hover:text-foreground"
                       >
-                        <Icon className="size-3.5 opacity-70" />
+                        <Icon className="size-3.5 opacity-70 group-hover:opacity-100 transition-opacity" />
                         {tech}
                       </span>
                     );
                   })}
-                </div>
-
-                {/* Links */}
-                <div className="mt-8 flex items-center gap-6">
-                  <Link
-                    href={project.repositoryUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-sm font-medium text-text-secondary transition-colors hover:text-primary hover:underline hover:underline-offset-4"
-                  >
-                    <FaGithub className="size-4" />
-                    GitHub
-                  </Link>
-                  {project.liveUrl && (
-                    <Link
-                      href={project.liveUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 text-sm font-medium text-primary transition-colors hover:text-primary-hover hover:underline hover:underline-offset-4"
-                    >
-                      Live Demo
-                      <ExternalLink className="size-3.5" />
-                    </Link>
-                  )}
                 </div>
               </div>
             </Card>
