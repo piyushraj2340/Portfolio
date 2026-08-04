@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ExternalLink, Code2 } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 import { projects } from "@/content/projects";
 import { Section } from "@/components/layout/Section";
 import { SectionHeading } from "@/components/shared/SectionHeading";
@@ -32,36 +32,36 @@ export function ProjectsSection() {
 
                 {/* Tech Badges */}
                 <div className="mt-6 flex flex-wrap gap-2">
-                  {project.technologies.map((tech) => (
-                    <span
-                      key={tech}
-                      className="rounded-lg bg-white/5 px-2.5 py-1 text-xs font-medium text-text-secondary"
-                    >
+                  {project.technologies.map((tech, i) => (
+                    <span key={tech} className="text-xs font-mono text-text-muted">
                       {tech}
+                      {i < project.technologies.length - 1 && (
+                        <span className="mx-2 text-text-muted/50">·</span>
+                      )}
                     </span>
                   ))}
                 </div>
 
-                {/* Buttons */}
-                <div className="mt-8 flex items-center gap-4">
+                {/* Links */}
+                <div className="mt-8 flex items-center gap-6">
                   <Link
                     href={project.repositoryUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-sm font-semibold text-foreground transition-all duration-200 hover:border-white/20 hover:bg-white/10"
+                    className="inline-flex items-center gap-1.5 text-sm font-medium text-text-secondary transition-colors hover:text-primary hover:underline hover:underline-offset-4"
                   >
-                    <Code2 className="size-4" />
                     GitHub
+                    <ExternalLink className="size-3.5" />
                   </Link>
                   {project.liveUrl && (
                     <Link
                       href={project.liveUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 rounded-xl bg-primary px-4 py-2.5 text-sm font-semibold text-primary-foreground transition-all duration-200 hover:bg-primary-hover"
+                      className="inline-flex items-center gap-1.5 text-sm font-medium text-primary transition-colors hover:text-primary-hover hover:underline hover:underline-offset-4"
                     >
-                      <ExternalLink className="size-4" />
                       Live Demo
+                      <ExternalLink className="size-3.5" />
                     </Link>
                   )}
                 </div>

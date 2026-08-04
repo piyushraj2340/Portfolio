@@ -122,11 +122,13 @@ export function HeroSection() {
           {/* Right Column — Profile Visual (Simplified) */}
           <div className="animate-fade-in-up delay-300 hidden items-center justify-center opacity-0 lg:flex">
             <div className="relative">
-              {/* Profile Image Placeholder */}
+              {/* Profile Image */}
               <div className="relative size-80 overflow-hidden rounded-full border border-white/10 bg-white/5 backdrop-blur-sm">
-                <div className="flex h-full items-center justify-center">
-                  <Code2 className="size-16 text-primary/40" />
-                </div>
+                <img
+                  src="/images/1731513824864.jpg"
+                  alt="Profile"
+                  className="size-full object-cover"
+                />
               </div>
               {/* Floating Stats */}
               <div className="glass-card absolute -right-4 top-8 px-4 py-2.5 text-center">
