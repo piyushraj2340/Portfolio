@@ -75,5 +75,36 @@ export const projects: Project[] = [
       "https://github.com/piyushraj2340/Whatsapp-Privacy-Extension",
 
     featured: false,
+  }, {
+    slug: "file-sharing-app-backend",
+
+    title: "File Sharing App Backend",
+
+    description:
+      "A RESTful backend service for a file-sharing platform built with Node.js, Express.js, and MongoDB. The application provides secure file upload capabilities, manages file metadata and download information, and is pre-configured for deployment across multiple hosting environments including Vercel Serverless Functions and Windows IIS.",
+
+    problem:
+      "Many file-sharing applications require a reliable backend to handle file uploads, metadata management, download tracking, and scalable deployment across different environments. This project addresses these challenges by providing a lightweight, extensible API that simplifies file handling while supporting both cloud-native and traditional Windows server deployments.",
+
+    impact:
+      "Developed a cross-platform backend capable of handling multipart file uploads, managing file metadata in MongoDB, and supporting production deployments on both Vercel and IIS without application changes. The architecture enables rapid deployment, simplified maintenance, and provides a solid foundation for scalable file-sharing applications.",
+
+    technologies: [
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+      "Mongoose",
+      "Express FileUpload",
+      "REST API",
+      "JavaScript",
+      "Nodemon",
+      "Vercel",
+      "IIS",
+      "iisnode"
+    ],
+
+    repositoryUrl: "https://github.com/piyushraj2340/File-Sharing-App-Backend",
+
+    featured: false,
   }
 ];

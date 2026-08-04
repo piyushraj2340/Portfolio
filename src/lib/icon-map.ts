@@ -1,75 +1,93 @@
 import {
-  SiJavascript,
-  SiTypescript,
-  SiHtml5,
-  SiDotnet,
-  SiReact,
-  SiNextdotjs,
-  SiTailwindcss,
-  SiRedux,
-  SiRedis,
-  SiGit,
-  SiGithub,
-  SiDocker,
-  SiPostman,
-  SiNodedotjs,
-  SiExpress,
-  SiMongodb,
-  SiJsonwebtokens,
-  SiStripe,
-  SiCloudinary,
-  SiBootstrap,
-  SiSass,
-  SiAntdesign,
-  SiChartdotjs,
-} from "react-icons/si";
-import { FaDatabase, FaCode, FaCloud } from "react-icons/fa";
+  FaJs,
+  FaHtml5,
+  FaReact,
+  FaNodeJs,
+  FaGithub,
+  FaDocker,
+  FaStripe,
+  FaSass,
+  FaBootstrap,
+} from "react-icons/fa6";
+import {
+  FaDatabase,
+  FaCode,
+  FaCloud,
+  FaKey,
+  FaChartBar,
+} from "react-icons/fa";
+import {
+  TbBrandTypescript,
+  TbBrandTailwind,
+  TbBrandNextjs,
+  TbBrandCSharp,
+  TbBrandRedux,
+  TbApi,
+} from "react-icons/tb";
+import { DiRedis, DiMongodb } from "react-icons/di";
 import { IconType } from "react-icons";
 
 const techIconMap: Record<string, IconType> = {
-  "C#": SiDotnet,
-  "JavaScript/TypeScript": SiJavascript,
-  "JavaScript": SiJavascript,
-  "TypeScript": SiTypescript,
-  "HTML/CSS": SiHtml5,
-  "HTML5/CSS3": SiHtml5,
+  // Languages
+  "C#": TbBrandCSharp,
+  "JavaScript/TypeScript": FaJs,
+  "JavaScript": FaJs,
+  "TypeScript": TbBrandTypescript,
+  "HTML/CSS": FaHtml5,
+  "HTML5/CSS3": FaHtml5,
+  "HTML5": FaHtml5,
+  "CSS3": FaHtml5,
+  
+  // Database & Cloud
   "SQL": FaDatabase,
   "MS SQL Server": FaDatabase,
   "SQL Server": FaDatabase,
   "Azure SQL": FaDatabase,
-  "ASP.NET Core": SiDotnet,
-  "ASP.NET Core (MVC/Web API)": SiDotnet,
-  ".NET MVC": SiDotnet,
-  "Entity Framework Core": SiDotnet, // using dotnet icon as a proxy for EF
-  "REST APIs": FaCode,
-  "Hangfire": FaCode,
-  "React.js": SiReact,
-  "React": SiReact,
-  "Next.js": SiNextdotjs,
-  "Tailwind CSS": SiTailwindcss,
-  "Redux": SiRedux,
   "Azure Services": FaCloud,
   "Azure": FaCloud,
-  "Redis": SiRedis,
-  "Clean Architecture": FaCode, // Abstract concepts get generic code icon
+  "Redis": DiRedis,
+  "MongoDB": DiMongodb,
+  "Mongoose": DiMongodb,
+  "Cloudinary": FaCloud,
+  
+  // Backend
+  "ASP.NET Core": TbBrandCSharp,
+  "ASP.NET Core (MVC/Web API)": TbBrandCSharp,
+  ".NET MVC": TbBrandCSharp,
+  "Entity Framework Core": TbBrandCSharp,
+  "REST APIs": TbApi,
+  "Hangfire": FaCode,
+  "Node.js": FaNodeJs,
+  "Express.js": FaNodeJs,
+  "JWT Authentication": FaKey,
+  
+  // Frontend
+  "React.js": FaReact,
+  "React": FaReact,
+  "Next.js": TbBrandNextjs,
+  "Tailwind CSS": TbBrandTailwind,
+  "Redux": TbBrandRedux,
+  "Bootstrap": FaBootstrap,
+  "Sass": FaSass,
+  "Ant Design": FaCode,
+  "Chart.js": FaChartBar,
+  
+  // DevOps & Tools
+  "Git & GitHub": FaGithub,
+  "Docker": FaDocker,
+  "CI/CD": FaGithub,
+  "Postman": TbApi,
+  "Stripe": FaStripe,
+  "Chrome Extension API": TbApi,
+  "Manifest V3": TbApi,
+  "DOM Manipulation": FaCode,
+  "Local Storage": FaDatabase,
+  
+  // Architecture
+  "Clean Architecture": FaCode,
   "Microservices": FaCode,
   "SOLID Principles": FaCode,
   "Design Patterns": FaCode,
-  "Git & GitHub": SiGit,
-  "Docker": SiDocker,
-  "CI/CD": SiGithub, // Github Actions proxy
-  "Postman": SiPostman,
-  "Node.js": SiNodedotjs,
-  "Express.js": SiExpress,
-  "MongoDB": SiMongodb,
-  "Mongoose": SiMongodb,
-  "JWT Authentication": SiJsonwebtokens,
-  "Stripe": SiStripe,
-  "Cloudinary": SiCloudinary,
-  "Bootstrap": SiBootstrap,
-  "Sass": SiSass,
-  "Ant Design": SiAntdesign,
-  "Chart.js": SiChartdotjs,
 };
 
 export function getTechIcon(techName: string): IconType {

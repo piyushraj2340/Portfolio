@@ -1,16 +1,17 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowUp, Code2, Globe, Mail } from "lucide-react";
+import { ArrowUp } from "lucide-react";
+import { FaGithub, FaLinkedin, FaEnvelope, FaGlobe } from "react-icons/fa";
 import { siteConfig } from "@/config/site";
 import { navigationItems } from "@/content/navigation";
 import { socialLinks } from "@/content/social";
 import { Container } from "./Container";
 
 const socialIconMap: Record<string, React.ElementType> = {
-  github: Code2,
-  linkedin: Globe,
-  email: Mail,
+  github: FaGithub,
+  linkedin: FaLinkedin,
+  email: FaEnvelope,
 };
 
 export function Footer() {
@@ -40,7 +41,7 @@ export function Footer() {
           <div className="flex items-center gap-4">
             {socialLinks.map((link) => {
               const normalized = link.label.toLowerCase();
-              const Icon = socialIconMap[normalized] || Globe;
+              const Icon = socialIconMap[normalized] || FaGlobe;
               return (
                 <Link
                   key={link.href}
