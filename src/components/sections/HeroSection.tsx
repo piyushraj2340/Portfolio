@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, ArrowDown, Download, Send } from "lucide-react";
+import { ArrowRight, ArrowDown, Download, Send, MapPin } from "lucide-react";
 import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
 import { FiGlobe } from "react-icons/fi";
 import { motion, Variants } from "framer-motion";
@@ -93,15 +93,23 @@ export function HeroSection() {
         >
           {/* Left Column — Content */}
           <div className="flex flex-col gap-7">
-            {profile.availability && (
-              <motion.p variants={itemVariants} className="glass inline-flex w-fit items-center gap-2 rounded-full px-3 py-1.5 text-xs text-text-muted">
-                <span className="relative flex size-2">
-                  <span className="absolute inline-flex size-full animate-[ping_2s_cubic-bezier(0,0,0.2,1)_infinite] rounded-full bg-accent opacity-75" />
-                  <span className="relative inline-flex size-2 rounded-full bg-accent" />
-                </span>
-                {profile.availability}
-              </motion.p>
-            )}
+            <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-3">
+              {profile.availability && (
+                <p className="glass inline-flex w-fit items-center gap-2 rounded-full px-3 py-1.5 text-xs text-text-muted">
+                  <span className="relative flex size-2">
+                    <span className="absolute inline-flex size-full animate-[ping_2s_cubic-bezier(0,0,0.2,1)_infinite] rounded-full bg-accent opacity-75" />
+                    <span className="relative inline-flex size-2 rounded-full bg-accent" />
+                  </span>
+                  {profile.availability}
+                </p>
+              )}
+              {profile.location && (
+                <p className="glass inline-flex w-fit items-center gap-2 rounded-full px-3 py-1.5 text-xs text-text-muted">
+                  <MapPin className="size-3.5 text-primary" />
+                  Based in {profile.location}
+                </p>
+              )}
+            </motion.div>
 
             <motion.div variants={itemVariants} className="flex flex-col gap-4">
               <p className="font-mono text-sm tracking-widest text-text-muted uppercase">
@@ -117,7 +125,7 @@ export function HeroSection() {
                 <TypingRoles roles={typingRoles} />
               </p>
               <p className="font-mono text-sm text-text-muted">
-                {profile.yearsOfExperience}+ Years Experience &middot; {profile.location}
+                {profile.yearsOfExperience}+ Years Experience
               </p>
             </motion.div>
 

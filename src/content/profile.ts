@@ -8,11 +8,11 @@ export const profile: Profile = {
   summary:
     "Software Engineer with 2 years of experience specializing in C#, ASP.NET Core, React, and Azure. Proven track record of building robust, scalable web applications and optimizing backend infrastructure.",
   bio: [
-    "I am a passionate software engineer with a strong foundation in modern web development. My experience ranges from crafting intuitive user interfaces with React to architecting high-performance enterprise backends with .NET Core and SQL Server.",
-    "I believe in writing clean, maintainable code following principles like Clean Architecture and SOLID. I focus on delivering real business value through scalable solutions and continuous learning, always striving to bridge the gap between complex technical problems and elegant user experiences."
+    "What hooked me on software engineering wasn't the code itself—it was the thrill of building something out of nothing. Every project is a new puzzle where I balance functionality, performance, and simplicity.",
+    "Early on, while building a complex task management platform, I learned the hard way that rushing features leads to brittle systems. Refactoring it taught me to prioritize data models and architecture upfront."
   ],
   philosophy:
-    "I believe in writing clean, maintainable code following principles like Clean Architecture and SOLID. I focus on delivering real business value through scalable solutions and continuous learning, always striving to bridge the gap between complex technical problems and elegant user experiences.",
+    "I take a highly pragmatic approach to engineering. I advocate for well-structured monoliths over microservices for small teams—introducing complexity only when there's a tangible business need to scale. Ultimately, I solve problems first, and write code second.",
   highlights: [
     "Proficient in full-stack development with .NET Core and React",
     "Strong understanding of Clean Architecture and design patterns",
