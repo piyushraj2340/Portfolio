@@ -2,7 +2,7 @@ export type Profile = {
   name: string;
   role: string;
   summary: string;
-  bio: string;
+  bio: string[];
   philosophy: string;
   highlights: string[];
   availability: string | null;
@@ -10,4 +10,6 @@ export type Profile = {
   location?: string;
   greeting?: string;
   stats?: Array<{ label: string; value: string }>;
+  careerSummary?: string;
+  values?: Array<{ title: string; description: string }>;
 };

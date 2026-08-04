@@ -5,7 +5,10 @@ export const profile: Profile = {
   role: "Software Engineer",
   summary:
     "Software Engineer with 2 years of experience specializing in C#, ASP.NET Core, React, and Azure. Proven track record of building robust, scalable web applications and optimizing backend infrastructure.",
-  bio: "I am a passionate software engineer with a strong foundation in modern web development. My experience ranges from crafting intuitive user interfaces with React to architecting high-performance enterprise backends with .NET Core and SQL Server.",
+  bio: [
+    "I am a passionate software engineer with a strong foundation in modern web development. My experience ranges from crafting intuitive user interfaces with React to architecting high-performance enterprise backends with .NET Core and SQL Server.",
+    "I believe in writing clean, maintainable code following principles like Clean Architecture and SOLID. I focus on delivering real business value through scalable solutions and continuous learning, always striving to bridge the gap between complex technical problems and elegant user experiences."
+  ],
   philosophy:
     "I believe in writing clean, maintainable code following principles like Clean Architecture and SOLID. I focus on delivering real business value through scalable solutions and continuous learning, always striving to bridge the gap between complex technical problems and elegant user experiences.",
   highlights: [
@@ -17,11 +20,17 @@ export const profile: Profile = {
   availability: "Available for Opportunities",
   yearsOfExperience: 2,
   location: "India",
-  greeting: "Hello, world",
+  greeting: "Hi, I'm",
   stats: [
     { label: "Years Experience", value: "2+" },
     { label: "Projects Completed", value: "10+" },
     { label: "Algorithms Solved", value: "700+" },
     { label: "Technologies", value: "15+" },
   ],
+  careerSummary: "Two years across product and platform teams, building scalable APIs and intuitive web interfaces. Comfortable being the person who takes an ambiguous ticket, shapes it, and lands it in production with tests and best practices applied.",
+  values: [
+    { title: "Quality", description: "Writing maintainable, scalable, and well-tested code." },
+    { title: "Velocity", description: "Shipping fast without compromising on architecture." },
+    { title: "User-Centric", description: "Building with the end-user in mind." }
+  ]
 };
