@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, ArrowDown, Download, Send, MapPin } from "lucide-react";
 import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
 import { FiGlobe } from "react-icons/fi";
@@ -188,12 +189,17 @@ export function HeroSection() {
               />
 
               {/* Profile Image in Glass Frame */}
-              <div className="glass relative overflow-hidden rounded-[2rem] p-2 z-10 shadow-2xl h-full w-full" style={{ backgroundColor: "rgba(0,0,0,0.43)" }}>
-                <img
-                  src={profile.imgUrl}
-                  alt={`Portrait of ${profile.name}`}
-                  className="size-full rounded-[1.6rem] object-cover"
-                />
+              <div className="glass relative h-full w-full overflow-hidden rounded-[2rem] p-2 z-10 shadow-2xl" style={{ backgroundColor: "rgba(0,0,0,0.43)" }}>
+                <div className="relative h-full w-full overflow-hidden rounded-[1.6rem]">
+                  <Image
+                    src={profile.imgUrl}
+                    alt={`Portrait of ${profile.name}`}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 400px"
+                    priority
+                  />
+                </div>
               </div>
 
               {/* Floating Badge */}
@@ -235,7 +241,7 @@ export function HeroSection() {
                     >
                       {/* Glow Behind Icon on Hover */}
                       <div className="absolute inset-0 rounded-2xl bg-primary/20 opacity-0 blur-xl transition-opacity duration-300 group-hover:opacity-100" />
-                      <Icon className="relative z-10 text-text-secondary transition-colors duration-300 group-hover:text-foreground drop-shadow-sm group-hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.5)]" style={{ width: tech.size, height: tech.size }} />
+                      <Icon aria-hidden="true" className="relative z-10 text-text-secondary transition-colors duration-300 group-hover:text-foreground drop-shadow-sm group-hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.5)]" style={{ width: tech.size, height: tech.size }} />
                     </motion.div>
                   );
                 })}

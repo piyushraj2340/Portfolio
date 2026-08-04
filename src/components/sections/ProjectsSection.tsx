@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { ExternalLink, FolderGit2, ChevronDown, ChevronUp } from "lucide-react";
 import { FaGithub } from "react-icons/fa";
 import { projects } from "@/content/projects";
@@ -37,11 +38,12 @@ export function ProjectsSection() {
               {project.imageUrl && (
                 <div className="relative h-48 w-full overflow-hidden border-b border-white/5">
                   <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent z-10 mix-blend-multiply opacity-80 transition-opacity duration-500 group-hover:opacity-40" />
-                  <img
+                  <Image
                     src={project.imageUrl}
                     alt={project.title}
-                    loading="lazy"
-                    className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
                   />
                   <div className="absolute left-4 top-4 z-20 flex items-center justify-between w-[calc(100%-2rem)]">
                     <span className="flex size-10 items-center justify-center rounded-xl bg-background/50 backdrop-blur-md border border-white/10 shadow-lg transition-transform duration-500 group-hover:scale-110">
