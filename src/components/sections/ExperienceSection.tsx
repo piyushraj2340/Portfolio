@@ -36,7 +36,6 @@ export function ExperienceSection() {
 
   return (
     <Section id="experience" aria-labelledby="experience-heading" className="bg-background">
-      <Container>
         <ScrollReveal>
           <SectionHeading
             eyebrow="Experience"
@@ -156,7 +155,6 @@ export function ExperienceSection() {
             ))}
           </ol>
         </div>
-      </Container>
     </Section>
   );
 }

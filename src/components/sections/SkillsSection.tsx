@@ -28,7 +28,6 @@ const categoryIcons: Record<string, LucideIcon> = {
 export function SkillsSection() {
   return (
     <Section id="skills" aria-labelledby="skills-heading">
-      <Container>
         <ScrollReveal>
           <SectionHeading
             eyebrow="Skills"
@@ -93,7 +92,6 @@ export function SkillsSection() {
             );
           })}
         </div>
-      </Container>
     </Section>
   );
 }

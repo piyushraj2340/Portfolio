@@ -35,7 +35,6 @@ export function EducationSection() {
 
   return (
     <Section id="education" aria-labelledby="education-heading" className="bg-background">
-      <Container>
         <ScrollReveal>
           <SectionHeading
             eyebrow="Education"
@@ -122,7 +121,6 @@ export function EducationSection() {
             ))}
           </ol>
         </div>
-      </Container>
     </Section>
   );
 }
