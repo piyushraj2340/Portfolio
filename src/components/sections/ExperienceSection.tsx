@@ -1,12 +1,13 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useScroll, useSpring, useTransform } from "framer-motion";
+import { motion, useScroll, useSpring } from "framer-motion";
+import { Briefcase, MapPin, Trophy } from "lucide-react";
 import { experiences } from "@/content/experience";
 import { Section } from "@/components/layout/Section";
 import { SectionHeading } from "@/components/shared/SectionHeading";
 import { ScrollReveal } from "@/components/shared/ScrollReveal";
-import { Card } from "@/components/shared/Card";
+import { Container } from "@/components/layout/Container";
 import { getTechIcon } from "@/lib/icon-map";
 
 function formatDate(date: string): string {
@@ -34,69 +35,109 @@ export function ExperienceSection() {
   });
 
   return (
-    <Section id="experience">
-      <ScrollReveal>
-        <SectionHeading
-          eyebrow="Experience"
-          title="Professional journey"
-          description="A timeline of roles, responsibilities, and business outcomes across product-focused teams."
-        />
-      </ScrollReveal>
-
-      <div ref={containerRef} className="mt-12 relative ml-3 md:ml-4 space-y-12 md:space-y-16 pb-8">
-        {/* Animated Vertical Line */}
-        <div className="absolute left-0 top-2 bottom-0 w-px bg-white/10 origin-top">
-          <motion.div 
-            className="absolute top-0 w-full bg-primary origin-top"
-            style={{ scaleY, bottom: 0 }}
+    <Section id="experience" aria-labelledby="experience-heading" className="bg-background py-24 sm:py-32">
+      <Container>
+        <ScrollReveal>
+          <SectionHeading
+            eyebrow="Experience"
+            title="Two years of shipping, owning, and on-call."
+            description="Roles where I moved from writing features to owning services end to end."
           />
-        </div>
+        </ScrollReveal>
 
-        {experiences.map((exp, index) => (
-          <ScrollReveal key={`${exp.company}-${exp.startDate}`} delay={index * 100} variant="slideUp">
-            <div className="relative pl-8 md:pl-12">
-              {/* Timeline Node */}
-              <span className="absolute -left-[5px] top-1.5 flex h-2.5 w-2.5 items-center justify-center rounded-full bg-primary/20 ring-4 ring-background">
-                <span className="h-1 w-1 rounded-full bg-primary" />
-              </span>
+        <div ref={containerRef} className="relative mt-12 pb-8">
+          <ol className="relative flex flex-col space-y-6 pl-8 sm:pl-12">
+            {/* Animated Vertical Line */}
+            <div className="absolute left-[7px] sm:left-[11px] top-2 bottom-0 w-px bg-white/10 origin-top">
+              <motion.div 
+                className="absolute top-0 w-full bg-primary origin-top"
+                style={{ scaleY, bottom: 0 }}
+              />
+            </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-4 gap-6 md:gap-8">
-                {/* Date & Company (Left Column) */}
-                <div className="md:col-span-1 flex flex-col items-start">
-                  <span className="text-sm font-semibold text-text-muted">
-                    {formatDate(exp.startDate)} — {formatDate(exp.endDate)}
+            {experiences.map((item, index) => (
+              <ScrollReveal
+                key={item.company}
+                delay={index * 120}
+                variant="slideUp"
+              >
+                <li className="group relative">
+                  {/* Timeline Node */}
+                  <span className="absolute -left-[29px] sm:-left-[41px] top-7 flex h-2.5 w-2.5 items-center justify-center rounded-full bg-primary/20 ring-4 ring-background">
+                    <span className="h-1 w-1 rounded-full bg-primary" />
                   </span>
-                  <span className="mt-1.5 text-base font-semibold text-primary">
-                    {exp.company}
-                  </span>
-                </div>
 
-                {/* Content (Right Column) */}
-                <div className="md:col-span-3">
-                  <Card hoverable className="p-6 md:p-8">
-                    <h3 className="text-xl font-bold tracking-tight text-foreground">
-                      {exp.role}
-                    </h3>
-                    <p className="mt-4 text-base leading-relaxed text-text-secondary">
-                      {exp.summary}
-                    </p>
+                  <article className="glass rounded-3xl p-6 transition-all duration-500 group-hover:-translate-y-1 group-hover:border-white/20 sm:p-8">
+                    <div className="flex flex-wrap items-start justify-between gap-3">
+                      <div>
+                        <h3 className="text-lg font-semibold tracking-tight text-foreground sm:text-xl">
+                          {item.role}
+                        </h3>
+                        <p className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-text-muted">
+                          <span className="inline-flex items-center gap-1.5 text-foreground">
+                            <Briefcase className="size-4 text-accent" aria-hidden="true" />
+                            {item.company}
+                          </span>
+                          {item.location && (
+                            <span className="inline-flex items-center gap-1.5 text-text-secondary">
+                              <MapPin className="size-4" aria-hidden="true" />
+                              {item.location}
+                            </span>
+                          )}
+                        </p>
+                      </div>
+                      <p className="rounded-full border border-white/10 bg-white/5 px-3 py-1 font-mono text-xs text-text-muted">
+                        {formatDate(item.startDate)} - {formatDate(item.endDate)}
+                      </p>
+                    </div>
 
-                    {/* Achievements */}
-                    <ul className="mt-5 space-y-2">
-                      {exp.achievements.map((achievement) => (
-                        <li
-                          key={achievement}
-                          className="flex items-start gap-3 text-sm text-text-secondary"
-                        >
-                          <span className="mt-2 block h-1 w-1 shrink-0 rounded-full bg-text-muted" aria-hidden="true" />
-                          {achievement}
-                        </li>
-                      ))}
-                    </ul>
+                    <div className="mt-6 grid gap-6 md:grid-cols-2">
+                      {item.responsibilities && (
+                        <div>
+                          <h4 className="font-mono text-xs tracking-widest text-text-muted uppercase">
+                            Responsibilities
+                          </h4>
+                          <ul className="mt-3 flex flex-col gap-2.5">
+                            {item.responsibilities.map((line) => (
+                              <li
+                                key={line}
+                                className="flex gap-2.5 text-sm leading-relaxed text-text-secondary"
+                              >
+                                <span
+                                  aria-hidden="true"
+                                  className="mt-1.5 size-1.5 shrink-0 rounded-full bg-primary"
+                                />
+                                {line}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+
+                      <div>
+                        <h4 className="font-mono text-xs tracking-widest text-text-muted uppercase">
+                          Achievements
+                        </h4>
+                        <ul className="mt-3 flex flex-col gap-2.5">
+                          {item.achievements.map((line) => (
+                            <li
+                              key={line}
+                              className="flex gap-2.5 text-sm leading-relaxed text-text-secondary"
+                            >
+                              <Trophy
+                                className="mt-0.5 size-4 shrink-0 text-accent"
+                                aria-hidden="true"
+                              />
+                              {line}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
 
                     {/* Tech Badges */}
-                    <div className="mt-6 flex flex-wrap gap-x-4 gap-y-2">
-                      {exp.technologies.map((tech) => {
+                    <div className="mt-6 flex flex-wrap gap-x-4 gap-y-2 border-t border-white/10 pt-5">
+                      {item.technologies.map((tech) => {
                         const Icon = getTechIcon(tech);
                         return (
                           <span
@@ -109,13 +150,13 @@ export function ExperienceSection() {
                         );
                       })}
                     </div>
-                  </Card>
-                </div>
-              </div>
-            </div>
-          </ScrollReveal>
-        ))}
-      </div>
+                  </article>
+                </li>
+              </ScrollReveal>
+            ))}
+          </ol>
+        </div>
+      </Container>
     </Section>
   );
 }
