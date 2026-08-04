@@ -29,9 +29,9 @@ export function ContactSection() {
         transition={{ type: "spring", stiffness: 100, damping: 20 }}
         className="flex flex-col items-center gap-6 text-center relative z-10"
       >
-        <span className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-primary">
+        <p className="text-sm font-semibold uppercase tracking-wider text-text-muted">
           Next Steps
-        </span>
+        </p>
         
         <h2 className="text-5xl font-extrabold tracking-tight text-foreground sm:text-6xl md:text-7xl lg:text-8xl text-balance">
           Let&apos;s build something <span className="text-primary bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">great.</span>

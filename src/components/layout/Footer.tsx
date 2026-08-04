@@ -5,6 +5,7 @@ import { ArrowUp } from "lucide-react";
 import { motion } from "framer-motion";
 import { FaGithub, FaLinkedin, FaEnvelope, FaGlobe } from "react-icons/fa";
 import { siteConfig } from "@/config/site";
+import { profile } from "@/content/profile";
 import { navigationItems } from "@/content/navigation";
 import { socialLinks } from "@/content/social";
 import { Container } from "./Container";
@@ -30,7 +31,7 @@ export function Footer() {
               href="/"
               className="text-sm font-bold tracking-[0.1em] uppercase"
             >
-              {siteConfig.name.split(" ")[0]}
+              {profile.name}
               <span className="text-primary">.</span>
             </Link>
             <span className="text-sm text-text-muted">
