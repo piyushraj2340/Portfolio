@@ -57,7 +57,7 @@ export const projects: Project[] = [
       "DOM Manipulation"
     ],
     repositoryUrl: "https://github.com/piyushraj2340/Whatsapp-Privacy-Extension",
-    imageUrl: "https://images.unsplash.com/photo-1614064641913-6b71a25d2cc7?q=80&w=2574&auto=format&fit=crop",
+    imageUrl: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=2074&auto=format&fit=crop",
     featured: false,
   }, 
   {

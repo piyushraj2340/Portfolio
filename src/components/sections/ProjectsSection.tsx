@@ -1,5 +1,8 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
-import { ExternalLink, FolderGit2 } from "lucide-react";
+import { ExternalLink, FolderGit2, ChevronDown, ChevronUp } from "lucide-react";
 import { FaGithub } from "react-icons/fa";
 import { projects } from "@/content/projects";
 import { Section } from "@/components/layout/Section";
@@ -9,6 +12,9 @@ import { Card } from "@/components/shared/Card";
 import { getTechIcon } from "@/lib/icon-map";
 
 export function ProjectsSection() {
+  const [showAll, setShowAll] = useState(false);
+  const displayedProjects = showAll ? projects : projects.slice(0, 3);
+
   return (
     <Section id="projects">
       <ScrollReveal>
@@ -20,7 +26,7 @@ export function ProjectsSection() {
       </ScrollReveal>
 
       <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {projects.map((project, index) => (
+        {displayedProjects.map((project, index) => (
           <ScrollReveal
             key={project.title}
             delay={index * 100}
@@ -108,6 +114,22 @@ export function ProjectsSection() {
           </ScrollReveal>
         ))}
       </div>
+
+      {projects.length > 3 && (
+        <div className="mt-12 flex justify-center">
+          <button
+            onClick={() => setShowAll(!showAll)}
+            className="group flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-6 py-3 text-sm font-medium text-text-secondary transition-all hover:border-primary/50 hover:bg-primary/10 hover:text-primary"
+          >
+            {showAll ? "Show Less" : "Show More"}
+            {showAll ? (
+              <ChevronUp className="size-4 transition-transform group-hover:-translate-y-1" />
+            ) : (
+              <ChevronDown className="size-4 transition-transform group-hover:translate-y-1" />
+            )}
+          </button>
+        </div>
+      )}
     </Section>
   );
 }
