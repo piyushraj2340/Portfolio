@@ -20,6 +20,7 @@ import { SmoothScrollProvider } from "@/components/providers/SmoothScrollProvide
 import { Providers } from "@/components/providers/Providers";
 import { SplashScreen } from "@/components/ui/SplashScreen";
 import { CustomCursor } from "@/components/ui/CustomCursor";
+import { ScrollToTopButton } from "@/components/ui/ScrollToTopButton";
 
 export default function RootLayout({
   children,
@@ -35,6 +36,7 @@ export default function RootLayout({
         <StructuredData />
         <SplashScreen />
         <CustomCursor />
+        <ScrollToTopButton />
         <Providers>
           <SmoothScrollProvider>
             {children}
