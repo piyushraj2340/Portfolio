@@ -10,10 +10,12 @@ export async function sendContactNotificationEmail(data: ContactFormData) {
     return;
   }
 
+  const port = parseInt(SMTP_PORT || "465", 10);
+  
   const transporter = nodemailer.createTransport({
     host: SMTP_HOST,
-    port: parseInt(SMTP_PORT || "465", 10),
-    secure: true,
+    port: port,
+    secure: port === 465, // true for 465, false for other ports like 587
     auth: {
       user: SMTP_USER,
       pass: SMTP_PASS,
