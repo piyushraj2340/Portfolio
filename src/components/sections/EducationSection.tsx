@@ -46,7 +46,7 @@ export function EducationSection() {
         <div ref={containerRef} className="relative mt-12 pb-8">
           <div role="list" className="relative flex flex-col space-y-6 pl-8 sm:pl-12">
             {/* Animated Vertical Line */}
-            <div className="absolute left-[7px] sm:left-[11px] top-2 bottom-0 w-px bg-white/10 origin-top">
+            <div className="absolute left-[7px] sm:left-[11px] top-2 bottom-0 w-[2px] bg-white/10 origin-top">
               <motion.div
                 className="absolute top-0 w-full bg-primary origin-top"
                 style={{ scaleY, bottom: 0 }}
