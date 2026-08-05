@@ -19,7 +19,7 @@ export function CustomCursor() {
       return;
     }
     
-    setIsVisible(true);
+    const visibilityFrame = requestAnimationFrame(() => setIsVisible(true));
 
     const handleMouseMove = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
@@ -47,6 +47,7 @@ export function CustomCursor() {
     window.addEventListener("mouseover", handleMouseOver);
 
     return () => {
+      cancelAnimationFrame(visibilityFrame);
       window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("mouseover", handleMouseOver);
     };

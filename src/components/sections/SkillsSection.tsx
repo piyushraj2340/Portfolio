@@ -14,7 +14,6 @@ import { getTechIcon } from "@/lib/icon-map";
 import { Section } from "@/components/layout/Section";
 import { SectionHeading } from "@/components/shared/SectionHeading";
 import { ScrollReveal } from "@/components/shared/ScrollReveal";
-import { Container } from "@/components/layout/Container";
 
 const categoryIcons: Record<string, LucideIcon> = {
   Code,

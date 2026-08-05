@@ -1,3 +1,0 @@
-/**
- * About feature constants.
- */

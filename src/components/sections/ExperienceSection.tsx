@@ -7,7 +7,6 @@ import { experiences } from "@/content/experience";
 import { Section } from "@/components/layout/Section";
 import { SectionHeading } from "@/components/shared/SectionHeading";
 import { ScrollReveal } from "@/components/shared/ScrollReveal";
-import { Container } from "@/components/layout/Container";
 import { getTechIcon } from "@/lib/icon-map";
 
 function formatDate(date: string): string {

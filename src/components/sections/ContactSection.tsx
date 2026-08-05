@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { ArrowRight, Send, CheckCircle, AlertCircle, Loader2 } from "lucide-react";
+import { Send, CheckCircle, AlertCircle, Loader2 } from "lucide-react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { FiGlobe } from "react-icons/fi";
 import { motion } from "framer-motion";
@@ -58,7 +58,7 @@ export function ContactSection() {
         setStatus("error");
         setErrorMessage(result.error || "Failed to send message.");
       }
-    } catch (error) {
+    } catch {
       setStatus("error");
       setErrorMessage("An unexpected error occurred.");
     }

@@ -16,9 +16,11 @@ export function TypingRoles({ roles }: { roles: readonly string[] }) {
     }
 
     if (deleting && text === "") {
-      setDeleting(false);
-      setIndex((value) => (value + 1) % roles.length);
-      return;
+      const reset = setTimeout(() => {
+        setDeleting(false);
+        setIndex((value) => (value + 1) % roles.length);
+      }, 0);
+      return () => clearTimeout(reset);
     }
 
     const timeout = setTimeout(

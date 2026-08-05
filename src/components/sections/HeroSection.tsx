@@ -1,8 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
-import { ArrowRight, ArrowDown, Download, Send, MapPin } from "lucide-react";
+import { ArrowRight, ArrowDown, Download, MapPin } from "lucide-react";
 import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
 import { FiGlobe } from "react-icons/fi";
 import { motion, Variants } from "framer-motion";
@@ -269,7 +268,7 @@ export function HeroSection() {
             viewport={{ once: true }}
             variants={containerVariants}
           >
-            {profile.stats.map((stat, index) => (
+            {profile.stats.map((stat) => (
               <motion.li
                 key={stat.label}
                 variants={itemVariants}

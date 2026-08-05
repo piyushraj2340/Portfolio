@@ -1,3 +1,0 @@
-/**
- * About feature types.
- */

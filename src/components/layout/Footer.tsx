@@ -4,9 +4,7 @@ import Link from "next/link";
 import { ArrowUp } from "lucide-react";
 import { motion } from "framer-motion";
 import { FaGithub, FaLinkedin, FaEnvelope, FaGlobe } from "react-icons/fa";
-import { siteConfig } from "@/config/site";
 import { profile } from "@/content/profile";
-import { navigationItems } from "@/content/navigation";
 import { socialLinks } from "@/content/social";
 import { Container } from "./Container";
 

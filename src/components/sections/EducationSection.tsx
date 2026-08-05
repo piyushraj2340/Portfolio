@@ -7,7 +7,6 @@ import { education } from "@/content/education";
 import { Section } from "@/components/layout/Section";
 import { SectionHeading } from "@/components/shared/SectionHeading";
 import { ScrollReveal } from "@/components/shared/ScrollReveal";
-import { Container } from "@/components/layout/Container";
 
 function formatDate(date: string): string {
   if (date === "Present") return "Present";
