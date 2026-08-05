@@ -2,38 +2,84 @@ import type { Project } from "@/types/project";
 
 export const projects: Project[] = [
   {
-    slug: "employee-management-system",
-    title: "Employee Management System",
-    description:
-      "A comprehensive employee management platform with authentication, role-based access control, department management, and performance tracking. Features a secure REST API backend with a modern React frontend.",
-    problem: "Manual HR processes caused data inconsistencies and slow onboarding workflows.",
-    impact: "Reduced onboarding time by 60% and eliminated manual spreadsheet tracking for 200+ employees.",
-    technologies: ["Java", "Spring Boot", "React", "MySQL", "JWT", "Docker"],
-    repositoryUrl: "https://github.com/username/employee-management",
-    liveUrl: "https://employee-mgmt.example.dev",
+    slug: "taskflow",
+    title: "TaskFlow: Project & Workflow Automation",
+    description: "SaaS platform automating project management and workflow scheduling using Clean Architecture.",
+    technologies: ["ASP.NET Core", "React", "Clean Architecture", "Hangfire", "SQL Server", "Tailwind CSS"],
+    repositoryUrl: "https://github.com/",
+    liveUrl: "https://taskflow.example.com",
+    imageUrl: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=2070&auto=format&fit=crop",
+    problem: "Teams struggled with inefficient task management and a lack of real-time visibility into workflow progress.",
+    impact: "• Improved project completion rates by 30% for early adopters.\n• Reduced manual task management overhead by 50% through automated background jobs.\n• Enhanced cross-functional collaboration via real-time status synchronization.",
     featured: true,
   },
   {
-    slug: "ecommerce-platform",
-    title: "E-Commerce Platform",
+    slug: "plant-seller",
+    title: "Plant Seller",
     description:
-      "A scalable e-commerce platform built with microservices architecture. Includes product catalog, cart management, order processing, payment integration, and real-time inventory updates.",
-    problem: "Existing monolithic e-commerce system couldn't handle traffic spikes during promotions.",
-    impact: "Handled 5x traffic surge during launch with zero downtime. Processed 1000+ orders in first week.",
-    technologies: ["Microservices", "Spring Cloud", "Kafka", "Redis", "AWS", "Docker"],
-    repositoryUrl: "https://github.com/username/ecommerce-platform",
+      "A full-stack multi-vendor e-commerce platform connecting customers, nurseries, and administrators in a unified marketplace.",
+    problem:
+      "Traditional nurseries lacked centralized platforms for inventory and order management, while customers struggled to compare products across multiple vendors.",
+    impact:
+      "• Engineered a scalable MERN architecture supporting robust role-based access control.\n• Integrated secure JWT authentication and Stripe payment processing.\n• Deployed custom dashboards for inventory, analytics, and storefront management, streamlining vendor operations.",
+    technologies: [
+      "React.js",
+      "Redux Toolkit",
+      "JavaScript",
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+      "JWT Authentication",
+      "Stripe",
+      "Cloudinary",
+      "REST API"
+    ],
+    repositoryUrl: "https://github.com/piyushraj2340/Plant-Selling-Website",
+    liveUrl: "https://plantseller.vercel.app/",
+    imageUrl: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2426&auto=format&fit=crop",
     featured: true,
   },
   {
-    slug: "task-management-app",
-    title: "Task Management App",
+    slug: "whatsapp-privacy-extension",
+    title: "WhatsApp Privacy Extension",
     description:
-      "A collaborative task management application with real-time updates, drag-and-drop boards, team collaboration features, and detailed analytics dashboards.",
-    problem: "Remote teams lacked a lightweight, real-time task tracking tool that didn't require enterprise licensing.",
-    impact: "Used by 3 internal teams, improving sprint completion rate by 25%.",
-    technologies: ["React", "Node.js", "MongoDB", "Docker", "WebSocket"],
-    repositoryUrl: "https://github.com/username/task-manager",
-    liveUrl: "https://tasks.example.dev",
-    featured: true,
-  },
+      "A Chrome extension enhancing privacy on WhatsApp Web by selectively blurring sensitive information like chats and profile pictures.",
+    problem:
+      "Using WhatsApp Web in public workspaces exposed private conversations and contact details to shoulder-surfing.",
+    impact:
+      "• Developed a lightweight Chrome Extension using Manifest V3.\n• Implemented real-time DOM manipulation to blur specific UI elements.\n• Improved user privacy in shared environments without degrading the native application experience.",
+    technologies: [
+      "JavaScript",
+      "HTML5",
+      "CSS3",
+      "Chrome Extension API",
+      "Manifest V3",
+      "DOM Manipulation"
+    ],
+    repositoryUrl: "https://github.com/piyushraj2340/Whatsapp-Privacy-Extension",
+    imageUrl: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=2074&auto=format&fit=crop",
+    featured: false,
+  }, 
+  {
+    slug: "file-sharing-app-backend",
+    title: "File Sharing App Backend",
+    description:
+      "A RESTful backend service for a secure file-sharing platform, pre-configured for diverse hosting environments.",
+    problem:
+      "File-sharing applications require robust infrastructure to handle large multipart uploads and metadata tracking seamlessly.",
+    impact:
+      "• Architected a Node.js/Express REST API supporting multipart file uploads and MongoDB metadata storage.\n• Designed the system to be environment-agnostic, supporting both Vercel Serverless and Windows IIS deployments.\n• Ensured scalable and maintainable file handling with robust error management.",
+    technologies: [
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+      "Mongoose",
+      "REST API",
+      "Vercel",
+      "IIS"
+    ],
+    repositoryUrl: "https://github.com/piyushraj2340/File-Sharing-App-Backend",
+    imageUrl: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=2668&auto=format&fit=crop",
+    featured: false,
+  }
 ];

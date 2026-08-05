@@ -1,60 +1,71 @@
 import type { SkillCategory } from "@/types/skill";
 
+// 6 Categories perfectly fit a 2 or 3 column layout without orphaned items
 export const skills: SkillCategory[] = [
+  {
+    category: "Languages",
+    icon: "Code",
+    blurb: "Core programming languages I use to build scalable systems and interactive applications.",
+    items: [
+      "C#",
+      "JavaScript/TypeScript",
+      "SQL",
+      "HTML/CSS"
+    ],
+  },
   {
     category: "Backend",
     icon: "Server",
+    blurb: "Architecting high-performance enterprise backends and RESTful services.",
     items: [
-      { name: "Java", proficiency: 90 },
-      { name: "Spring Boot", proficiency: 85 },
-      { name: "Hibernate", proficiency: 80 },
-      { name: "Spring Security", proficiency: 75 },
-      { name: "REST API", proficiency: 90 },
-      { name: "Microservices", proficiency: 80 },
+      "ASP.NET Core (MVC/Web API)",
+      "Entity Framework Core",
+      "REST APIs",
+      "Hangfire"
     ],
   },
   {
     category: "Frontend",
     icon: "Monitor",
+    blurb: "Crafting intuitive and responsive user interfaces with modern JavaScript frameworks.",
     items: [
-      { name: "React", proficiency: 85 },
-      { name: "Angular", proficiency: 70 },
-      { name: "JavaScript", proficiency: 90 },
-      { name: "TypeScript", proficiency: 80 },
-      { name: "HTML/CSS", proficiency: 90 },
-      { name: "Tailwind", proficiency: 85 },
+      "React.js",
+      "Next.js",
+      "Tailwind CSS",
+      "Redux"
     ],
   },
   {
-    category: "Database",
+    category: "Database & Cloud",
     icon: "Database",
+    blurb: "Designing robust database schemas and deploying scalable services to the cloud.",
     items: [
-      { name: "MySQL", proficiency: 85 },
-      { name: "PostgreSQL", proficiency: 80 },
-      { name: "MongoDB", proficiency: 75 },
-      { name: "Redis", proficiency: 70 },
+      "MS SQL Server",
+      "Azure Services",
+      "Redis",
+      "Azure SQL"
     ],
   },
   {
-    category: "Cloud & DevOps",
-    icon: "Cloud",
+    category: "Architecture",
+    icon: "Layers",
+    blurb: "Structuring codebases for maintainability, testability, and enterprise scale.",
     items: [
-      { name: "AWS", proficiency: 80 },
-      { name: "Docker", proficiency: 85 },
-      { name: "Kubernetes", proficiency: 70 },
-      { name: "Jenkins", proficiency: 75 },
-      { name: "GitHub Actions", proficiency: 80 },
+      "Clean Architecture",
+      "Microservices",
+      "SOLID Principles",
+      "Design Patterns"
     ],
   },
   {
-    category: "Tools",
+    category: "DevOps & Tools",
     icon: "Wrench",
+    blurb: "Automating workflows, managing source control, and ensuring reliable deliveries.",
     items: [
-      { name: "Git", proficiency: 90 },
-      { name: "Postman", proficiency: 85 },
-      { name: "Swagger", proficiency: 80 },
-      { name: "IntelliJ IDEA", proficiency: 85 },
-      { name: "VS Code", proficiency: 90 },
+      "Git & GitHub",
+      "Docker",
+      "CI/CD",
+      "Postman"
     ],
   },
 ];

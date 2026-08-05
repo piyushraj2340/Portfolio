@@ -1,7 +1,14 @@
+"use client";
+
+import { useRef } from "react";
+import { motion, useScroll, useSpring } from "framer-motion";
+import { Briefcase, MapPin, Trophy } from "lucide-react";
 import { experiences } from "@/content/experience";
 import { Section } from "@/components/layout/Section";
 import { SectionHeading } from "@/components/shared/SectionHeading";
 import { ScrollReveal } from "@/components/shared/ScrollReveal";
+import { Container } from "@/components/layout/Container";
+import { getTechIcon } from "@/lib/icon-map";
 
 function formatDate(date: string): string {
   if (date === "Present") return "Present";
@@ -14,87 +21,140 @@ function formatDate(date: string): string {
 }
 
 export function ExperienceSection() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start center", "end center"],
+  });
+
+  const scaleY = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
+
   return (
-    <Section id="experience">
-      <ScrollReveal>
-        <SectionHeading
-          eyebrow="Experience"
-          title="Professional journey"
-          description="A timeline of roles, responsibilities, and business outcomes across product-focused teams."
-        />
-      </ScrollReveal>
+    <Section id="experience" aria-labelledby="experience-heading" className="bg-background">
+        <ScrollReveal>
+          <SectionHeading
+            eyebrow="Experience"
+            title="Two years of shipping, owning, and on-call."
+            description="Roles where I moved from writing features to owning services end to end."
+          />
+        </ScrollReveal>
 
-      <div className="relative mt-12">
-        {/* Timeline Line */}
-        <div
-          className="timeline-line absolute left-6 top-0 hidden h-full md:left-1/2 md:block md:-translate-x-px"
-          aria-hidden="true"
-        />
+        <div ref={containerRef} className="relative mt-12 pb-8">
+          <div role="list" className="relative flex flex-col space-y-6 pl-8 sm:pl-12">
+            {/* Animated Vertical Line */}
+            <div className="absolute left-[7px] sm:left-[11px] top-2 bottom-0 w-[2px] bg-white/10 origin-top">
+              <motion.div 
+                className="absolute top-0 w-full bg-primary origin-top"
+                style={{ scaleY, bottom: 0 }}
+              />
+            </div>
 
-        <div className="space-y-10 md:space-y-16">
-          {experiences.map((exp, index) => (
-            <ScrollReveal key={`${exp.company}-${exp.startDate}`} delay={index * 150}>
-              <div
-                className={`relative flex flex-col gap-6 md:flex-row md:items-start ${
-                  index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
-                }`}
+            {experiences.map((item, index) => (
+              <ScrollReveal
+                key={item.company}
+                delay={index * 120}
+                variant="slideUp"
               >
-                {/* Timeline Dot */}
-                <div
-                  className="timeline-dot absolute left-[18px] top-8 z-10 hidden md:left-1/2 md:block md:-translate-x-1/2"
-                  aria-hidden="true"
-                />
+                <div role="listitem" className="group relative">
+                  {/* Timeline Node */}
+                  <span className="absolute -left-[29px] sm:-left-[41px] top-7 flex h-2.5 w-2.5 items-center justify-center rounded-full bg-primary/20 ring-4 ring-background">
+                    <span className="h-1 w-1 rounded-full bg-primary" />
+                  </span>
 
-                {/* Content Card */}
-                <div className="glass-card-hover w-full p-6 md:w-[calc(50%-2rem)]">
-                  {/* Date Badge */}
-                  <div className="mb-4 inline-flex items-center gap-2 rounded-lg bg-primary/10 px-3 py-1 text-xs font-semibold text-primary">
-                    {formatDate(exp.startDate)} — {formatDate(exp.endDate)}
-                  </div>
+                  <article className="glass rounded-3xl p-6 transition-all duration-500 group-hover:-translate-y-1 group-hover:border-white/20 sm:p-8">
+                    <div className="flex flex-wrap items-start justify-between gap-3">
+                      <div>
+                        <h3 className="text-lg font-semibold tracking-tight text-foreground sm:text-xl">
+                          {item.role}
+                        </h3>
+                        <p className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-text-muted">
+                          <span className="inline-flex items-center gap-1.5 text-foreground">
+                            <Briefcase className="size-4 text-accent" aria-hidden="true" />
+                            {item.company}
+                          </span>
+                          {item.location && (
+                            <span className="inline-flex items-center gap-1.5 text-text-secondary">
+                              <MapPin className="size-4" aria-hidden="true" />
+                              {item.location}
+                            </span>
+                          )}
+                        </p>
+                      </div>
+                      <p className="rounded-full border border-white/10 bg-white/5 px-3 py-1 font-mono text-xs text-text-muted">
+                        {formatDate(item.startDate)} - {formatDate(item.endDate)}
+                      </p>
+                    </div>
 
-                  <h3 className="text-lg font-semibold text-foreground">
-                    {exp.role}
-                  </h3>
-                  <p className="mt-1 text-sm font-medium text-text-muted">
-                    {exp.company}
-                  </p>
-                  <p className="mt-3 text-sm leading-relaxed text-text-secondary">
-                    {exp.summary}
-                  </p>
+                    <div className="mt-6 grid gap-6 md:grid-cols-2">
+                      {item.responsibilities && (
+                        <div>
+                          <h4 className="font-mono text-xs tracking-widest text-text-muted uppercase">
+                            Responsibilities
+                          </h4>
+                          <ul className="mt-3 flex flex-col gap-2.5">
+                            {item.responsibilities.map((line) => (
+                              <li
+                                key={line}
+                                className="flex gap-2.5 text-sm leading-relaxed text-text-secondary"
+                              >
+                                <span
+                                  aria-hidden="true"
+                                  className="mt-1.5 size-1.5 shrink-0 rounded-full bg-primary"
+                                />
+                                {line}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
 
-                  {/* Achievements */}
-                  <ul className="mt-4 space-y-2">
-                    {exp.achievements.map((achievement) => (
-                      <li
-                        key={achievement}
-                        className="flex items-start gap-2 text-sm text-text-secondary"
-                      >
-                        <span className="mt-1.5 block size-1.5 shrink-0 rounded-full bg-primary" aria-hidden="true" />
-                        {achievement}
-                      </li>
-                    ))}
-                  </ul>
+                      <div>
+                        <h4 className="font-mono text-xs tracking-widest text-text-muted uppercase">
+                          Achievements
+                        </h4>
+                        <ul className="mt-3 flex flex-col gap-2.5">
+                          {item.achievements.map((line) => (
+                            <li
+                              key={line}
+                              className="flex gap-2.5 text-sm leading-relaxed text-text-secondary"
+                            >
+                              <Trophy
+                                className="mt-0.5 size-4 shrink-0 text-accent"
+                                aria-hidden="true"
+                              />
+                              {line}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
 
-                  {/* Tech Badges */}
-                  <div className="mt-5 flex flex-wrap gap-2">
-                    {exp.technologies.map((tech) => (
-                      <span
-                        key={tech}
-                        className="rounded-lg bg-white/5 px-2.5 py-1 text-xs font-medium text-text-secondary"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
+                    {/* Tech Badges */}
+                    <div className="mt-6 flex flex-wrap gap-x-4 gap-y-2 border-t border-white/10 pt-5">
+                      {item.technologies.map((tech) => {
+                        const Icon = getTechIcon(tech);
+                        return (
+                          <span
+                            key={tech}
+                            className="inline-flex items-center gap-1.5 text-xs font-mono text-text-muted"
+                          >
+                            <Icon className="size-3.5 opacity-70" aria-hidden="true" />
+                            {tech}
+                          </span>
+                        );
+                      })}
+                    </div>
+                  </article>
                 </div>
-
-                {/* Spacer for alternating layout */}
-                <div className="hidden w-[calc(50%-2rem)] md:block" />
-              </div>
-            </ScrollReveal>
-          ))}
+              </ScrollReveal>
+            ))}
+          </div>
         </div>
-      </div>
     </Section>
   );
 }

@@ -4,6 +4,8 @@ export type Education = {
   field: string;
   startDate: string;
   endDate: string;
+  location?: string;
   description?: string;
   coursework?: string[];
+  isVisible?: boolean;
 };

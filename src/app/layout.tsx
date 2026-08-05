@@ -16,6 +16,11 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = siteMetadata;
 
+import { SmoothScrollProvider } from "@/components/providers/SmoothScrollProvider";
+import { Providers } from "@/components/providers/Providers";
+import { SplashScreen } from "@/components/ui/SplashScreen";
+import { CustomCursor } from "@/components/ui/CustomCursor";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -28,7 +33,13 @@ export default function RootLayout({
     >
       <body className="min-h-full bg-background text-foreground">
         <StructuredData />
-        {children}
+        <SplashScreen />
+        <CustomCursor />
+        <Providers>
+          <SmoothScrollProvider>
+            {children}
+          </SmoothScrollProvider>
+        </Providers>
       </body>
     </html>
   );

@@ -7,5 +7,6 @@ export type Project = {
   technologies: string[];
   repositoryUrl: string;
   liveUrl?: string;
+  imageUrl?: string;
   featured?: boolean;
 };

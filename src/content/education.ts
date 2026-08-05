@@ -2,22 +2,25 @@ import type { Education } from "@/types/education";
 
 export const education: Education[] = [
   {
-    institution: "University Name",
-    degree: "Bachelor of Technology",
-    field: "Computer Science and Engineering",
+    institution: "Chandigarh University",
+    degree: "Bachelor of Engineering, ",
+    field: "Computer Science",
     startDate: "2018-08",
-    endDate: "2022-05",
-    description:
-      "Graduated with distinction. Active member of the coding club and participated in multiple hackathons.",
-    coursework: [
-      "Data Structures & Algorithms",
-      "Object-Oriented Programming",
-      "Database Management Systems",
-      "Operating Systems",
-      "Computer Networks",
-      "Software Engineering",
-      "Cloud Computing",
-      "Web Development",
-    ],
+    endDate: "2022-06",
+    location: "Punjab, India",
+    description: "Graduated with a CGPA of 8.03/10.0. Focused on core computer science fundamentals, data structures, algorithms, and software engineering principles.",
+    coursework: ["Data Structures & Algorithms", "Operating Systems", "Computer Networks", "Object-Oriented Programming", "Database Management Systems", "Software Engineering"],
+    isVisible: true
   },
+  {
+    institution: "Shivam International School (CBSE)",
+    degree: "Higher Secondary, ",
+    field: "Science (PCM)",
+    startDate: "2017-04",
+    endDate: "2018-06",
+    location: "Patna, Bihar",
+    description: "Completed Higher Secondary education under the CBSE curriculum with a focus on the Science stream.",
+    coursework: ["Mathematics", "Physics", "Chemistry", "Computer Science"],
+    isVisible: true
+  }
 ];
