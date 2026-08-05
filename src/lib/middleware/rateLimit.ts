@@ -6,15 +6,20 @@ const MAX_REQUESTS_PER_WINDOW = parseInt(process.env.MAX_REQUESTS_PER_WINDOW || 
 
 export function getClientIp(request: Request): string {
   const forwardedFor = request.headers.get("x-forwarded-for");
+  const realIp = request.headers.get("x-real-ip");
+  
   if (forwardedFor) {
     return forwardedFor.split(",")[0].trim();
   }
-  return "unknown";
+  if (realIp) {
+    return realIp.trim();
+  }
+  
+  // Fallback for local development or direct connections without proxy headers
+  return "127.0.0.1";
 }
 
 export function checkRateLimit(ip: string): boolean {
-  if (ip === "unknown") return true;
-
   const now = Date.now();
   const windowStart = now - RATE_LIMIT_WINDOW_MS;
 
