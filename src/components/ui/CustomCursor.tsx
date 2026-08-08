@@ -1,20 +1,20 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { motion, useSpring } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 
+/**
+ * Lightweight custom cursor — no React state on mousemove (avoids forced reflow).
+ */
 export function CustomCursor() {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [isHovering, setIsHovering] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
-
-  // Smooth springs for the cursor follower
-  const springConfig = { damping: 25, stiffness: 300, mass: 0.5 };
-  const cursorX = useSpring(0, springConfig);
-  const cursorY = useSpring(0, springConfig);
+  const dotRef = useRef<HTMLDivElement>(null);
+  const ringRef = useRef<HTMLDivElement>(null);
+  const hoveringRef = useRef(false);
+  const posRef = useRef({ x: 0, y: 0 });
+  const ringPosRef = useRef({ x: 0, y: 0 });
+  const rafRef = useRef(0);
 
   useEffect(() => {
-    // Only show custom cursor on fine pointers with motion allowed
     if (
       window.matchMedia("(pointer: coarse)").matches ||
       window.matchMedia("(prefers-reduced-motion: reduce)").matches
@@ -24,71 +24,74 @@ export function CustomCursor() {
 
     const root = document.documentElement;
     root.classList.add("cursor-none");
-    const visibilityFrame = requestAnimationFrame(() => setIsVisible(true));
+    setIsVisible(true);
 
     const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-      cursorX.set(e.clientX - 16); // Center the 32px cursor
-      cursorY.set(e.clientY - 16);
-    };
-
-    const handleMouseOver = (e: MouseEvent) => {
-      const target = e.target as HTMLElement;
-      // Expand cursor when hovering over clickable elements
-      if (
-        target.tagName.toLowerCase() === "a" ||
-        target.tagName.toLowerCase() === "button" ||
-        target.closest("a") ||
-        target.closest("button") ||
-        target.closest(".hoverable")
-      ) {
-        setIsHovering(true);
-      } else {
-        setIsHovering(false);
+      posRef.current.x = e.clientX;
+      posRef.current.y = e.clientY;
+      if (dotRef.current) {
+        dotRef.current.style.transform = `translate3d(${e.clientX - 4}px, ${e.clientY - 4}px, 0)`;
       }
     };
 
-    window.addEventListener("mousemove", handleMouseMove);
-    window.addEventListener("mouseover", handleMouseOver);
+    const handleMouseOver = (e: MouseEvent) => {
+      const target = e.target as HTMLElement | null;
+      const next =
+        !!target &&
+        !!(
+          target.closest("a") ||
+          target.closest("button") ||
+          target.closest(".hoverable")
+        );
+      if (next === hoveringRef.current) return;
+      hoveringRef.current = next;
+      if (dotRef.current) {
+        dotRef.current.style.opacity = next ? "0" : "1";
+      }
+      if (ringRef.current) {
+        ringRef.current.style.transform = `translate3d(${ringPosRef.current.x}px, ${ringPosRef.current.y}px, 0) scale(${next ? 1.5 : 1})`;
+        ringRef.current.style.backgroundColor = next
+          ? "rgba(37, 99, 235, 0.1)"
+          : "transparent";
+      }
+    };
+
+    const tick = () => {
+      const { x, y } = posRef.current;
+      ringPosRef.current.x += (x - 16 - ringPosRef.current.x) * 0.2;
+      ringPosRef.current.y += (y - 16 - ringPosRef.current.y) * 0.2;
+      if (ringRef.current) {
+        const scale = hoveringRef.current ? 1.5 : 1;
+        ringRef.current.style.transform = `translate3d(${ringPosRef.current.x}px, ${ringPosRef.current.y}px, 0) scale(${scale})`;
+      }
+      rafRef.current = requestAnimationFrame(tick);
+    };
+
+    window.addEventListener("mousemove", handleMouseMove, { passive: true });
+    window.addEventListener("mouseover", handleMouseOver, { passive: true });
+    rafRef.current = requestAnimationFrame(tick);
 
     return () => {
-      cancelAnimationFrame(visibilityFrame);
+      cancelAnimationFrame(rafRef.current);
       root.classList.remove("cursor-none");
       window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("mouseover", handleMouseOver);
     };
-  }, [cursorX, cursorY]);
+  }, []);
 
   if (!isVisible) return null;
 
   return (
     <>
-      {/* Primary small dot (instant) */}
-      <motion.div
+      <div
+        ref={dotRef}
         aria-hidden="true"
-        className="pointer-events-none fixed left-0 top-0 z-[100] h-2 w-2 rounded-full bg-primary mix-blend-difference"
-        animate={{
-          x: mousePosition.x - 4, // Center the 8px dot
-          y: mousePosition.y - 4,
-          scale: isHovering ? 0 : 1,
-          opacity: isHovering ? 0 : 1,
-        }}
-        transition={{ type: "tween", ease: "linear", duration: 0 }}
+        className="pointer-events-none fixed left-0 top-0 z-[100] h-2 w-2 rounded-full bg-primary mix-blend-difference will-change-transform"
       />
-
-      {/* Trailing larger circle (spring) */}
-      <motion.div
+      <div
+        ref={ringRef}
         aria-hidden="true"
-        className="pointer-events-none fixed left-0 top-0 z-[99] flex h-8 w-8 items-center justify-center rounded-full border border-primary/50 mix-blend-difference"
-        style={{
-          x: cursorX,
-          y: cursorY,
-        }}
-        animate={{
-          scale: isHovering ? 1.5 : 1,
-          backgroundColor: isHovering ? "rgba(59, 130, 246, 0.1)" : "transparent",
-        }}
-        transition={{ type: "spring", stiffness: 300, damping: 20 }}
+        className="pointer-events-none fixed left-0 top-0 z-[99] h-8 w-8 rounded-full border border-primary/50 mix-blend-difference will-change-transform"
       />
     </>
   );

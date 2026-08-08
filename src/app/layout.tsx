@@ -20,6 +20,7 @@ import { SmoothScrollProvider } from "@/components/providers/SmoothScrollProvide
 import { Providers } from "@/components/providers/Providers";
 import { SplashScreen } from "@/components/ui/SplashScreen";
 import { DeferredCustomCursor } from "@/components/ui/DeferredCustomCursor";
+import { DeferredManifest } from "@/components/seo/DeferredManifest";
 
 export default function RootLayout({
   children,
@@ -33,6 +34,7 @@ export default function RootLayout({
     >
       <body className="min-h-full bg-background text-foreground">
         <StructuredData />
+        <DeferredManifest />
         <SplashScreen />
         <DeferredCustomCursor />
         <Providers>

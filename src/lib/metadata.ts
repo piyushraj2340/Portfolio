@@ -19,14 +19,8 @@ export const siteMetadata: Metadata = {
   },
   icons: {
     icon: [
+      { url: "/favicon/favicon.ico", sizes: "any" },
       { url: "/favicon/favicon-32x32.png", sizes: "32x32", type: "image/png" },
-      { url: "/favicon/favicon-16x16.png", sizes: "16x16", type: "image/png" },
-      { url: "/favicon/favicon.ico", sizes: "48x48" },
-      {
-        url: "/favicon/android-chrome-192x192.png",
-        sizes: "192x192",
-        type: "image/png",
-      },
     ],
     apple: [
       {
@@ -36,7 +30,7 @@ export const siteMetadata: Metadata = {
       },
     ],
   },
-  manifest: "/favicon/site.webmanifest",
+  // Manifest is injected after idle via DeferredManifest (keeps it off the critical path)
   robots: {
     index: true,
     follow: true,

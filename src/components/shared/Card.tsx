@@ -16,7 +16,9 @@ export function Card({
   ...rest
 }: CardProps) {
   const ref = useRef<HTMLDivElement>(null);
-  
+  const frameRef = useRef(0);
+  const pendingRef = useRef<{ clientX: number; clientY: number } | null>(null);
+
   // Spotlight Glow
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
@@ -28,20 +30,26 @@ export function Card({
 
   function handleMouseMove({ currentTarget, clientX, clientY }: React.MouseEvent) {
     if (!hoverable) return;
-    const { left, top, width, height } = currentTarget.getBoundingClientRect();
-    
-    // For spotlight
-    mouseX.set(clientX - left);
-    mouseY.set(clientY - top);
+    pendingRef.current = { clientX, clientY };
+    if (frameRef.current) return;
 
-    // For tilt
-    const centerX = width / 2;
-    const centerY = height / 2;
-    const x = clientX - left - centerX;
-    const y = clientY - top - centerY;
-    
-    rotateX.set((y / centerY) * -5); // max 5 deg rotation
-    rotateY.set((x / centerX) * 5);
+    frameRef.current = requestAnimationFrame(() => {
+      frameRef.current = 0;
+      const pending = pendingRef.current;
+      if (!pending) return;
+      const { left, top, width, height } = currentTarget.getBoundingClientRect();
+
+      mouseX.set(pending.clientX - left);
+      mouseY.set(pending.clientY - top);
+
+      const centerX = width / 2;
+      const centerY = height / 2;
+      const x = pending.clientX - left - centerX;
+      const y = pending.clientY - top - centerY;
+
+      rotateX.set((y / centerY) * -5);
+      rotateY.set((x / centerX) * 5);
+    });
   }
 
   function handleMouseEnter() {

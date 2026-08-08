@@ -15,6 +15,10 @@ const securityHeaders = [
 ];
 
 const nextConfig: NextConfig = {
+  // Prefer modern syntax; browserslist in package.json guides SWC targets
+  compiler: {
+    removeConsole: process.env.NODE_ENV === "production",
+  },
   images: {
     formats: ["image/avif", "image/webp"],
     remotePatterns: [
