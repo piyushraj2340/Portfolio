@@ -17,9 +17,10 @@ export function ProjectsSection() {
   const displayedProjects = showAll ? projects : projects.slice(0, 3);
 
   return (
-    <Section id="projects">
+    <Section id="projects" aria-labelledby="projects-heading">
       <ScrollReveal>
         <SectionHeading
+          id="projects-heading"
           eyebrow="Work"
           title="Featured projects"
           description="A selection of my best work, from concept to deployment."
@@ -33,7 +34,7 @@ export function ProjectsSection() {
             delay={index * 100}
             variant="slideUp"
           >
-            <Card hoverable className="group flex h-full flex-col overflow-hidden transition-all duration-500 cubic-bezier(0.4, 0, 0.2, 1) hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(255,255,255,0.05)] hover:border-primary/30 p-0">
+            <Card hoverable className="group flex h-full flex-col overflow-hidden p-0 transition-all duration-300 hover:border-white/20">
               {/* Project Image Header */}
               {project.imageUrl && (
                 <div className="relative h-48 w-full overflow-hidden border-b border-white/5">
@@ -79,33 +80,33 @@ export function ProjectsSection() {
               )}
 
               {/* Project Content */}
-              <div className="flex flex-1 flex-col p-5 sm:p-6 relative z-20 bg-gradient-to-b from-transparent to-background/50">
-                <h3 className="text-xl font-bold tracking-tight text-foreground transition-colors duration-300 group-hover:text-primary">
+              <div className="relative z-20 flex flex-1 flex-col bg-gradient-to-b from-transparent to-background/50 p-6 sm:p-8">
+                <h3 className="text-lg font-semibold tracking-tight text-foreground transition-colors duration-300 group-hover:text-primary sm:text-xl">
                   {project.title}
                 </h3>
-                <p className="mt-3 text-sm leading-relaxed text-text-secondary transition-colors duration-300 group-hover:text-text-primary">
+                <p className="mt-3 text-sm leading-relaxed text-text-secondary">
                   {project.description}
                 </p>
 
                 {project.impact && (
                   <div className="mt-5 flex-1">
-                    <h4 className="text-xs font-semibold uppercase tracking-wider text-text-muted mb-3">Key Highlights</h4>
-                    <p className="text-sm leading-relaxed text-text-secondary whitespace-pre-line border-l-2 border-primary/30 pl-4 transition-colors duration-300 group-hover:border-primary">
+                    <h4 className="mb-3 font-mono text-xs tracking-widest text-text-muted uppercase">Key Highlights</h4>
+                    <p className="whitespace-pre-line border-l-2 border-primary/30 pl-4 text-sm leading-relaxed text-text-secondary transition-colors duration-300 group-hover:border-primary">
                       {project.impact}
                     </p>
                   </div>
                 )}
 
                 {/* Tech Stack */}
-                <div className="mt-8 flex flex-wrap gap-2 pt-6 border-t border-white/5 mt-auto">
+                <div className="mt-auto flex flex-wrap gap-2 border-t border-white/5 pt-6">
                   {project.technologies.map((tech) => {
                     const Icon = getTechIcon(tech);
                     return (
                       <span
                         key={tech}
-                        className="inline-flex items-center gap-1.5 rounded-lg border border-white/5 bg-white/5 px-3 py-1.5 font-mono text-xs text-text-muted transition-all duration-300 hover:border-primary/50 hover:bg-primary/10 hover:text-primary hover:scale-105"
+                        className="inline-flex items-center gap-1.5 rounded-lg border border-white/10 bg-white/5 px-2.5 py-1 text-xs text-text-secondary transition-colors duration-300 group-hover:text-foreground"
                       >
-                        <Icon className="size-3.5 opacity-70 transition-opacity hover:opacity-100" />
+                        <Icon className="size-3.5 opacity-70" aria-hidden="true" />
                         {tech}
                       </span>
                     );

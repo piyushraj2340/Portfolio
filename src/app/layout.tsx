@@ -19,7 +19,7 @@ export const metadata: Metadata = siteMetadata;
 import { SmoothScrollProvider } from "@/components/providers/SmoothScrollProvider";
 import { Providers } from "@/components/providers/Providers";
 import { SplashScreen } from "@/components/ui/SplashScreen";
-import { CustomCursor } from "@/components/ui/CustomCursor";
+import { DeferredCustomCursor } from "@/components/ui/DeferredCustomCursor";
 
 export default function RootLayout({
   children,
@@ -34,7 +34,7 @@ export default function RootLayout({
       <body className="min-h-full bg-background text-foreground">
         <StructuredData />
         <SplashScreen />
-        <CustomCursor />
+        <DeferredCustomCursor />
         <Providers>
           <SmoothScrollProvider>
             {children}

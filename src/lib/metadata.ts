@@ -1,37 +1,74 @@
 import type { Metadata } from "next";
 import { siteConfig } from "@/config/site";
-
-const defaultTitle = `${siteConfig.name} | Software Engineer`;
+import { seoContent } from "@/content/seo";
+import { profile } from "@/content/profile";
 
 export const siteMetadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: defaultTitle,
+    default: siteConfig.title,
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
+  keywords: seoContent.keywords,
+  authors: [{ name: profile.name, url: siteConfig.url }],
+  creator: profile.name,
+  publisher: profile.name,
+  alternates: {
+    canonical: "/",
+  },
+  icons: {
+    icon: [
+      { url: "/favicon/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon/favicon.ico", sizes: "48x48" },
+      {
+        url: "/favicon/android-chrome-192x192.png",
+        sizes: "192x192",
+        type: "image/png",
+      },
+    ],
+    apple: [
+      {
+        url: "/favicon/apple-touch-icon.png",
+        sizes: "180x180",
+        type: "image/png",
+      },
+    ],
+  },
+  manifest: "/favicon/site.webmanifest",
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
   openGraph: {
-    title: defaultTitle,
+    title: siteConfig.title,
     description: siteConfig.description,
     type: "website",
     url: siteConfig.url,
+    siteName: siteConfig.name,
+    locale: siteConfig.locale,
     images: [
       {
-        url: "/og-image.png",
+        url: siteConfig.ogImage,
         width: 1200,
         height: 630,
-        alt: `${siteConfig.name} - Software Engineer Portfolio`,
+        alt: `${profile.name} — ${profile.role} portfolio`,
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: defaultTitle,
+    title: siteConfig.title,
     description: siteConfig.description,
-    images: ["/og-image.png"],
+    images: [siteConfig.ogImage],
+    creator: "@piyushraj2340",
   },
+  category: "technology",
 };

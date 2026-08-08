@@ -1,9 +1,17 @@
+import { profile } from "@/content/profile";
+
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") || "http://localhost:3000";
+
 export const siteConfig = {
-  name: "Developer Portfolio",
+  name: profile.name,
+  title: `${profile.name} | ${profile.role}`,
   description:
-    "Software Engineer with 2 years of experience building scalable backend systems, cloud-native applications, and modern web experiences with Java, Spring Boot, React, and AWS.",
-  url: "http://localhost:3000",
-  location: "Remote",
+    "Software Engineer with 2 years of experience specializing in C#, ASP.NET Core, React, and Azure. Building robust, scalable web applications and backend systems.",
+  url: siteUrl,
+  location: profile.location,
   email: "piyushraj2340@gmail.com",
   resumeUrl: "/resume/piyush_raj_resume.pdf",
+  ogImage: "/og-image.webp",
+  locale: "en_US",
 };

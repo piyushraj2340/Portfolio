@@ -33,16 +33,17 @@ export function EducationSection() {
   });
 
   return (
-    <Section id="education" aria-labelledby="education-heading" className="bg-background">
+    <Section id="education" aria-labelledby="education-heading" className="bg-surface">
         <ScrollReveal>
           <SectionHeading
+            id="education-heading"
             eyebrow="Education"
             title="Academic background"
             description="Foundation in computer science and engineering principles."
           />
         </ScrollReveal>
 
-        <div ref={containerRef} className="relative mt-12 pb-8">
+        <div ref={containerRef} className="relative mt-12">
           <div role="list" className="relative flex flex-col space-y-6 pl-8 sm:pl-12">
             {/* Animated Vertical Line */}
             <div className="absolute left-[7px] sm:left-[11px] top-2 bottom-0 w-[2px] bg-white/10 origin-top">
@@ -64,7 +65,7 @@ export function EducationSection() {
                     <span className="h-1 w-1 rounded-full bg-primary" />
                   </span>
 
-                  <article className="glass rounded-3xl p-6 transition-all duration-500 group-hover:-translate-y-1 group-hover:border-white/20 sm:p-8">
+                  <article className="glass rounded-2xl p-6 transition-all duration-300 group-hover:-translate-y-1 group-hover:border-white/20 sm:p-8">
                     <div className="flex flex-wrap items-start justify-between gap-3">
                       <div>
                         <h3 className="text-lg font-semibold tracking-tight text-foreground sm:text-xl">
@@ -76,7 +77,7 @@ export function EducationSection() {
                             {item.institution}
                           </span>
                           {item.location && (
-                            <span className="inline-flex items-center gap-1.5 text-text-secondary">
+                            <span className="inline-flex items-center gap-1.5 text-text-muted">
                               <MapPin className="size-4" aria-hidden="true" />
                               {item.location}
                             </span>

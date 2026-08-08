@@ -19,9 +19,10 @@
   --popover-foreground: #FFFFFF;
 
   /* --- Brand Colors --- */
-  --primary: #3B82F6;
-  --primary-hover: #2563EB;
-  --primary-active: #1D4ED8;
+  /* Primary darkened vs blue-500 so white label text meets WCAG AA (~4.5:1+) */
+  --primary: #2563EB;
+  --primary-hover: #1D4ED8;
+  --primary-active: #1E40AF;
   --primary-foreground: #FFFFFF;
 
   --secondary: #8B5CF6;
@@ -37,7 +38,7 @@
   --muted-foreground: #A1A1AA;
   --border: rgba(255, 255, 255, 0.08);
   --input: rgba(255, 255, 255, 0.08);
-  --ring: #3B82F6;
+  --ring: #2563EB;
 
   /* --- Semantic Colors --- */
   --destructive: #EF4444;
@@ -46,7 +47,7 @@
   --info: #3B82F6;
 
   /* --- Surface Scale --- */
-  --surface: #09090B;
+  --surface: #0C0C0F;
   --surface-elevated: #131316;
   --surface-overlay: rgba(255, 255, 255, 0.03);
 
@@ -200,17 +201,17 @@ h1, h2, h3, h4, h5, h6 {
 .glass-card {
   background: rgba(255, 255, 255, 0.02);
   border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: var(--radius-xl);
+  border-radius: var(--radius-2xl);
 }
 
 .glass-card-hover {
   background: rgba(255, 255, 255, 0.02);
   border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: var(--radius-xl);
+  border-radius: var(--radius-2xl);
   transition: all var(--duration-normal) var(--ease-default);
 }
 
-.glass-card:hover {
+.glass-card-hover:hover {
   background: rgba(255, 255, 255, 0.04);
   border-color: rgba(255, 255, 255, 0.1);
   box-shadow: var(--glow-primary);
@@ -284,6 +285,11 @@ h1, h2, h3, h4, h5, h6 {
 @keyframes typing-cursor {
   0%, 100% { opacity: 1; }
   50% { opacity: 0; }
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
 }
 
 @keyframes slide-in-right {
@@ -365,6 +371,13 @@ h1, h2, h3, h4, h5, h6 {
 .section-divider {
   height: 1px;
   background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.06), transparent);
+}
+
+.grid-pattern {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 64px 64px;
 }
 
 /* Progress bar for skills */

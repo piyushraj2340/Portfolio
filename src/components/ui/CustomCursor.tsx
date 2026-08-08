@@ -14,11 +14,16 @@ export function CustomCursor() {
   const cursorY = useSpring(0, springConfig);
 
   useEffect(() => {
-    // Only show custom cursor on non-touch devices
-    if (window.matchMedia("(pointer: coarse)").matches) {
+    // Only show custom cursor on fine pointers with motion allowed
+    if (
+      window.matchMedia("(pointer: coarse)").matches ||
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
       return;
     }
-    
+
+    const root = document.documentElement;
+    root.classList.add("cursor-none");
     const visibilityFrame = requestAnimationFrame(() => setIsVisible(true));
 
     const handleMouseMove = (e: MouseEvent) => {
@@ -48,6 +53,7 @@ export function CustomCursor() {
 
     return () => {
       cancelAnimationFrame(visibilityFrame);
+      root.classList.remove("cursor-none");
       window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("mouseover", handleMouseOver);
     };

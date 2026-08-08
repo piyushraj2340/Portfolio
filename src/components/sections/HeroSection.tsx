@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, ArrowDown, Download, MapPin } from "lucide-react";
 import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
 import { FiGlobe } from "react-icons/fi";
@@ -105,7 +106,7 @@ export function HeroSection() {
               )}
               {profile.location && (
                 <p className="glass inline-flex w-fit items-center gap-2 rounded-full px-3 py-1.5 text-xs text-text-muted">
-                  <MapPin className="size-3.5 text-primary" />
+                  <MapPin className="size-3.5 text-primary" aria-hidden="true" />
                   Based in {profile.location}
                 </p>
               )}
@@ -170,7 +171,6 @@ export function HeroSection() {
                       aria-label={link.label}
                     >
                       <Icon className="size-5" aria-hidden="true" />
-                      <span className="sr-only">{link.label}</span>
                     </Link>
                   </li>
                 );
@@ -188,19 +188,16 @@ export function HeroSection() {
               />
 
               {/* Profile Image in Glass Frame */}
-              <div className="glass relative h-full w-full overflow-hidden rounded-[2rem] p-2 z-10 shadow-2xl" style={{ backgroundColor: "rgba(0,0,0,0.43)" }}>
+              <div className="glass relative z-10 h-full w-full overflow-hidden rounded-[2rem] p-2 shadow-2xl" style={{ backgroundColor: "rgba(0,0,0,0.43)" }}>
                 <div className="relative h-full w-full overflow-hidden rounded-[1.6rem]">
-                  <picture>
-                    <source media="(max-width: 640px)" srcSet="/images/piyush_raj_dark_bg%20(Phone).png" />
-                    <source media="(max-width: 768px)" srcSet="/images/piyush_raj_dark_bg%20(Small).png" />
-                    <source media="(max-width: 1024px)" srcSet="/images/piyush_raj_dark_bg%20(Medium).png" />
-                    <source media="(max-width: 1280px)" srcSet="/images/piyush_raj_dark_bg%20(Large).png" />
-                    <img
-                      src={profile.imgUrl}
-                      alt={`Portrait of ${profile.name}`}
-                      className="h-full w-full object-cover"
-                    />
-                  </picture>
+                  <Image
+                    src={profile.imgUrl}
+                    alt={`Portrait of ${profile.name}`}
+                    fill
+                    priority
+                    sizes="(max-width: 1024px) 80vw, 400px"
+                    className="object-cover"
+                  />
                 </div>
               </div>
 
@@ -212,8 +209,8 @@ export function HeroSection() {
                 <p className="text-sm font-medium text-foreground">{profile.roleDescription}</p>
               </div>
 
-              {/* Floating Tech Icons Orbiting */}
-              <div className="absolute inset-[-4rem] z-30 pointer-events-none">
+              {/* Floating Tech Icons Orbiting — desktop only to avoid mobile/tablet collisions */}
+              <div className="pointer-events-none absolute inset-[-4rem] z-30 hidden lg:block">
                 {techStack.map((tech, idx) => {
                   const Icon = getTechIcon(tech.name);
                   // Alternating animation values for more organic feel
@@ -223,7 +220,7 @@ export function HeroSection() {
                   return (
                     <motion.div
                       key={tech.name}
-                      className="absolute flex items-center justify-center rounded-2xl border border-white/20 bg-black/40 p-3 shadow-[0_0_30px_-5px_rgba(255,255,255,0.15)] backdrop-blur-xl pointer-events-auto cursor-pointer transition-all duration-300 hover:scale-125 hover:border-primary/50 hover:bg-white/10 group"
+                      className="pointer-events-none absolute flex items-center justify-center rounded-2xl border border-white/20 bg-black/40 p-3 shadow-[0_0_30px_-5px_rgba(255,255,255,0.15)] backdrop-blur-xl"
                       style={tech.position}
                       initial={{ opacity: 0, scale: 0 }}
                       animate={{
@@ -241,19 +238,17 @@ export function HeroSection() {
                         rotate: { duration: 7, repeat: Infinity, ease: "easeInOut", delay: tech.delay }
                       }}
                     >
-                      {/* Glow Behind Icon on Hover */}
-                      <div className="absolute inset-0 rounded-2xl bg-primary/20 opacity-0 blur-xl transition-opacity duration-300 group-hover:opacity-100" />
-                      <Icon aria-hidden="true" className="relative z-10 text-text-secondary transition-colors duration-300 group-hover:text-foreground drop-shadow-sm group-hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.5)]" style={{ width: tech.size, height: tech.size }} />
+                      <Icon aria-hidden="true" className="relative z-10 text-text-secondary drop-shadow-sm" style={{ width: tech.size, height: tech.size }} />
                     </motion.div>
                   );
                 })}
               </div>
 
               {/* Decorative Orbital Rings */}
-              <div className="absolute inset-[-4rem] flex items-center justify-center pointer-events-none opacity-20">
+              <div className="pointer-events-none absolute inset-[-4rem] hidden items-center justify-center opacity-20 lg:flex">
                 <div className="absolute size-full rounded-full border border-dashed border-white/20 animate-[spin_60s_linear_infinite]" />
                 <div className="absolute size-[85%] rounded-full border border-solid border-white/5 animate-[spin_80s_linear_infinite]" />
-                <div className="absolute size-[70%] rounded-full border border-dotted border-white/30 animate-[spin_40s_linear_infinite_reverse]" />
+                <div className="absolute size-[70%] rounded-full border border-dotted border-white/30 animate-[spin_40s_linear_infinite] [animation-direction:reverse]" />
               </div>
             </div>
           </motion.div>
@@ -272,7 +267,7 @@ export function HeroSection() {
               <motion.li
                 key={stat.label}
                 variants={itemVariants}
-                className="glass rounded-2xl p-5 transition-colors duration-300 hover:border-white/20"
+                className="glass rounded-2xl p-5 transition-colors duration-300 sm:p-6 hover:border-white/20"
               >
                 <p className="text-2xl font-semibold tracking-tight sm:text-3xl">
                   {stat.value}

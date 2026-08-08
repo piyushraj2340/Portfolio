@@ -10,7 +10,7 @@ import { navigationItems } from "@/content/navigation";
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-  const [active, setActive] = useState<string>("#home");
+  const [active, setActive] = useState<string>("#hero");
 
   const initials = profile.name
     .split(" ")
@@ -85,7 +85,7 @@ export function Header() {
           )}
         >
           <a
-            href="#home"
+            href="#hero"
             className="group flex items-center gap-2.5 rounded-xl px-1 py-1"
           >
             <span className="relative grid size-9 place-items-center overflow-hidden rounded-xl bg-gradient-to-br from-primary via-secondary to-accent font-mono text-sm font-semibold text-primary-foreground">

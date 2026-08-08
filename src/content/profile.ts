@@ -2,7 +2,7 @@ import type { Profile } from "@/types/profile";
 
 export const profile: Profile = {
   name: "Piyush Raj",
-  imgUrl: "/images/piyush_raj_dark_bg.png",
+  imgUrl: "/images/piyush-raj-hero.webp",
   role: "Software Engineer",
   roleDescription: "Full Stack Developer",
   summary:

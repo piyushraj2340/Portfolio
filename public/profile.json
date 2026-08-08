@@ -1,0 +1,35 @@
+{
+  "name": "Piyush Raj",
+  "role": "Software Engineer",
+  "roleDescription": "Full Stack Developer",
+  "yearsOfExperience": 2,
+  "location": "India",
+  "availability": "Available for Opportunities",
+  "email": "piyushraj2340@gmail.com",
+  "summary": "Software Engineer with 2 years of experience specializing in C#, ASP.NET Core, React, and Azure. Proven track record of building robust, scalable web applications and optimizing backend infrastructure.",
+  "resume": "/resume/piyush_raj_resume.pdf",
+  "social": {
+    "github": "https://github.com/piyushraj2340",
+    "linkedin": "https://linkedin.com/in/piyushraj2340"
+  },
+  "stack": [
+    "C#",
+    "ASP.NET Core",
+    "React",
+    "Next.js",
+    "TypeScript",
+    "SQL Server",
+    "Azure",
+    "Entity Framework Core"
+  ],
+  "sections": {
+    "hero": "/#hero",
+    "about": "/#about",
+    "skills": "/#skills",
+    "experience": "/#experience",
+    "projects": "/#projects",
+    "education": "/#education",
+    "achievements": "/#certifications",
+    "contact": "/#contact"
+  }
+}
