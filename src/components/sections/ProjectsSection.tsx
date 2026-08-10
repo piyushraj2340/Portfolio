@@ -47,7 +47,7 @@ export function ProjectsSection() {
                     className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
                   />
                   <div className="absolute left-4 top-4 z-20 flex items-center justify-between w-[calc(100%-2rem)]">
-                    <span className="flex size-10 items-center justify-center rounded-xl bg-background/50 backdrop-blur-md border border-white/10 shadow-lg transition-transform duration-500 group-hover:scale-110">
+                    <span className="flex size-10 items-center justify-center rounded-xl bg-background/15 backdrop-blur-md border border-white/10 shadow-lg transition-transform duration-500 group-hover:scale-110">
                       <FolderGit2 className="size-4 text-primary" />
                     </span>
                     {/* Links in image header */}
