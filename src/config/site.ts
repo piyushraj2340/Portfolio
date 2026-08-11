@@ -1,7 +1,7 @@
 import { profile } from "@/content/profile";
 
 const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") || "http://localhost:3000";
+  process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") || "https://www.piyushraj.me";
 
 export const siteConfig = {
   name: profile.name,
@@ -11,7 +11,7 @@ export const siteConfig = {
   url: siteUrl,
   location: profile.location,
   email: "piyushraj2340@gmail.com",
-  resumeUrl: "/resume/piyush_raj_resume.pdf",
+  resumeUrl: "https://www.piyushraj.me/resume/piyush_raj_resume.pdf",
   ogImage: "/og-images/og-image.webp",
   locale: "en_US",
 };

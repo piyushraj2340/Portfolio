@@ -57,17 +57,6 @@ export function Footer() {
             })}
           </div>
 
-          {/* Back to top */}
-          <motion.button
-            whileHover={{ y: -2 }}
-            whileTap={{ scale: 0.98 }}
-            type="button"
-            onClick={scrollToTop}
-            className="group flex items-center gap-2 text-sm font-medium text-text-secondary transition-colors duration-300 hover:text-foreground"
-          >
-            Back to top
-            <ArrowUp className="size-4" aria-hidden="true" />
-          </motion.button>
         </div>
       </Container>
     </footer>
