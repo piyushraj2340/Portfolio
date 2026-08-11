@@ -84,7 +84,7 @@ export function EducationSection() {
                           )}
                         </p>
                       </div>
-                      <p className="rounded-full border border-white/10 bg-white/5 px-3 py-1 font-mono text-xs text-text-muted">
+                      <p className="rounded-full border border-white/10 bg-white/5 px-3 py-1 font-mono text-xs text-text-muted transition-colors duration-300 group-hover:border-primary/30 group-hover:text-foreground">
                         {formatDate(item.startDate)} - {formatDate(item.endDate)}
                       </p>
                     </div>
@@ -106,7 +106,7 @@ export function EducationSection() {
                             {item.coursework.map((course) => (
                               <span
                                 key={course}
-                                className="rounded-lg border border-white/10 bg-white/5 px-2.5 py-1 text-xs text-text-secondary transition-colors duration-300 group-hover:text-foreground"
+                                className="interactive-chip rounded-lg border border-white/10 bg-white/5 px-2.5 py-1 text-xs text-text-secondary"
                               >
                                 {course}
                               </span>

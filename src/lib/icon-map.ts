@@ -57,7 +57,7 @@ const techIconMap: Record<string, IconType> = {
   csharp: TbBrandCSharp,
   javascript: SiJavascript,
   typescript: SiTypescript,
-  javascripttypescript: SiJavascript,
+  javascripttypescript: SiTypescript,
   htmlcss: FaHtml5,
   html5css3: FaHtml5,
   html: SiHtml5,

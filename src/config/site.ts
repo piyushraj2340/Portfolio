@@ -16,7 +16,7 @@ export const siteConfig = {
   email: "piyushraj2340@gmail.com",
   resumeUrl: "https://www.piyushraj.me/resume/piyush_raj_resume.pdf",
   // New filename busts LinkedIn's cached thumbnail. 2x 1200x627 for a sharper 160px shrink.
-  ogImage: "/og-images/share-card.jpg",
+  ogImage: "/og-images/og-mark.jpg",
   ogImageWidth: 2400,
   ogImageHeight: 1254,
   locale: "en_US",

@@ -98,7 +98,7 @@ export function Header() {
             href="#hero"
             className="group flex items-center gap-2.5 rounded-xl px-1 py-1"
           >
-            <span className="relative grid size-9 place-items-center overflow-hidden rounded-xl bg-gradient-to-br from-primary via-secondary to-accent font-mono text-sm font-semibold text-primary-foreground transition-transform duration-300 group-hover:scale-105 group-hover:shadow-[0_0_20px_-6px_var(--primary)]">
+            <span className="relative grid size-9 place-items-center overflow-hidden rounded-xl bg-gradient-to-br from-primary via-secondary to-accent font-mono text-sm font-semibold text-primary-foreground transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3 group-hover:shadow-[0_0_20px_-6px_var(--primary)]">
               {initials}
             </span>
             <span className="hidden text-sm font-semibold tracking-tight text-foreground sm:block">
@@ -161,15 +161,16 @@ export function Header() {
                 aria-hidden="true"
                 className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-black/10 to-transparent transition-transform duration-700 group-hover/resume:translate-x-full"
               />
-              <Download className="relative size-4" aria-hidden="true" />
-              <span className="relative">Download Resume</span>
+              <Download className="relative size-4 transition-transform duration-300 group-hover/resume:-translate-y-0.5" aria-hidden="true" />
+              <span className="relative hidden xl:inline">Download Resume</span>
+              <span className="relative xl:hidden">Resume</span>
             </a>
             <button
               type="button"
               onClick={() => setOpen((value) => !value)}
               aria-expanded={open}
               aria-controls="mobile-menu"
-              className="glass grid size-10 place-items-center rounded-xl text-foreground lg:hidden"
+              className="glass grid size-10 place-items-center rounded-xl text-foreground transition-colors duration-200 hover:border-primary/40 hover:text-primary lg:hidden"
             >
               <span className="sr-only">
                 {open ? "Close menu" : "Open menu"}

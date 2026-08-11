@@ -9,8 +9,8 @@ const HEIGHT = 1254;
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const svgPath = join(root, "scripts", "og-card.svg");
 const outDir = join(root, "public", "og-images");
-const jpgPath = join(outDir, "share-card.jpg");
-const pngPath = join(outDir, "share-card.png");
+const jpgPath = join(outDir, "og-mark.jpg");
+const pngPath = join(outDir, "og-mark.png");
 const appDir = join(root, "src", "app");
 
 const svg = await readFile(svgPath);

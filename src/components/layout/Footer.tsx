@@ -40,10 +40,10 @@ export function Footer() {
                   href={link.href}
                   target={normalized === "email" ? undefined : "_blank"}
                   rel={normalized === "email" ? undefined : "noopener noreferrer"}
-                  className="grid size-8 place-items-center rounded-lg text-text-secondary transition-all duration-300 hover:-translate-y-0.5 hover:bg-white/5 hover:text-foreground"
+                  className="group grid size-9 place-items-center rounded-lg text-text-secondary transition-all duration-300 hover:-translate-y-0.5 hover:bg-primary/10 hover:text-primary"
                   aria-label={link.label}
                 >
-                  <Icon className="size-4" aria-hidden="true" />
+                  <Icon className="size-4 transition-transform duration-300 group-hover:scale-110" aria-hidden="true" />
                 </Link>
               );
             })}

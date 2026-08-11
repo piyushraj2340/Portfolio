@@ -85,7 +85,7 @@ export function ExperienceSection() {
                           )}
                         </p>
                       </div>
-                      <p className="rounded-full border border-white/10 bg-white/5 px-3 py-1 font-mono text-xs text-text-muted">
+                      <p className="rounded-full border border-white/10 bg-white/5 px-3 py-1 font-mono text-xs text-text-muted transition-colors duration-300 group-hover:border-primary/30 group-hover:text-foreground">
                         {formatDate(item.startDate)} - {formatDate(item.endDate)}
                       </p>
                     </div>
@@ -141,7 +141,7 @@ export function ExperienceSection() {
                         return (
                           <span
                             key={tech}
-                            className="inline-flex items-center gap-1.5 text-xs font-mono text-text-muted"
+                            className="interactive-chip inline-flex items-center gap-1.5 rounded-lg border border-transparent px-2 py-1 font-mono text-xs text-text-muted"
                           >
                             <Icon className="size-3.5 opacity-70" aria-hidden="true" />
                             {tech}

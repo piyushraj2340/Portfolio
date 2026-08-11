@@ -2,13 +2,12 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, ArrowDown, Download, MapPin } from "lucide-react";
+import { ArrowRight, ArrowDown, Mail, MapPin } from "lucide-react";
 import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
 import { FiGlobe } from "react-icons/fi";
 import { motion, Variants } from "framer-motion";
 import { profile } from "@/content/profile";
 import { socialLinks } from "@/content/social";
-import { siteConfig } from "@/config/site";
 import { Container } from "@/components/layout/Container";
 import { getTechIcon } from "@/lib/icon-map";
 import { TypingRoles } from "@/components/shared/TypingRoles";
@@ -20,15 +19,22 @@ const socialIconMap: Record<string, React.ElementType> = {
   email: FaEnvelope,
 };
 
-// Floating tech stack icons setup
+// Placed in hero gutters — keep clear of the portrait column on the right
 const techStack = [
-  { name: ".NET Core", position: { top: "5%", left: "15%" }, size: 40, delay: 0 },
-  { name: "Node.js", position: { top: "15%", right: "10%" }, size: 48, delay: 1.5 },
-  { name: "React", position: { bottom: "25%", left: "5%" }, size: 56, delay: 3 },
-  { name: "SQL", position: { bottom: "15%", right: "15%" }, size: 40, delay: 0.5 },
-  { name: "MongoDB", position: { top: "45%", left: "-5%" }, size: 32, delay: 2 },
-  { name: "Docker", position: { top: "60%", right: "-5%" }, size: 48, delay: 1 },
-  { name: "Git", position: { top: "-5%", left: "50%" }, size: 36, delay: 2.5 },
+  { name: "C#", position: { top: "8%", right: "36%" }, size: 40, delay: 0 },
+  { name: ".NET", position: { top: "26%", right: "51%" }, size: 38, delay: 0.6 },
+  { name: "SQL Server", position: { top: "48%", right: "13%" }, size: 36, delay: 1.2 },
+  { name: "React", position: { top: "14%", right: "46%" }, size: 42, delay: 0.3 },
+  { name: "Azure", position: { top: "12%", right: "6%" }, size: 38, delay: 1.5 },
+  { name: "Git", position: { top: "53%", right: "45%" }, size: 34, delay: 0.9 },
+  { name: "Docker", position: { top: "62%", right: "26%" }, size: 40, delay: 1.8 },
+  { name: "Node.js", position: { top: "25%", right: "12%" }, size: 38, delay: 0.4 },
+  { name: "MongoDB", position: { top: "12%", right: "25%" }, size: 34, delay: 2.1 },
+  { name: "SQL", position: { top: "37%", right: "43%" }, size: 34, delay: 2.4 },
+  { name: "REST APIs", position: { top: "34%", right: "3%" }, size: 34, delay: 2.4 },
+  { name: "GitHub", position: { top: "64%", right: "39%" }, size: 34, delay: 2.4 },
+  { name: "PostgreSQL", position: { top: "9%", right: "17%" }, size: 34, delay: 2.4 },
+  { name: "JavaScript/TypeScript", position: { top: "54%", right: "5%" }, size: 34, delay: 2.4 },
 ];
 
 const typingRoles = ["Full Stack Engineer", "Backend Specialist", ".NET Core & React"];
@@ -83,6 +89,61 @@ export function HeroSection() {
           transition={{ duration: 20, repeat: Infinity, ease: "easeInOut", delay: 2 }}
         />
         <div className="absolute inset-0 bg-background/50 backdrop-blur-[1px] grid-pattern mix-blend-overlay" />
+      </div>
+
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 z-[5] hidden lg:block"
+      >
+        {techStack.map((tech, idx) => {
+          const Icon = getTechIcon(tech.name);
+          const yFloat = idx % 2 === 0 ? -18 : 18;
+          const xFloat = idx % 3 === 0 ? 12 : -12;
+
+          return (
+            <motion.div
+              key={tech.name}
+              title={tech.name}
+              className="group/tech pointer-events-auto absolute flex items-center justify-center rounded-2xl border border-white/15 bg-black/35 p-2.5 shadow-[0_0_24px_-6px_rgba(255,255,255,0.12)] backdrop-blur-xl transition-colors duration-300 hover:border-primary/50 hover:bg-primary/15 hover:shadow-[var(--glow-primary)]"
+              style={tech.position}
+              initial={{ opacity: 0, scale: 0 }}
+              animate={{
+                opacity: 0.9,
+                scale: 1,
+                y: [0, yFloat, 0],
+                x: [0, xFloat, 0],
+                rotate: [0, idx % 2 === 0 ? 8 : -8, 0],
+              }}
+              transition={{
+                opacity: { delay: 0.7 + idx * 0.08, duration: 0.45 },
+                scale: { delay: 0.7 + idx * 0.08, type: "spring" },
+                y: {
+                  duration: 5 + (idx % 3),
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: tech.delay,
+                },
+                x: {
+                  duration: 6 + (idx % 2),
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: tech.delay,
+                },
+                rotate: {
+                  duration: 7,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: tech.delay,
+                },
+              }}
+            >
+              <Icon
+                className="text-text-secondary drop-shadow-sm transition-transform duration-300 group-hover/tech:scale-110 group-hover/tech:text-primary"
+                style={{ width: tech.size, height: tech.size }}
+              />
+            </motion.div>
+          );
+        })}
       </div>
 
       <Container className="relative z-10">
@@ -147,13 +208,11 @@ export function HeroSection() {
                 <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
               </Link>
               <Link
-                href={siteConfig.resumeUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="glass inline-flex h-12 items-center justify-center gap-2 rounded-xl px-6 text-sm font-medium transition-all duration-300 hover:-translate-y-0.5 hover:border-foreground/25 hover:bg-white/5"
+                href="#contact"
+                className="group glass inline-flex h-12 items-center justify-center gap-2 rounded-xl px-6 text-sm font-medium transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/40 hover:bg-primary/10 hover:text-primary"
               >
-                <Download className="size-4" aria-hidden="true" />
-                Download Resume
+                <Mail className="size-4 transition-transform duration-300 group-hover:scale-110" aria-hidden="true" />
+                Contact
               </Link>
             </motion.div>
 
@@ -167,10 +226,10 @@ export function HeroSection() {
                       href={link.href}
                       target={normalized === "email" ? undefined : "_blank"}
                       rel={normalized === "email" ? undefined : "noopener noreferrer"}
-                      className="glass group grid size-11 place-items-center rounded-xl text-text-muted transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:text-foreground hover:shadow-[var(--glow-primary)]"
+                      className="glass group grid size-11 place-items-center rounded-xl text-text-muted transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:text-primary hover:shadow-[var(--glow-primary)]"
                       aria-label={link.label}
                     >
-                      <Icon className="size-5" aria-hidden="true" />
+                      <Icon className="size-5 transition-transform duration-300 group-hover:scale-110" aria-hidden="true" />
                     </Link>
                   </li>
                 );
@@ -209,41 +268,6 @@ export function HeroSection() {
                 <p className="text-sm font-medium text-foreground">{profile.roleDescription}</p>
               </div>
 
-              {/* Floating Tech Icons Orbiting — desktop only to avoid mobile/tablet collisions */}
-              <div className="pointer-events-none absolute inset-[-4rem] z-30 hidden lg:block">
-                {techStack.map((tech, idx) => {
-                  const Icon = getTechIcon(tech.name);
-                  // Alternating animation values for more organic feel
-                  const yFloat = idx % 2 === 0 ? -25 : 25;
-                  const xFloat = idx % 3 === 0 ? 15 : -15;
-
-                  return (
-                    <motion.div
-                      key={tech.name}
-                      className="pointer-events-none absolute flex items-center justify-center rounded-2xl border border-white/20 bg-black/40 p-3 shadow-[0_0_30px_-5px_rgba(255,255,255,0.15)] backdrop-blur-xl"
-                      style={tech.position}
-                      initial={{ opacity: 0, scale: 0 }}
-                      animate={{
-                        opacity: 1,
-                        scale: 1,
-                        y: [0, yFloat, 0],
-                        x: [0, xFloat, 0],
-                        rotate: [0, (idx % 2 === 0 ? 10 : -10), 0]
-                      }}
-                      transition={{
-                        opacity: { delay: 0.8 + (idx * 0.1), duration: 0.5 },
-                        scale: { delay: 0.8 + (idx * 0.1), type: "spring" },
-                        y: { duration: 5 + (idx % 3), repeat: Infinity, ease: "easeInOut", delay: tech.delay },
-                        x: { duration: 6 + (idx % 2), repeat: Infinity, ease: "easeInOut", delay: tech.delay },
-                        rotate: { duration: 7, repeat: Infinity, ease: "easeInOut", delay: tech.delay }
-                      }}
-                    >
-                      <Icon aria-hidden="true" className="relative z-10 text-text-secondary drop-shadow-sm" style={{ width: tech.size, height: tech.size }} />
-                    </motion.div>
-                  );
-                })}
-              </div>
-
               {/* Decorative Orbital Rings */}
               <div className="pointer-events-none absolute inset-[-4rem] hidden items-center justify-center opacity-20 lg:flex">
                 <div className="absolute size-full rounded-full border border-dashed border-white/20 animate-[spin_60s_linear_infinite]" />
@@ -267,12 +291,16 @@ export function HeroSection() {
               <motion.li
                 key={stat.label}
                 variants={itemVariants}
-                className="glass rounded-2xl p-5 transition-colors duration-300 sm:p-6 hover:border-white/20"
+                className="group glass relative overflow-hidden rounded-2xl p-5 transition-all duration-300 hover:-translate-y-1.5 hover:border-primary/40 hover:bg-white/[0.06] hover:shadow-[var(--shadow-lg),var(--glow-primary)] sm:p-6"
               >
-                <p className="text-2xl font-semibold tracking-tight sm:text-3xl">
+                <div
+                  aria-hidden="true"
+                  className="pointer-events-none absolute -top-16 -right-12 size-32 rounded-full bg-primary/25 opacity-0 blur-2xl transition-opacity duration-300 group-hover:opacity-100"
+                />
+                <p className="relative text-2xl font-semibold tracking-tight transition-colors duration-300 group-hover:text-primary sm:text-3xl">
                   {stat.value}
                 </p>
-                <p className="mt-1 text-xs leading-relaxed text-text-muted sm:text-sm">
+                <p className="relative mt-1 text-xs leading-relaxed text-text-muted transition-colors duration-300 group-hover:text-foreground sm:text-sm">
                   {stat.label}
                 </p>
               </motion.li>
