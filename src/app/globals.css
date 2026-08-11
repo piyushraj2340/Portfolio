@@ -19,9 +19,10 @@
   --popover-foreground: #FFFFFF;
 
   /* --- Brand Colors --- */
-  --primary: #3B82F6;
-  --primary-hover: #2563EB;
-  --primary-active: #1D4ED8;
+  /* Primary darkened vs blue-500 so white label text meets WCAG AA (~4.5:1+) */
+  --primary: #2563EB;
+  --primary-hover: #1D4ED8;
+  --primary-active: #1E40AF;
   --primary-foreground: #FFFFFF;
 
   --secondary: #8B5CF6;
@@ -37,7 +38,7 @@
   --muted-foreground: #A1A1AA;
   --border: rgba(255, 255, 255, 0.08);
   --input: rgba(255, 255, 255, 0.08);
-  --ring: #3B82F6;
+  --ring: #2563EB;
 
   /* --- Semantic Colors --- */
   --destructive: #EF4444;
@@ -46,7 +47,7 @@
   --info: #3B82F6;
 
   /* --- Surface Scale --- */
-  --surface: #09090B;
+  --surface: #0C0C0F;
   --surface-elevated: #131316;
   --surface-overlay: rgba(255, 255, 255, 0.03);
 
@@ -177,6 +178,14 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+/* Runtime class toggled by CustomCursor — keep explicit so Tailwind purge cannot drop it */
+html.cursor-none,
+html.cursor-none * {
+  cursor: none !important;
 }
 
 body {
@@ -184,6 +193,11 @@ body {
   line-height: 1.7;
   background-color: var(--background);
   color: var(--foreground);
+  overflow-x: hidden;
+}
+
+textarea {
+  overscroll-behavior: contain;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -200,21 +214,38 @@ h1, h2, h3, h4, h5, h6 {
 .glass-card {
   background: rgba(255, 255, 255, 0.02);
   border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: var(--radius-xl);
+  border-radius: var(--radius-2xl);
 }
 
 .glass-card-hover {
   background: rgba(255, 255, 255, 0.02);
   border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: var(--radius-xl);
-  transition: all var(--duration-normal) var(--ease-default);
+  border-radius: var(--radius-2xl);
+  transition:
+    background var(--duration-normal) var(--ease-default),
+    border-color var(--duration-normal) var(--ease-default),
+    box-shadow var(--duration-normal) var(--ease-default);
 }
 
-.glass-card:hover {
-  background: rgba(255, 255, 255, 0.04);
-  border-color: rgba(255, 255, 255, 0.1);
-  box-shadow: var(--glow-primary);
-  transform: translateY(-4px);
+.glass-card-hover:hover {
+  background: rgba(255, 255, 255, 0.045);
+  border-color: rgba(255, 255, 255, 0.14);
+  box-shadow: var(--glow-primary), 0 18px 40px -24px rgba(0, 0, 0, 0.7);
+}
+
+.interactive-chip {
+  transition:
+    color var(--duration-fast) var(--ease-default),
+    border-color var(--duration-fast) var(--ease-default),
+    background-color var(--duration-fast) var(--ease-default),
+    transform var(--duration-fast) var(--ease-default);
+}
+
+.interactive-chip:hover {
+  color: var(--foreground);
+  border-color: rgba(37, 99, 235, 0.45);
+  background-color: rgba(37, 99, 235, 0.1);
+  transform: translateY(-1px);
 }
 
 .glass {
@@ -222,13 +253,6 @@ h1, h2, h3, h4, h5, h6 {
   border: 1px solid var(--border);
   backdrop-filter: blur(16px) saturate(140%);
   -webkit-backdrop-filter: blur(16px) saturate(140%);
-}
-
-.glass-nav {
-  background: rgba(9, 9, 11, 0.9);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
 }
 
 @keyframes drift {
@@ -252,149 +276,15 @@ h1, h2, h3, h4, h5, h6 {
   animation: drift 18s linear infinite;
 }
 
-/* Removed float and pulse-glow animations */
-
-@keyframes fade-in-up {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fade-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes scale-in {
-  from {
-    opacity: 0;
-    transform: scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-@keyframes typing-cursor {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
-}
-
-@keyframes slide-in-right {
-  from {
-    opacity: 0;
-    transform: translateX(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-/* ==========================================================================
-   Animation Utility Classes
-   ========================================================================== */
-
-/* Removed animate-float, gradient, and pulse classes */
-
-.animate-fade-in-up {
-  animation: fade-in-up 0.6s var(--ease-out) forwards;
-}
-
-.animate-fade-in {
-  animation: fade-in 0.5s var(--ease-out) forwards;
-}
-
-.animate-scale-in {
-  animation: scale-in 0.5s var(--ease-spring) forwards;
-}
-
-.animate-typing-cursor {
-  animation: typing-cursor 1s step-end infinite;
-}
-
-/* Staggered delay utilities */
-.delay-100 { animation-delay: 100ms; }
-.delay-200 { animation-delay: 200ms; }
-.delay-300 { animation-delay: 300ms; }
-.delay-400 { animation-delay: 400ms; }
-.delay-500 { animation-delay: 500ms; }
-.delay-600 { animation-delay: 600ms; }
-.delay-700 { animation-delay: 700ms; }
-
-/* ==========================================================================
-   Scroll Reveal (CSS-only, enhanced by JS IntersectionObserver)
-   ========================================================================== */
-
-.reveal {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out);
-}
-
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.reveal-scale {
-  opacity: 0;
-  transform: scale(0.95);
-  transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-spring);
-}
-
-.reveal-scale.visible {
-  opacity: 1;
-  transform: scale(1);
-}
-
-/* ==========================================================================
-   Component Utilities
-   ========================================================================== */
-
 .text-balance {
   text-wrap: balance;
 }
 
-.section-divider {
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.06), transparent);
-}
-
-/* Progress bar for skills */
-.progress-bar {
-  height: 4px;
-  border-radius: var(--radius-full);
-  background: rgba(255, 255, 255, 0.06);
-  overflow: hidden;
-}
-
-.progress-bar-fill {
-  height: 100%;
-  border-radius: var(--radius-full);
-  background: linear-gradient(90deg, var(--primary), var(--secondary));
-  transition: width 1s var(--ease-out);
-}
-
-/* Timeline */
-.timeline-line {
-  width: 2px;
-  background: linear-gradient(180deg, var(--primary), transparent);
-}
-
-.timeline-dot {
-  width: 12px;
-  height: 12px;
-  border-radius: var(--radius-full);
-  background: var(--primary);
-  border: 2px solid var(--background);
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+.grid-pattern {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 64px 64px;
 }
 
 /* ==========================================================================
@@ -408,12 +298,6 @@ h1, h2, h3, h4, h5, h6 {
     animation: none !important;
     transition: none !important;
     scroll-behavior: auto !important;
-  }
-
-  .reveal,
-  .reveal-scale {
-    opacity: 1 !important;
-    transform: none !important;
   }
 }
 

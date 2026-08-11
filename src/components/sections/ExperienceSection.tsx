@@ -7,7 +7,6 @@ import { experiences } from "@/content/experience";
 import { Section } from "@/components/layout/Section";
 import { SectionHeading } from "@/components/shared/SectionHeading";
 import { ScrollReveal } from "@/components/shared/ScrollReveal";
-import { Container } from "@/components/layout/Container";
 import { getTechIcon } from "@/lib/icon-map";
 
 function formatDate(date: string): string {
@@ -35,16 +34,17 @@ export function ExperienceSection() {
   });
 
   return (
-    <Section id="experience" aria-labelledby="experience-heading" className="bg-background">
+    <Section id="experience" aria-labelledby="experience-heading" className="bg-surface">
         <ScrollReveal>
           <SectionHeading
+            id="experience-heading"
             eyebrow="Experience"
             title="Two years of shipping, owning, and on-call."
             description="Roles where I moved from writing features to owning services end to end."
           />
         </ScrollReveal>
 
-        <div ref={containerRef} className="relative mt-12 pb-8">
+        <div ref={containerRef} className="relative mt-12">
           <div role="list" className="relative flex flex-col space-y-6 pl-8 sm:pl-12">
             {/* Animated Vertical Line */}
             <div className="absolute left-[7px] sm:left-[11px] top-2 bottom-0 w-[2px] bg-white/10 origin-top">
@@ -62,11 +62,11 @@ export function ExperienceSection() {
               >
                 <div role="listitem" className="group relative">
                   {/* Timeline Node */}
-                  <span className="absolute -left-[29px] sm:-left-[41px] top-7 flex h-2.5 w-2.5 items-center justify-center rounded-full bg-primary/20 ring-4 ring-background">
+                  <span className="absolute -left-[29px] top-7 flex h-2.5 w-2.5 items-center justify-center rounded-full bg-primary/20 ring-4 ring-background transition-transform duration-300 group-hover:scale-125 sm:-left-[41px]">
                     <span className="h-1 w-1 rounded-full bg-primary" />
                   </span>
 
-                  <article className="glass rounded-3xl p-6 transition-all duration-500 group-hover:-translate-y-1 group-hover:border-white/20 sm:p-8">
+                  <article className="glass rounded-2xl p-6 transition-all duration-300 group-hover:-translate-y-1.5 group-hover:border-white/20 group-hover:shadow-[var(--glow-primary)] sm:p-8">
                     <div className="flex flex-wrap items-start justify-between gap-3">
                       <div>
                         <h3 className="text-lg font-semibold tracking-tight text-foreground sm:text-xl">
@@ -78,7 +78,7 @@ export function ExperienceSection() {
                             {item.company}
                           </span>
                           {item.location && (
-                            <span className="inline-flex items-center gap-1.5 text-text-secondary">
+                            <span className="inline-flex items-center gap-1.5 text-text-muted">
                               <MapPin className="size-4" aria-hidden="true" />
                               {item.location}
                             </span>

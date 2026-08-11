@@ -17,9 +17,10 @@ function formatDate(date: string): string {
 
 export function CertificationsSection() {
   return (
-    <Section id="certifications">
+    <Section id="certifications" aria-labelledby="certifications-heading">
       <ScrollReveal>
         <SectionHeading
+          id="certifications-heading"
           eyebrow="Achievements"
           title="Problem solving milestones"
           description="Consistent practice and algorithmic problem solving across various platforms."
@@ -31,11 +32,10 @@ export function CertificationsSection() {
           <ScrollReveal 
             key={cert.name} 
             delay={index * 100}
-            className={index === certifications.length - 1 && certifications.length % 3 === 2 ? "lg:col-span-2" : ""}
           >
-              <Card hoverable className="flex h-full flex-col p-6 md:p-8">
+              <Card hoverable className="flex h-full flex-col p-6 sm:p-8">
                 <div>
-                  <h3 className="text-lg font-bold tracking-tight text-foreground">
+                  <h3 className="text-lg font-semibold tracking-tight text-foreground sm:text-xl">
                     {cert.name}
                   </h3>
                   <p className="mt-1 text-sm font-semibold text-primary">
@@ -53,9 +53,10 @@ export function CertificationsSection() {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-1.5 text-xs font-semibold text-foreground transition-colors hover:text-primary"
+                      aria-label={`Verify ${cert.name} credential`}
                     >
                       Verify
-                      <ExternalLink className="size-3.5" />
+                      <ExternalLink className="size-3.5" aria-hidden="true" />
                     </Link>
                   )}
                 </div>

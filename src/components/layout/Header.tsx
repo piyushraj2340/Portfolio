@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { Download, Menu, X } from "lucide-react";
+import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { profile } from "@/content/profile";
 import { siteConfig } from "@/config/site";
@@ -10,7 +11,8 @@ import { navigationItems } from "@/content/navigation";
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-  const [active, setActive] = useState<string>("#home");
+  const [active, setActive] = useState<string>("#hero");
+  const [hovered, setHovered] = useState<string | null>(null);
 
   const initials = profile.name
     .split(" ")
@@ -18,7 +20,15 @@ export function Header() {
     .join("");
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 16);
+    let ticking = false;
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        setScrolled(window.scrollY > 16);
+        ticking = false;
+      });
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -85,10 +95,10 @@ export function Header() {
           )}
         >
           <a
-            href="#home"
+            href="#hero"
             className="group flex items-center gap-2.5 rounded-xl px-1 py-1"
           >
-            <span className="relative grid size-9 place-items-center overflow-hidden rounded-xl bg-gradient-to-br from-primary via-secondary to-accent font-mono text-sm font-semibold text-primary-foreground">
+            <span className="relative grid size-9 place-items-center overflow-hidden rounded-xl bg-gradient-to-br from-primary via-secondary to-accent font-mono text-sm font-semibold text-primary-foreground transition-transform duration-300 group-hover:scale-105 group-hover:shadow-[0_0_20px_-6px_var(--primary)]">
               {initials}
             </span>
             <span className="hidden text-sm font-semibold tracking-tight text-foreground sm:block">
@@ -99,30 +109,45 @@ export function Header() {
             </span>
           </a>
 
-          <ul className="hidden items-center gap-1 lg:flex">
-            {navigationItems.map((link) => (
-              <li key={link.href}>
-                <a
-                  href={link.href}
-                  aria-current={active === link.href ? "page" : undefined}
-                  className={cn(
-                    "relative rounded-lg px-3 py-2 text-sm transition-colors",
-                    active === link.href
-                      ? "text-foreground"
-                      : "text-text-muted hover:text-foreground"
-                  )}
-                >
-                  {link.label}
-                  <span
-                    aria-hidden="true"
+          <ul
+            className="hidden items-center gap-1 lg:flex"
+            onMouseLeave={() => setHovered(null)}
+          >
+            {navigationItems.map((link) => {
+              const isActive = active === link.href;
+              const isHot = hovered === link.href || (hovered === null && isActive);
+              return (
+                <li key={link.href}>
+                  <a
+                    href={link.href}
+                    aria-current={isActive ? "page" : undefined}
+                    onMouseEnter={() => setHovered(link.href)}
                     className={cn(
-                      "absolute inset-x-3 -bottom-0.5 h-px rounded-full bg-gradient-to-r from-primary to-accent transition-opacity duration-300",
-                      active === link.href ? "opacity-100" : "opacity-0"
+                      "relative rounded-lg px-3 py-2 text-sm transition-colors duration-200",
+                      isActive || hovered === link.href
+                        ? "text-foreground"
+                        : "text-text-muted"
                     )}
-                  />
-                </a>
-              </li>
-            ))}
+                  >
+                    {isHot && (
+                      <motion.span
+                        layoutId="nav-pill"
+                        aria-hidden="true"
+                        className="absolute inset-0 rounded-lg bg-white/[0.07]"
+                        transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                      />
+                    )}
+                    <span className="relative z-10">{link.label}</span>
+                    {isActive && (
+                      <span
+                        aria-hidden="true"
+                        className="absolute inset-x-3 -bottom-0.5 z-10 h-px rounded-full bg-gradient-to-r from-primary to-accent"
+                      />
+                    )}
+                  </a>
+                </li>
+              );
+            })}
           </ul>
 
           <div className="flex items-center gap-2">
@@ -130,10 +155,14 @@ export function Header() {
               href={siteConfig.resumeUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden h-10 items-center gap-2 rounded-xl bg-foreground px-4 text-sm font-medium text-background transition-transform duration-300 hover:-translate-y-0.5 hover:shadow-[0_10px_30px_-10px_rgba(255,255,255,0.35)] sm:inline-flex"
+              className="group/resume relative hidden h-10 items-center gap-2 overflow-hidden rounded-xl bg-foreground px-4 text-sm font-medium text-background transition-transform duration-300 hover:-translate-y-0.5 hover:shadow-[0_10px_30px_-10px_rgba(255,255,255,0.35)] sm:inline-flex"
             >
-              <Download className="size-4" aria-hidden="true" />
-              Download Resume
+              <span
+                aria-hidden="true"
+                className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-black/10 to-transparent transition-transform duration-700 group-hover/resume:translate-x-full"
+              />
+              <Download className="relative size-4" aria-hidden="true" />
+              <span className="relative">Download Resume</span>
             </a>
             <button
               type="button"

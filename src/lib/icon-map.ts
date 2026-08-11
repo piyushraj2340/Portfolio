@@ -1,101 +1,142 @@
 import {
-  FaJs,
   FaHtml5,
-  FaReact,
-  FaNodeJs,
   FaGithub,
-  FaGitAlt,
-  FaDocker,
   FaStripe,
   FaSass,
   FaBootstrap,
+  FaCss3Alt,
+  FaWindows,
 } from "react-icons/fa6";
+import { FaDatabase, FaCode, FaCloud, FaKey, FaChartBar } from "react-icons/fa";
+import { TbBrandCSharp, TbApi, TbHexagon } from "react-icons/tb";
+import { DiMsqlServer } from "react-icons/di";
 import {
-  FaDatabase,
-  FaCode,
-  FaCloud,
-  FaKey,
-  FaChartBar,
-} from "react-icons/fa";
+  SiDotnet,
+  SiPostgresql,
+  SiRedux,
+  SiReactquery,
+  SiVercel,
+  SiPostman,
+  SiCloudinary,
+  SiMongoose,
+  SiExpress,
+  SiNodedotjs,
+  SiReact,
+  SiNextdotjs,
+  SiTailwindcss,
+  SiDocker,
+  SiGit,
+  SiGithub,
+  SiJavascript,
+  SiTypescript,
+  SiHtml5,
+  SiCss,
+  SiStripe,
+  SiMongodb,
+  SiRedis,
+} from "react-icons/si";
 import {
-  TbBrandTypescript,
-  TbBrandTailwind,
-  TbBrandNextjs,
-  TbBrandCSharp,
-  TbBrandRedux,
-  TbApi,
-} from "react-icons/tb";
-import { DiRedis, DiMongodb } from "react-icons/di";
-import { SiDotnet } from "react-icons/si";
+  HiOutlineFire,
+  HiOutlineServerStack,
+  HiOutlineSignal,
+  HiOutlinePuzzlePiece,
+} from "react-icons/hi2";
+import { LuStore } from "react-icons/lu";
+import { MdAccountTree, MdApi, MdArchitecture } from "react-icons/md";
 import { IconType } from "react-icons";
+
+function normalizeTechName(name: string): string {
+  return name
+    .toLowerCase()
+    .replace(/\.js\b/g, "js")
+    .replace(/[^a-z0-9#+]+/g, "");
+}
 
 const techIconMap: Record<string, IconType> = {
   // Languages
-  "C#": TbBrandCSharp,
-  "JavaScript/TypeScript": FaJs,
-  "JavaScript": FaJs,
-  "TypeScript": TbBrandTypescript,
-  "HTML/CSS": FaHtml5,
-  "HTML5/CSS3": FaHtml5,
-  "HTML5": FaHtml5,
-  "CSS3": FaHtml5,
+  "c#": TbBrandCSharp,
+  csharp: TbBrandCSharp,
+  javascript: SiJavascript,
+  typescript: SiTypescript,
+  javascripttypescript: SiJavascript,
+  htmlcss: FaHtml5,
+  html5css3: FaHtml5,
+  html: SiHtml5,
+  html5: SiHtml5,
+  css: SiCss,
+  css3: FaCss3Alt,
 
   // Database & Cloud
-  "SQL": FaDatabase,
-  "MS SQL Server": FaDatabase,
-  "SQL Server": FaDatabase,
-  "Azure SQL": FaDatabase,
-  "Azure Services": FaCloud,
-  "Azure": FaCloud,
-  "Redis": DiRedis,
-  "MongoDB": DiMongodb,
-  "Mongoose": DiMongodb,
-  "Cloudinary": FaCloud,
+  sql: FaDatabase,
+  mssqlserver: DiMsqlServer,
+  sqlserver: DiMsqlServer,
+  azuresql: FaDatabase,
+  azureservices: FaCloud,
+  azure: FaCloud,
+  redis: SiRedis,
+  mongodb: SiMongodb,
+  mongoose: SiMongoose,
+  cloudinary: SiCloudinary,
+  postgresql: SiPostgresql,
+  postgres: SiPostgresql,
 
   // Backend
-  "ASP.NET Core": SiDotnet,
-  "ASP.NET Core (MVC/Web API)": SiDotnet,
-  ".NET Core": SiDotnet,
-  ".NET": SiDotnet,
-  ".NET MVC": SiDotnet,
-  "Entity Framework Core": SiDotnet,
-  "REST APIs": TbApi,
-  "Hangfire": FaCode,
-  "Node.js": FaNodeJs,
-  "Express.js": FaNodeJs,
-  "JWT Authentication": FaKey,
+  aspnetcore: SiDotnet,
+  aspnetcoremvcwebapi: SiDotnet,
+  netcore: SiDotnet,
+  net: SiDotnet,
+  netmvc: SiDotnet,
+  entityframeworkcore: SiDotnet,
+  restapis: TbApi,
+  restapi: TbApi,
+  restfulapis: TbApi,
+  restfulapi: TbApi,
+  hangfire: HiOutlineFire,
+  nodejs: SiNodedotjs,
+  expressjs: SiExpress,
+  express: SiExpress,
+  jwtauthentication: FaKey,
+  jwt: FaKey,
+  signalr: HiOutlineSignal,
 
   // Frontend
-  "React.js": FaReact,
-  "React": FaReact,
-  "Next.js": TbBrandNextjs,
-  "Tailwind CSS": TbBrandTailwind,
-  "Redux": TbBrandRedux,
-  "Bootstrap": FaBootstrap,
-  "Sass": FaSass,
-  "Ant Design": FaCode,
-  "Chart.js": FaChartBar,
+  reactjs: SiReact,
+  react: SiReact,
+  nextjs: SiNextdotjs,
+  tailwindcss: SiTailwindcss,
+  redux: SiRedux,
+  reduxtoolkit: SiRedux,
+  zustand: LuStore,
+  tanstackquery: SiReactquery,
+  reactquery: SiReactquery,
+  bootstrap: FaBootstrap,
+  sass: FaSass,
+  antdesign: FaCode,
+  chartjs: FaChartBar,
 
   // DevOps & Tools
-  "Git": FaGitAlt,
-  "Git & GitHub": FaGithub,
-  "GitHub": FaGithub,
-  "Docker": FaDocker,
-  "CI/CD": FaGithub,
-  "Postman": TbApi,
-  "Stripe": FaStripe,
-  "Chrome Extension API": TbApi,
-  "Manifest V3": TbApi,
-  "DOM Manipulation": FaCode,
-  "Local Storage": FaDatabase,
+  git: SiGit,
+  gitgithub: SiGithub,
+  github: SiGithub,
+  docker: SiDocker,
+  cicd: FaGithub,
+  postman: SiPostman,
+  stripe: SiStripe,
+  chromeextensionapi: TbApi,
+  manifestv3: TbApi,
+  dommanipulation: MdAccountTree,
+  localstorage: FaDatabase,
+  vercel: SiVercel,
+  iis: FaWindows,
 
   // Architecture
-  "Clean Architecture": FaCode,
-  "Microservices": FaCode,
-  "SOLID Principles": FaCode,
-  "Design Patterns": FaCode,
+  cleanarchitecture: MdArchitecture,
+  microservices: HiOutlineServerStack,
+  solidprinciples: TbHexagon,
+  solid: TbHexagon,
+  designpatterns: HiOutlinePuzzlePiece,
 };
 
 export function getTechIcon(techName: string): IconType {
-  return techIconMap[techName] || FaCode;
+  return techIconMap[normalizeTechName(techName)] || FaCode;
 }

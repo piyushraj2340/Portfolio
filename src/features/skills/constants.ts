@@ -1,3 +1,0 @@
-/**
- * Skills feature constants.
- */

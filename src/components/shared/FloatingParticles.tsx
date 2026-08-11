@@ -15,7 +15,10 @@ export const particles = [
 
 export function FloatingParticles() {
   return (
-    <div className="absolute inset-x-0 top-0 h-full pointer-events-none z-0">
+    <div
+      aria-hidden="true"
+      className="pointer-events-none absolute inset-x-0 top-0 z-0 h-full"
+    >
       {particles.map((particle, index) => (
         <span
           key={index}
