@@ -1,7 +1,10 @@
 import { profile } from "@/content/profile";
 
 const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") || "https://www.piyushraj.me";
+  process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ||
+  (process.env.NODE_ENV === "production"
+    ? "https://www.piyushraj.me"
+    : "http://localhost:3000");
 
 export const siteConfig = {
   name: profile.name,

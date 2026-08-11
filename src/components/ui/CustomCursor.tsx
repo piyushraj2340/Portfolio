@@ -1,12 +1,11 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
 /**
  * Lightweight custom cursor — no React state on mousemove (avoids forced reflow).
  */
 export function CustomCursor() {
-  const [isVisible, setIsVisible] = useState(false);
   const dotRef = useRef<HTMLDivElement>(null);
   const ringRef = useRef<HTMLDivElement>(null);
   const hoveringRef = useRef(false);
@@ -23,8 +22,11 @@ export function CustomCursor() {
     }
 
     const root = document.documentElement;
+    const dot = dotRef.current;
+    const ring = ringRef.current;
     root.classList.add("cursor-none");
-    setIsVisible(true);
+    if (dot) dot.hidden = false;
+    if (ring) ring.hidden = false;
 
     const handleMouseMove = (e: MouseEvent) => {
       posRef.current.x = e.clientX;
@@ -74,22 +76,24 @@ export function CustomCursor() {
     return () => {
       cancelAnimationFrame(rafRef.current);
       root.classList.remove("cursor-none");
+      if (dot) dot.hidden = true;
+      if (ring) ring.hidden = true;
       window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("mouseover", handleMouseOver);
     };
   }, []);
 
-  if (!isVisible) return null;
-
   return (
     <>
       <div
         ref={dotRef}
+        hidden
         aria-hidden="true"
         className="pointer-events-none fixed left-0 top-0 z-[100] h-2 w-2 rounded-full bg-primary mix-blend-difference will-change-transform"
       />
       <div
         ref={ringRef}
+        hidden
         aria-hidden="true"
         className="pointer-events-none fixed left-0 top-0 z-[99] h-8 w-8 rounded-full border border-primary/50 mix-blend-difference will-change-transform"
       />

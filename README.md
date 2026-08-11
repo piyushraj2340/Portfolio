@@ -38,7 +38,7 @@ npm run lint
 npm test
 ```
 
-Contact submissions need MongoDB and SMTP. The rest of the site works without them.
+Contact submissions need a running MongoDB instance (local or [Atlas](https://www.mongodb.com/atlas)) and SMTP. The rest of the site works without them.
 
 ---
 
@@ -55,7 +55,7 @@ Copy `.env.example` and fill in values:
 | `NEXT_PUBLIC_*_LENGTH` | Optional | Name/message min/max |
 | `RATE_LIMIT_WINDOW_MS` / `MAX_REQUESTS_PER_WINDOW` | Optional | Defaults: 3 requests / hour |
 
-Production default is `https://www.piyushraj.me`. Override with `NEXT_PUBLIC_SITE_URL` if you run a preview or staging host.
+Set `NEXT_PUBLIC_SITE_URL` in every deploy. Local fallback is `http://localhost:3000`; production fallback is `https://www.piyushraj.me`. Override it for preview or staging hosts so sitemap, OG, and JSON-LD do not point at production.
 
 ---
 

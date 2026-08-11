@@ -1,8 +1,4 @@
-"use client";
-
 import Link from "next/link";
-import { ArrowUp } from "lucide-react";
-import { motion } from "framer-motion";
 import { FaGithub, FaLinkedin, FaEnvelope, FaGlobe } from "react-icons/fa";
 import { profile } from "@/content/profile";
 import { socialLinks } from "@/content/social";
@@ -15,10 +11,6 @@ const socialIconMap: Record<string, React.ElementType> = {
 };
 
 export function Footer() {
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
   return (
     <footer className="border-t border-white/5 bg-surface">
       <Container className="py-8">
