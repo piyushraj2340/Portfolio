@@ -1,7 +1,6 @@
 import {
   FaHtml5,
   FaGithub,
-  FaStripe,
   FaSass,
   FaBootstrap,
   FaCss3Alt,
@@ -42,7 +41,7 @@ import {
   HiOutlinePuzzlePiece,
 } from "react-icons/hi2";
 import { LuStore } from "react-icons/lu";
-import { MdAccountTree, MdApi, MdArchitecture } from "react-icons/md";
+import { MdAccountTree, MdArchitecture } from "react-icons/md";
 import { IconType } from "react-icons";
 
 function normalizeTechName(name: string): string {

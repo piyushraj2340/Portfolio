@@ -2,6 +2,11 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { siteMetadata } from "@/lib/metadata";
 import { StructuredData } from "@/components/seo/StructuredData";
+import { Providers } from "@/components/providers/Providers";
+import { SplashScreen } from "@/components/ui/SplashScreen";
+import { ScrollToTopButton } from "@/components/ui/ScrollToTopButton";
+import { DeferredCustomCursor } from "@/components/ui/DeferredCustomCursor";
+import { DeferredManifest } from "@/components/seo/DeferredManifest";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -15,11 +20,6 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = siteMetadata;
-
-import { Providers } from "@/components/providers/Providers";
-import { SplashScreen } from "@/components/ui/SplashScreen";
-import { DeferredCustomCursor } from "@/components/ui/DeferredCustomCursor";
-import { DeferredManifest } from "@/components/seo/DeferredManifest";
 
 export default function RootLayout({
   children,
@@ -36,6 +36,7 @@ export default function RootLayout({
         <DeferredManifest />
         <SplashScreen />
         <DeferredCustomCursor />
+        <ScrollToTopButton />
         <Providers>{children}</Providers>
       </body>
     </html>

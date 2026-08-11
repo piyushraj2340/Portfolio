@@ -1,7 +1,10 @@
 import { profile } from "@/content/profile";
 
 const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") || "http://localhost:3000";
+  process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ||
+  (process.env.NODE_ENV === "production"
+    ? "https://www.piyushraj.me"
+    : "http://localhost:3000");
 
 export const siteConfig = {
   name: profile.name,
@@ -11,7 +14,14 @@ export const siteConfig = {
   url: siteUrl,
   location: profile.location,
   email: "piyushraj2340@gmail.com",
-  resumeUrl: "/resume/piyush_raj_resume.pdf",
-  ogImage: "/og-images/og-image.webp",
+  resumeUrl: "https://www.piyushraj.me/resume/piyush_raj_resume.pdf",
+  // JPEG first — LinkedIn / WhatsApp often skip WebP and then show text-only cards
+  ogImage: "/og-images/og-image.jpg",
+  ogImagePng: "/og-images/og-image.png",
+  ogImageWidth: 1200,
+  ogImageHeight: 630,
   locale: "en_US",
 };
+
+export const absoluteOgImage = new URL(siteConfig.ogImage, `${siteConfig.url}/`).href;
+export const absoluteOgImagePng = new URL(siteConfig.ogImagePng, `${siteConfig.url}/`).href;

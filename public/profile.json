@@ -5,9 +5,11 @@
   "yearsOfExperience": 2,
   "location": "India",
   "availability": "Available for Opportunities",
+  "url": "https://www.piyushraj.me",
+  "image": "https://www.piyushraj.me/og-images/og-image.jpg",
   "email": "piyushraj2340@gmail.com",
   "summary": "Software Engineer with 2 years of experience specializing in C#, ASP.NET Core, React, and Azure. Proven track record of building robust, scalable web applications and optimizing backend infrastructure.",
-  "resume": "/resume/piyush_raj_resume.pdf",
+  "resume": "https://www.piyushraj.me/resume/piyush_raj_resume.pdf",
   "social": {
     "github": "https://github.com/piyushraj2340",
     "linkedin": "https://linkedin.com/in/piyushraj2340"
@@ -23,13 +25,13 @@
     "Entity Framework Core"
   ],
   "sections": {
-    "hero": "/#hero",
-    "about": "/#about",
-    "skills": "/#skills",
-    "experience": "/#experience",
-    "projects": "/#projects",
-    "education": "/#education",
-    "achievements": "/#certifications",
-    "contact": "/#contact"
+    "hero": "https://www.piyushraj.me/#hero",
+    "about": "https://www.piyushraj.me/#about",
+    "skills": "https://www.piyushraj.me/#skills",
+    "experience": "https://www.piyushraj.me/#experience",
+    "projects": "https://www.piyushraj.me/#projects",
+    "education": "https://www.piyushraj.me/#education",
+    "achievements": "https://www.piyushraj.me/#certifications",
+    "contact": "https://www.piyushraj.me/#contact"
   }
 }

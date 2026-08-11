@@ -18,11 +18,22 @@ export function DeferredCustomCursor() {
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (coarse || reduced) return;
 
-    const ric = window.requestIdleCallback ?? ((cb: () => void) => window.setTimeout(cb, 1200));
-    const id = ric(() => setReady(true));
+    const canUseIdle = typeof window.requestIdleCallback === "function";
+    let idleId: number | undefined;
+    let timeoutId: ReturnType<typeof window.setTimeout> | NodeJS.Timeout | number | undefined;
+
+    if (canUseIdle) {
+      idleId = window.requestIdleCallback(() => setReady(true));
+    } else {  
+      timeoutId = window.setTimeout(() => setReady(true), 1200);
+    }
+
     return () => {
-      if (window.cancelIdleCallback && typeof id === "number") {
-        window.cancelIdleCallback(id);
+      if (idleId !== undefined) {
+        window.cancelIdleCallback(idleId);
+      }
+      if (timeoutId !== undefined) {
+        window.clearTimeout(timeoutId);
       }
     };
   }, []);
