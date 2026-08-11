@@ -1,27 +1,15 @@
 import type { Metadata } from "next";
-import {
-  absoluteOgImage,
-  absoluteOgImagePng,
-  siteConfig,
-} from "@/config/site";
+import { absoluteOgImage, siteConfig } from "@/config/site";
 import { seoContent } from "@/content/seo";
 import { profile } from "@/content/profile";
 
-const ogAlt = `${profile.name} — ${profile.role}. C#, ASP.NET Core, React, and Azure.`;
+const ogAlt = `${profile.name} — ${profile.role}`;
 
 const ogImages: NonNullable<Metadata["openGraph"]>["images"] = [
   {
     url: absoluteOgImage,
     secureUrl: absoluteOgImage,
     type: "image/jpeg",
-    width: siteConfig.ogImageWidth,
-    height: siteConfig.ogImageHeight,
-    alt: ogAlt,
-  },
-  {
-    url: absoluteOgImagePng,
-    secureUrl: absoluteOgImagePng,
-    type: "image/png",
     width: siteConfig.ogImageWidth,
     height: siteConfig.ogImageHeight,
     alt: ogAlt,
