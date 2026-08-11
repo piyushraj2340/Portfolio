@@ -182,6 +182,12 @@ html {
   overflow-y: auto;
 }
 
+/* Runtime class toggled by CustomCursor — keep explicit so Tailwind purge cannot drop it */
+html.cursor-none,
+html.cursor-none * {
+  cursor: none !important;
+}
+
 body {
   font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
   line-height: 1.7;

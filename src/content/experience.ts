@@ -46,10 +46,3 @@ export const experiences: Experience[] = [
     technologies: [".NET", "C#", "SQL Server", "TypeScript", "React", "SignalR", "Hangfire", "REST APIs"],
   },
 ];
-
-/*
-formatDate expects "YYYY-MM" or the literal "Present".
-Example: formatDate(experiences[0].startDate) -> "Jun 2025"
-
-If Ariel is your current role, set endDate to "Present" instead of "2026-03".
-*/

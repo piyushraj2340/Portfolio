@@ -125,7 +125,7 @@ export function ContactSection() {
                 id="name"
                 name="name"
                 required
-                className="rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-foreground outline-none transition-all placeholder:text-text-muted/50 hover:border-white/20 focus:border-primary focus:bg-white/10"
+                className="rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-foreground outline-none transition-all placeholder:text-text-muted/50 hover:border-white/20 focus:border-primary focus:bg-white/10 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                 placeholder="John Doe"
               />
             </div>
@@ -136,7 +136,7 @@ export function ContactSection() {
                 id="email"
                 name="email"
                 required
-                className="rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-foreground outline-none transition-all placeholder:text-text-muted/50 hover:border-white/20 focus:border-primary focus:bg-white/10"
+                className="rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-foreground outline-none transition-all placeholder:text-text-muted/50 hover:border-white/20 focus:border-primary focus:bg-white/10 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                 placeholder="john@example.com"
               />
             </div>
@@ -148,7 +148,7 @@ export function ContactSection() {
               name="message"
               required
               rows={5}
-              className="rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-foreground outline-none transition-all placeholder:text-text-muted/50 hover:border-white/20 focus:border-primary focus:bg-white/10"
+              className="rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-foreground outline-none transition-all placeholder:text-text-muted/50 hover:border-white/20 focus:border-primary focus:bg-white/10 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
               placeholder="How can we collaborate?"
             />
           </div>
