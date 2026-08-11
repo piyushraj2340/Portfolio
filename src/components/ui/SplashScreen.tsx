@@ -5,20 +5,25 @@ import { motion, AnimatePresence } from "framer-motion";
 import { profile } from "@/content/profile";
 
 export function SplashScreen() {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    const prefersReducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
-
-    if (prefersReducedMotion) {
-      setIsLoading(false);
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       return;
     }
 
-    const timer = window.setTimeout(() => setIsLoading(false), 1600);
-    return () => window.clearTimeout(timer);
+    let hideTimer: number | undefined;
+    const showFrame = window.requestAnimationFrame(() => {
+      setIsLoading(true);
+      hideTimer = window.setTimeout(() => setIsLoading(false), 1600);
+    });
+
+    return () => {
+      window.cancelAnimationFrame(showFrame);
+      if (hideTimer !== undefined) {
+        window.clearTimeout(hideTimer);
+      }
+    };
   }, []);
 
   return (
