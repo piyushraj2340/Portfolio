@@ -12,6 +12,6 @@ export const siteConfig = {
   location: profile.location,
   email: "piyushraj2340@gmail.com",
   resumeUrl: "/resume/piyush_raj_resume.pdf",
-  ogImage: "/og-image.webp",
+  ogImage: "/og-images/og-image.webp",
   locale: "en_US",
 };
