@@ -38,6 +38,12 @@ export function StructuredData() {
         isPartOf: { "@id": `${siteConfig.url}/#website` },
         about: { "@id": `${siteConfig.url}/#person` },
         mainEntity: { "@id": `${siteConfig.url}/#person` },
+        primaryImageOfPage: {
+          "@type": "ImageObject",
+          url: `${siteConfig.url}${siteConfig.ogImage}`,
+          width: siteConfig.ogImageWidth,
+          height: siteConfig.ogImageHeight,
+        },
       },
       {
         "@type": "Person",

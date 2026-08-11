@@ -1,7 +1,32 @@
 import type { Metadata } from "next";
-import { siteConfig } from "@/config/site";
+import {
+  absoluteOgImage,
+  absoluteOgImagePng,
+  siteConfig,
+} from "@/config/site";
 import { seoContent } from "@/content/seo";
 import { profile } from "@/content/profile";
+
+const ogAlt = `${profile.name} — ${profile.role}. C#, ASP.NET Core, React, and Azure.`;
+
+const ogImages: NonNullable<Metadata["openGraph"]>["images"] = [
+  {
+    url: absoluteOgImage,
+    secureUrl: absoluteOgImage,
+    type: "image/jpeg",
+    width: siteConfig.ogImageWidth,
+    height: siteConfig.ogImageHeight,
+    alt: ogAlt,
+  },
+  {
+    url: absoluteOgImagePng,
+    secureUrl: absoluteOgImagePng,
+    type: "image/png",
+    width: siteConfig.ogImageWidth,
+    height: siteConfig.ogImageHeight,
+    alt: ogAlt,
+  },
+];
 
 export const siteMetadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -48,20 +73,13 @@ export const siteMetadata: Metadata = {
     url: siteConfig.url,
     siteName: siteConfig.name,
     locale: siteConfig.locale,
-    images: [
-      {
-        url: siteConfig.ogImage,
-        width: 1200,
-        height: 630,
-        alt: `${profile.name} — ${profile.role} portfolio`,
-      },
-    ],
+    images: ogImages,
   },
   twitter: {
     card: "summary_large_image",
     title: siteConfig.title,
     description: siteConfig.description,
-    images: [siteConfig.ogImage],
+    images: [absoluteOgImage],
     creator: "@piyushraj2340",
   },
   category: "technology",

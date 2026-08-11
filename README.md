@@ -77,7 +77,7 @@ All copy and listings are in `src/content/`:
 
 Site URL, email, and resume path: `src/config/site.ts`.  
 Resume PDF: `public/resume/`.  
-OG image: `public/og-images/og-image.webp`.  
+OG / social card: `public/og-images/og-image.jpg` (1200×630 JPEG; PNG fallback beside it). After deploy, refresh LinkedIn with [Post Inspector](https://www.linkedin.com/post-inspector/). To regenerate: `npm i -D sharp` then `npm run og:image`.
 Favicons: `public/favicon/`.
 
 ---

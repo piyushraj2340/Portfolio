@@ -45,6 +45,16 @@ const nextConfig: NextConfig = {
           ...securityHeaders,
         ],
       },
+      {
+        source: "/og-images/:path*",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=86400, stale-while-revalidate=604800",
+          },
+          { key: "X-Content-Type-Options", value: "nosniff" },
+        ],
+      },
     ];
   },
 };

@@ -12,6 +12,13 @@ export const siteConfig = {
   location: profile.location,
   email: "piyushraj2340@gmail.com",
   resumeUrl: "https://www.piyushraj.me/resume/piyush_raj_resume.pdf",
-  ogImage: "/og-images/og-image.webp",
+  // JPEG first — LinkedIn / WhatsApp often skip WebP and then show text-only cards
+  ogImage: "/og-images/og-image.jpg",
+  ogImagePng: "/og-images/og-image.png",
+  ogImageWidth: 1200,
+  ogImageHeight: 630,
   locale: "en_US",
 };
+
+export const absoluteOgImage = new URL(siteConfig.ogImage, `${siteConfig.url}/`).href;
+export const absoluteOgImagePng = new URL(siteConfig.ogImagePng, `${siteConfig.url}/`).href;
