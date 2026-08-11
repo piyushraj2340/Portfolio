@@ -52,11 +52,11 @@ export function CertificationsSection() {
                       href={cert.credentialUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 text-xs font-semibold text-foreground transition-colors hover:text-primary"
+                      className="group/verify inline-flex items-center gap-1.5 text-xs font-semibold text-foreground transition-colors hover:text-primary"
                       aria-label={`Verify ${cert.name} credential`}
                     >
                       Verify
-                      <ExternalLink className="size-3.5" aria-hidden="true" />
+                      <ExternalLink className="size-3.5 transition-transform duration-300 group-hover/verify:translate-x-0.5 group-hover/verify:-translate-y-0.5" aria-hidden="true" />
                     </Link>
                   )}
                 </div>

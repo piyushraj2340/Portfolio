@@ -4,37 +4,25 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { profile } from "@/content/profile";
 
-const SPLASH_KEY = "portfolio-splash-seen";
-
 export function SplashScreen() {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    const prefersReducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
-    const alreadySeen = sessionStorage.getItem(SPLASH_KEY) === "1";
-
-    if (prefersReducedMotion || alreadySeen) {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       return;
     }
 
-    // Only show after mount decision — avoid blocking first contentful paint on repeat visits
-    let cancelled = false;
-    const start = requestAnimationFrame(() => {
-      if (cancelled) return;
+    let hideTimer: number | undefined;
+    const showFrame = window.requestAnimationFrame(() => {
       setIsLoading(true);
+      hideTimer = window.setTimeout(() => setIsLoading(false), 1600);
     });
 
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-      sessionStorage.setItem(SPLASH_KEY, "1");
-    }, 500);
-
     return () => {
-      cancelled = true;
-      cancelAnimationFrame(start);
-      clearTimeout(timer);
+      window.cancelAnimationFrame(showFrame);
+      if (hideTimer !== undefined) {
+        window.clearTimeout(hideTimer);
+      }
     };
   }, []);
 
@@ -45,16 +33,28 @@ export function SplashScreen() {
           key="splash"
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.2 }}
+          transition={{ duration: 0.35, ease: "easeOut" }}
           className="fixed inset-0 z-[1000] flex flex-col items-center justify-center bg-background"
           aria-hidden="true"
         >
-          <div className="flex flex-col items-center gap-4">
-            <div className="flex items-center text-3xl font-bold tracking-[0.12em] text-foreground uppercase">
+          <div className="flex flex-col items-center gap-5">
+            <motion.div
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4 }}
+              className="flex items-center text-3xl font-bold tracking-[0.12em] text-foreground uppercase sm:text-4xl"
+            >
               <span>{profile.name.split(" ")[0]}</span>
               <span className="text-primary">.</span>
+            </motion.div>
+            <div className="h-[2px] w-28 overflow-hidden rounded-full bg-white/10">
+              <motion.div
+                className="h-full bg-primary"
+                initial={{ width: "0%" }}
+                animate={{ width: "100%" }}
+                transition={{ duration: 1.25, ease: "easeInOut" }}
+              />
             </div>
-            <div className="h-[2px] w-24 bg-primary" />
           </div>
         </motion.div>
       )}

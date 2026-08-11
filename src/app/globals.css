@@ -178,6 +178,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
   overflow-x: hidden;
   overflow-y: auto;
 }
@@ -245,7 +246,20 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--foreground);
   border-color: rgba(37, 99, 235, 0.45);
   background-color: rgba(37, 99, 235, 0.1);
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+}
+
+.interactive-chip svg {
+  transition:
+    transform var(--duration-fast) var(--ease-default),
+    color var(--duration-fast) var(--ease-default),
+    opacity var(--duration-fast) var(--ease-default);
+}
+
+.interactive-chip:hover svg {
+  color: var(--primary);
+  opacity: 1;
+  transform: scale(1.15);
 }
 
 .glass {
