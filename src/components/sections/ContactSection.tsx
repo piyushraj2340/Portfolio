@@ -208,7 +208,7 @@ export function ContactSection() {
               className="group flex flex-col items-center gap-2 text-text-secondary transition-colors duration-300 hover:text-foreground"
               aria-label={link.label}
             >
-              <div className="glass flex size-11 items-center justify-center rounded-xl transition-all duration-300 group-hover:-translate-y-0.5 group-hover:border-foreground/25">
+              <div className="glass flex size-11 items-center justify-center rounded-xl transition-all duration-300 group-hover:-translate-y-1 group-hover:border-primary/40 group-hover:shadow-[var(--glow-primary)]">
                 <Icon className="size-5" aria-hidden="true" />
               </div>
               <span className="text-xs font-semibold uppercase tracking-widest">{link.label}</span>

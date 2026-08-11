@@ -9,7 +9,7 @@ export const education: Education[] = [
     endDate: "2024-06",
     location: "Punjab, India",
     description: "Graduated with a CGPA of 8.03/10.0. Focused on core computer science fundamentals, data structures, algorithms, and software engineering principles.",
-    coursework: ["Data Structures & Algorithms", "Operating Systems", "Computer Networks", "Object-Oriented Programming", "Database Management Systems", "Software Engineering"],
+    coursework: ["Data Structures & Algorithms", "Operating Systems", "Computer Networks", "Object-Oriented Programming", "Database Management Systems"],
     isVisible: true
   },
   {

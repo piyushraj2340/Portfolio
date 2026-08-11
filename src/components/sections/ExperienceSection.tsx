@@ -62,11 +62,11 @@ export function ExperienceSection() {
               >
                 <div role="listitem" className="group relative">
                   {/* Timeline Node */}
-                  <span className="absolute -left-[29px] sm:-left-[41px] top-7 flex h-2.5 w-2.5 items-center justify-center rounded-full bg-primary/20 ring-4 ring-background">
+                  <span className="absolute -left-[29px] top-7 flex h-2.5 w-2.5 items-center justify-center rounded-full bg-primary/20 ring-4 ring-background transition-transform duration-300 group-hover:scale-125 sm:-left-[41px]">
                     <span className="h-1 w-1 rounded-full bg-primary" />
                   </span>
 
-                  <article className="glass rounded-2xl p-6 transition-all duration-300 group-hover:-translate-y-1 group-hover:border-white/20 sm:p-8">
+                  <article className="glass rounded-2xl p-6 transition-all duration-300 group-hover:-translate-y-1.5 group-hover:border-white/20 group-hover:shadow-[var(--glow-primary)] sm:p-8">
                     <div className="flex flex-wrap items-start justify-between gap-3">
                       <div>
                         <h3 className="text-lg font-semibold tracking-tight text-foreground sm:text-xl">

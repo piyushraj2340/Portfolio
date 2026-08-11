@@ -150,7 +150,7 @@ export function HeroSection() {
                 href={siteConfig.resumeUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="glass inline-flex h-12 items-center justify-center gap-2 rounded-xl px-6 text-sm font-medium transition-all duration-300 hover:-translate-y-0.5 hover:border-foreground/25"
+                className="glass inline-flex h-12 items-center justify-center gap-2 rounded-xl px-6 text-sm font-medium transition-all duration-300 hover:-translate-y-0.5 hover:border-foreground/25 hover:bg-white/5"
               >
                 <Download className="size-4" aria-hidden="true" />
                 Download Resume
@@ -167,7 +167,7 @@ export function HeroSection() {
                       href={link.href}
                       target={normalized === "email" ? undefined : "_blank"}
                       rel={normalized === "email" ? undefined : "noopener noreferrer"}
-                      className="glass group grid size-11 place-items-center rounded-xl text-text-muted transition-all duration-300 hover:-translate-y-0.5 hover:text-foreground"
+                      className="glass group grid size-11 place-items-center rounded-xl text-text-muted transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:text-foreground hover:shadow-[var(--glow-primary)]"
                       aria-label={link.label}
                     >
                       <Icon className="size-5" aria-hidden="true" />

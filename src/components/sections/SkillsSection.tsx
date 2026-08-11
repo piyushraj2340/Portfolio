@@ -45,7 +45,7 @@ export function SkillsSection() {
                 key={category.category}
                 delay={index * 90}
                 variant="scale"
-                className="group glass relative flex flex-col gap-5 overflow-hidden rounded-2xl p-6 transition-all duration-300 hover:-translate-y-1 hover:border-white/20 hover:shadow-[var(--shadow-lg)] sm:p-8"
+                className="group glass relative flex flex-col gap-5 overflow-hidden rounded-2xl p-6 transition-all duration-300 hover:-translate-y-1.5 hover:border-white/20 hover:shadow-[var(--shadow-lg),var(--glow-primary)] sm:p-8"
               >
                 {/* Hover flare effect */}
                 <div
@@ -55,7 +55,7 @@ export function SkillsSection() {
 
                 {/* Header */}
                 <div className="flex items-center gap-3">
-                  <span className="grid size-11 place-items-center rounded-xl bg-gradient-to-br from-primary/25 via-secondary/20 to-accent/20 text-foreground transition-transform duration-300 group-hover:scale-105">
+                  <span className="grid size-11 place-items-center rounded-xl bg-gradient-to-br from-primary/25 via-secondary/20 to-accent/20 text-foreground transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">
                     <CategoryIcon className="size-5" aria-hidden="true" />
                   </span>
                   <div>
@@ -80,7 +80,7 @@ export function SkillsSection() {
                     return (
                       <li
                         key={skill}
-                        className="inline-flex items-center gap-1.5 rounded-lg border border-white/10 bg-white/5 px-2.5 py-1 text-xs text-text-secondary transition-colors duration-300 group-hover:text-foreground"
+                        className="interactive-chip inline-flex items-center gap-1.5 rounded-lg border border-white/10 bg-white/5 px-2.5 py-1 text-xs text-text-secondary"
                       >
                         <TechIcon aria-hidden="true" className="size-3.5 opacity-70 transition-opacity duration-300 group-hover:opacity-100" />
                         {skill}

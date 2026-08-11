@@ -104,7 +104,7 @@ export function ProjectsSection() {
                     return (
                       <span
                         key={tech}
-                        className="inline-flex items-center gap-1.5 rounded-lg border border-white/10 bg-white/5 px-2.5 py-1 text-xs text-text-secondary transition-colors duration-300 group-hover:text-foreground"
+                        className="interactive-chip inline-flex items-center gap-1.5 rounded-lg border border-white/10 bg-white/5 px-2.5 py-1 text-xs text-text-secondary"
                       >
                         <Icon className="size-3.5 opacity-70" aria-hidden="true" />
                         {tech}

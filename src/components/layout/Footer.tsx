@@ -48,7 +48,7 @@ export function Footer() {
                   href={link.href}
                   target={normalized === "email" ? undefined : "_blank"}
                   rel={normalized === "email" ? undefined : "noopener noreferrer"}
-                  className="text-text-secondary transition-colors duration-300 hover:text-foreground"
+                  className="grid size-8 place-items-center rounded-lg text-text-secondary transition-all duration-300 hover:-translate-y-0.5 hover:bg-white/5 hover:text-foreground"
                   aria-label={link.label}
                 >
                   <Icon className="size-4" aria-hidden="true" />
