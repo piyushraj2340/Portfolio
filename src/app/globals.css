@@ -238,13 +238,6 @@ h1, h2, h3, h4, h5, h6 {
   -webkit-backdrop-filter: blur(16px) saturate(140%);
 }
 
-.glass-nav {
-  background: rgba(9, 9, 11, 0.9);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-}
-
 @keyframes drift {
   0% {
     transform: translateY(0) translateX(0);
@@ -266,124 +259,8 @@ h1, h2, h3, h4, h5, h6 {
   animation: drift 18s linear infinite;
 }
 
-/* Removed float and pulse-glow animations */
-
-@keyframes fade-in-up {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fade-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes scale-in {
-  from {
-    opacity: 0;
-    transform: scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-@keyframes typing-cursor {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
-}
-
-@keyframes shimmer {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
-}
-
-@keyframes slide-in-right {
-  from {
-    opacity: 0;
-    transform: translateX(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-/* ==========================================================================
-   Animation Utility Classes
-   ========================================================================== */
-
-/* Removed animate-float, gradient, and pulse classes */
-
-.animate-fade-in-up {
-  animation: fade-in-up 0.6s var(--ease-out) forwards;
-}
-
-.animate-fade-in {
-  animation: fade-in 0.5s var(--ease-out) forwards;
-}
-
-.animate-scale-in {
-  animation: scale-in 0.5s var(--ease-spring) forwards;
-}
-
-.animate-typing-cursor {
-  animation: typing-cursor 1s step-end infinite;
-}
-
-/* Staggered delay utilities */
-.delay-100 { animation-delay: 100ms; }
-.delay-200 { animation-delay: 200ms; }
-.delay-300 { animation-delay: 300ms; }
-.delay-400 { animation-delay: 400ms; }
-.delay-500 { animation-delay: 500ms; }
-.delay-600 { animation-delay: 600ms; }
-.delay-700 { animation-delay: 700ms; }
-
-/* ==========================================================================
-   Scroll Reveal (CSS-only, enhanced by JS IntersectionObserver)
-   ========================================================================== */
-
-.reveal {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out);
-}
-
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.reveal-scale {
-  opacity: 0;
-  transform: scale(0.95);
-  transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-spring);
-}
-
-.reveal-scale.visible {
-  opacity: 1;
-  transform: scale(1);
-}
-
-/* ==========================================================================
-   Component Utilities
-   ========================================================================== */
-
 .text-balance {
   text-wrap: balance;
-}
-
-.section-divider {
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.06), transparent);
 }
 
 .grid-pattern {
@@ -391,36 +268,6 @@ h1, h2, h3, h4, h5, h6 {
     linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
   background-size: 64px 64px;
-}
-
-/* Progress bar for skills */
-.progress-bar {
-  height: 4px;
-  border-radius: var(--radius-full);
-  background: rgba(255, 255, 255, 0.06);
-  overflow: hidden;
-}
-
-.progress-bar-fill {
-  height: 100%;
-  border-radius: var(--radius-full);
-  background: linear-gradient(90deg, var(--primary), var(--secondary));
-  transition: width 1s var(--ease-out);
-}
-
-/* Timeline */
-.timeline-line {
-  width: 2px;
-  background: linear-gradient(180deg, var(--primary), transparent);
-}
-
-.timeline-dot {
-  width: 12px;
-  height: 12px;
-  border-radius: var(--radius-full);
-  background: var(--primary);
-  border: 2px solid var(--background);
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
 }
 
 /* ==========================================================================
@@ -434,12 +281,6 @@ h1, h2, h3, h4, h5, h6 {
     animation: none !important;
     transition: none !important;
     scroll-behavior: auto !important;
-  }
-
-  .reveal,
-  .reveal-scale {
-    opacity: 1 !important;
-    transform: none !important;
   }
 }
 

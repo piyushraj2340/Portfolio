@@ -1,1 +1,0 @@
-export const SECTION_SPACING = "py-16 md:py-24";

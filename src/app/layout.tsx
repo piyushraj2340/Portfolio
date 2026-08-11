@@ -16,7 +16,6 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = siteMetadata;
 
-import { SmoothScrollProvider } from "@/components/providers/SmoothScrollProvider";
 import { Providers } from "@/components/providers/Providers";
 import { SplashScreen } from "@/components/ui/SplashScreen";
 import { DeferredCustomCursor } from "@/components/ui/DeferredCustomCursor";
@@ -37,11 +36,7 @@ export default function RootLayout({
         <DeferredManifest />
         <SplashScreen />
         <DeferredCustomCursor />
-        <Providers>
-          <SmoothScrollProvider>
-            {children}
-          </SmoothScrollProvider>
-        </Providers>
+        <Providers>{children}</Providers>
       </body>
     </html>
   );
