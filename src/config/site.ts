@@ -15,13 +15,11 @@ export const siteConfig = {
   location: profile.location,
   email: "piyushraj2340@gmail.com",
   resumeUrl: "https://www.piyushraj.me/resume/piyush_raj_resume.pdf",
-  // JPEG first — LinkedIn / WhatsApp often skip WebP and then show text-only cards
-  ogImage: "/og-images/og-image.jpg",
-  ogImagePng: "/og-images/og-image.png",
-  ogImageWidth: 1200,
-  ogImageHeight: 630,
+  // New filename busts LinkedIn's cached thumbnail. 2x 1200x627 for a sharper 160px shrink.
+  ogImage: "/og-images/share-card.jpg",
+  ogImageWidth: 2400,
+  ogImageHeight: 1254,
   locale: "en_US",
 };
 
 export const absoluteOgImage = new URL(siteConfig.ogImage, `${siteConfig.url}/`).href;
-export const absoluteOgImagePng = new URL(siteConfig.ogImagePng, `${siteConfig.url}/`).href;

@@ -1,46 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="1200" height="627" viewBox="0 0 1200 627" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="627" gradientUnits="userSpaceOnUse">
       <stop stop-color="#09090B"/>
-      <stop offset="1" stop-color="#0C0C0F"/>
+      <stop offset="1" stop-color="#111827"/>
     </linearGradient>
-    <radialGradient id="glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(180 120) rotate(25) scale(520 380)">
-      <stop stop-color="#2563EB" stop-opacity="0.28"/>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(600 280) scale(640 360)">
+      <stop stop-color="#2563EB" stop-opacity="0.35"/>
       <stop offset="1" stop-color="#2563EB" stop-opacity="0"/>
-    </radialGradient>
-    <radialGradient id="glow2" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1040 540) rotate(-30) scale(420 300)">
-      <stop stop-color="#06B6D4" stop-opacity="0.12"/>
-      <stop offset="1" stop-color="#06B6D4" stop-opacity="0"/>
     </radialGradient>
   </defs>
 
-  <rect width="1200" height="630" fill="url(#bg)"/>
-  <rect width="1200" height="630" fill="url(#glow)"/>
-  <rect width="1200" height="630" fill="url(#glow2)"/>
+  <rect width="1200" height="627" fill="url(#bg)"/>
+  <rect width="1200" height="627" fill="url(#glow)"/>
+  <rect x="0" y="0" width="16" height="627" fill="#2563EB"/>
 
-  <!-- Subtle grid -->
-  <g stroke="#FFFFFF" stroke-opacity="0.045" stroke-width="1">
-    <line x1="80" y1="0" x2="80" y2="630"/>
-    <line x1="1120" y1="0" x2="1120" y2="630"/>
-    <line x1="0" y1="72" x2="1200" y2="72"/>
-    <line x1="0" y1="558" x2="1200" y2="558"/>
-  </g>
+  <rect x="516" y="86" width="168" height="168" rx="36" fill="#2563EB"/>
+  <text x="600" y="198" text-anchor="middle" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="84" font-weight="700">PR</text>
 
-  <!-- Accent bar -->
-  <rect x="60" y="0" width="4" height="630" fill="#2563EB"/>
-
-  <!-- Monogram -->
-  <rect x="80" y="96" width="64" height="64" rx="14" fill="#2563EB"/>
-  <text x="112" y="139" text-anchor="middle" fill="#FFFFFF" font-family="Segoe UI, Inter, Arial, sans-serif" font-size="26" font-weight="700">PR</text>
-
-  <text x="162" y="124" fill="#A1A1AA" font-family="Segoe UI, Inter, Arial, sans-serif" font-size="20" font-weight="600" letter-spacing="0.08em">PORTFOLIO</text>
-  <text x="162" y="150" fill="#FFFFFF" font-family="Segoe UI, Inter, Arial, sans-serif" font-size="20" font-weight="500">piyushraj.me</text>
-
-  <text x="80" y="280" fill="#60A5FA" font-family="Segoe UI, Inter, Arial, sans-serif" font-size="22" font-weight="600" letter-spacing="0.16em">SOFTWARE ENGINEER</text>
-  <text x="80" y="360" fill="#FFFFFF" font-family="Segoe UI, Inter, Arial, sans-serif" font-size="72" font-weight="700">Piyush Raj</text>
-  <text x="80" y="420" fill="#A1A1AA" font-family="Segoe UI, Inter, Arial, sans-serif" font-size="28" font-weight="500">C#  |  ASP.NET Core  |  React  |  Azure</text>
-
-  <text x="80" y="520" fill="#8A8A93" font-family="Segoe UI, Inter, Arial, sans-serif" font-size="22">Building robust, scalable web applications</text>
-  <text x="1040" y="520" text-anchor="end" fill="#71717A" font-family="Segoe UI, Inter, Arial, sans-serif" font-size="20">2+ years  |  India</text>
+  <text x="600" y="360" text-anchor="middle" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="92" font-weight="700">Piyush Raj</text>
+  <text x="600" y="430" text-anchor="middle" fill="#93C5FD" font-family="Arial, Helvetica, sans-serif" font-size="42" font-weight="700">Software Engineer</text>
+  <text x="600" y="510" text-anchor="middle" fill="#E4E4E7" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="600">piyushraj.me</text>
 </svg>
