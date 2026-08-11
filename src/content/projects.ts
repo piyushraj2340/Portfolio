@@ -6,8 +6,8 @@ export const projects: Project[] = [
     title: "TaskFlow: Project & Workflow Automation",
     description: "SaaS platform automating project management and workflow scheduling using Clean Architecture.",
     technologies: ["ASP.NET Core", "React", "Clean Architecture", "Hangfire", "SQL Server", "Tailwind CSS"],
-    repositoryUrl: "https://github.com/",
-    liveUrl: "https://taskflow.example.com",
+    repositoryUrl: "https://github.com/piyushraj2340/TaskFlow",
+    liveUrl: "https://webapp-taskflow.vercel.app/",
     imageUrl: "https://res.cloudinary.com/dcd6y2awx/image/upload/v1786394575/Portfolio%20Website/Projects/TaskFlow/0ca2e2d6-e462-4ebf-9ddb-42a871b5502c.png",
     problem: "Teams struggled with inefficient task management and a lack of real-time visibility into workflow progress.",
     impact: "• Improved project completion rates by 30% for early adopters.\n• Reduced manual task management overhead by 50% through automated background jobs.\n• Enhanced cross-functional collaboration via real-time status synchronization.",
@@ -32,7 +32,7 @@ export const projects: Project[] = [
       "JWT Authentication",
       "Stripe",
       "Cloudinary",
-      "REST API"
+      "REST APIs"
     ],
     repositoryUrl: "https://github.com/piyushraj2340/Plant-Selling-Website",
     liveUrl: "https://plantseller.vercel.app/",
@@ -74,11 +74,11 @@ export const projects: Project[] = [
       "Express.js",
       "MongoDB",
       "Mongoose",
-      "REST API",
+      "REST APIs",
       "Vercel",
       "IIS"
     ],
-    repositoryUrl: "https://github.com/piyushraj2340/File-Sharing-App-Backend",
+    repositoryUrl: "https://github.com/piyushraj2340/LocalFile-Sharing-App",
     imageUrl: "https://res.cloudinary.com/dcd6y2awx/image/upload/v1786396734/Portfolio%20Website/Projects/Local%20File%20Sharing%20App/75298b7a-d30c-467d-8263-b9f711c39b9c.png",
     featured: false,
   }

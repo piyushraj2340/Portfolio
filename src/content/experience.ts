@@ -43,7 +43,7 @@ export const experiences: Experience[] = [
       "Lifted auction bidding throughput by 20% by replacing SQL Server Service Broker processing with an in-memory queue, cutting database deadlocks under high concurrency.",
       "Improved frontend performance by 25% through Lighthouse-driven work, including route-level lazy loading, bundle optimization, and fewer unnecessary React re-renders.",
     ],
-    technologies: [".NET", "C#", "SQL Server", "TypeScript", "React", "SignalR", "Hangfire", "RESTful APIs"],
+    technologies: [".NET", "C#", "SQL Server", "TypeScript", "React", "SignalR", "Hangfire", "REST APIs"],
   },
 ];
 

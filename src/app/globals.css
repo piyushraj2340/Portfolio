@@ -178,6 +178,8 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 body {
@@ -185,6 +187,11 @@ body {
   line-height: 1.7;
   background-color: var(--background);
   color: var(--foreground);
+  overflow-x: hidden;
+}
+
+textarea {
+  overscroll-behavior: contain;
 }
 
 h1, h2, h3, h4, h5, h6 {

@@ -65,7 +65,7 @@ export function ContactSection() {
   };
 
   return (
-    <Section id="contact" aria-labelledby="contact-heading" className="relative overflow-hidden">
+    <Section id="contact" aria-labelledby="contact-heading" className="relative overflow-x-clip">
       {/* Background visual flair */}
       <div className="absolute inset-0 z-0 flex items-center justify-center pointer-events-none opacity-40">
         <div className="w-[100vw] h-[100vw] sm:w-[60vw] sm:h-[60vw] rounded-full bg-primary/10 blur-[100px] mix-blend-screen" />
