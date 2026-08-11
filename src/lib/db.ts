@@ -10,15 +10,15 @@ interface MongooseCache {
   promise: Promise<typeof mongoose> | null;
 }
 
-declare global {
-  var mongoose: MongooseCache;
-}
+const globalForMongoose = globalThis as typeof globalThis & {
+  mongoose?: MongooseCache;
+};
 
-let cached = global.mongoose;
-
-if (!cached) {
-  cached = global.mongoose = { conn: null, promise: null };
-}
+const cached: MongooseCache = globalForMongoose.mongoose ?? {
+  conn: null,
+  promise: null,
+};
+globalForMongoose.mongoose = cached;
 
 async function connectDB() {
   const mongodbUri = process.env.MONGODB_URI;
