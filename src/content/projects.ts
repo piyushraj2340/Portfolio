@@ -6,16 +6,16 @@ export const projects: Project[] = [
     title: "TaskFlow: Project & Workflow Automation",
     description: "SaaS platform automating project management and workflow scheduling using Clean Architecture.",
     technologies: ["ASP.NET Core", "React", "Clean Architecture", "Hangfire", "SQL Server", "Tailwind CSS"],
-    repositoryUrl: "https://github.com/",
-    liveUrl: "https://taskflow.example.com",
-    imageUrl: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=2070&auto=format&fit=crop",
+    repositoryUrl: "https://github.com/piyushraj2340/TaskFlow",
+    liveUrl: "https://webapp-taskflow.vercel.app/",
+    imageUrl: "https://res.cloudinary.com/dcd6y2awx/image/upload/v1786394575/Portfolio%20Website/Projects/TaskFlow/0ca2e2d6-e462-4ebf-9ddb-42a871b5502c.png",
     problem: "Teams struggled with inefficient task management and a lack of real-time visibility into workflow progress.",
     impact: "• Improved project completion rates by 30% for early adopters.\n• Reduced manual task management overhead by 50% through automated background jobs.\n• Enhanced cross-functional collaboration via real-time status synchronization.",
     featured: true,
   },
   {
     slug: "plant-seller",
-    title: "Plant Seller",
+    title: "Plant Seller: [E-commerce Platform]",
     description:
       "A full-stack multi-vendor e-commerce platform connecting customers, nurseries, and administrators in a unified marketplace.",
     problem:
@@ -32,11 +32,11 @@ export const projects: Project[] = [
       "JWT Authentication",
       "Stripe",
       "Cloudinary",
-      "REST API"
+      "REST APIs"
     ],
     repositoryUrl: "https://github.com/piyushraj2340/Plant-Selling-Website",
     liveUrl: "https://plantseller.vercel.app/",
-    imageUrl: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2426&auto=format&fit=crop",
+    imageUrl: "https://res.cloudinary.com/dcd6y2awx/image/upload/v1786395281/Portfolio%20Website/Projects/PlantSeller/7c1c2581-b32f-471f-980a-872b1e359070.png",
     featured: true,
   },
   {
@@ -57,12 +57,12 @@ export const projects: Project[] = [
       "DOM Manipulation"
     ],
     repositoryUrl: "https://github.com/piyushraj2340/Whatsapp-Privacy-Extension",
-    imageUrl: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=2074&auto=format&fit=crop",
+    imageUrl: "https://res.cloudinary.com/dcd6y2awx/image/upload/v1786395790/Portfolio%20Website/Projects/WhatsApp%20Privacy%20Extension/whatsappPrivacy_ts3qgj.png",
     featured: false,
   }, 
   {
     slug: "file-sharing-app-backend",
-    title: "File Sharing App Backend",
+    title: "Local File Sharing Node App",
     description:
       "A RESTful backend service for a secure file-sharing platform, pre-configured for diverse hosting environments.",
     problem:
@@ -74,12 +74,12 @@ export const projects: Project[] = [
       "Express.js",
       "MongoDB",
       "Mongoose",
-      "REST API",
+      "REST APIs",
       "Vercel",
       "IIS"
     ],
-    repositoryUrl: "https://github.com/piyushraj2340/File-Sharing-App-Backend",
-    imageUrl: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=2668&auto=format&fit=crop",
+    repositoryUrl: "https://github.com/piyushraj2340/LocalFile-Sharing-App",
+    imageUrl: "https://res.cloudinary.com/dcd6y2awx/image/upload/v1786396734/Portfolio%20Website/Projects/Local%20File%20Sharing%20App/75298b7a-d30c-467d-8263-b9f711c39b9c.png",
     featured: false,
   }
 ];

@@ -16,10 +16,10 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = siteMetadata;
 
-import { SmoothScrollProvider } from "@/components/providers/SmoothScrollProvider";
 import { Providers } from "@/components/providers/Providers";
 import { SplashScreen } from "@/components/ui/SplashScreen";
-import { CustomCursor } from "@/components/ui/CustomCursor";
+import { DeferredCustomCursor } from "@/components/ui/DeferredCustomCursor";
+import { DeferredManifest } from "@/components/seo/DeferredManifest";
 
 export default function RootLayout({
   children,
@@ -29,17 +29,14 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} dark h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} dark antialiased`}
     >
-      <body className="min-h-full bg-background text-foreground">
+      <body className="min-h-screen bg-background text-foreground">
         <StructuredData />
+        <DeferredManifest />
         <SplashScreen />
-        <CustomCursor />
-        <Providers>
-          <SmoothScrollProvider>
-            {children}
-          </SmoothScrollProvider>
-        </Providers>
+        <DeferredCustomCursor />
+        <Providers>{children}</Providers>
       </body>
     </html>
   );

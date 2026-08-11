@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { ArrowRight, Send, CheckCircle, AlertCircle, Loader2 } from "lucide-react";
+import { Send, CheckCircle, AlertCircle, Loader2 } from "lucide-react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { FiGlobe } from "react-icons/fi";
 import { motion } from "framer-motion";
@@ -58,14 +58,14 @@ export function ContactSection() {
         setStatus("error");
         setErrorMessage(result.error || "Failed to send message.");
       }
-    } catch (error) {
+    } catch {
       setStatus("error");
       setErrorMessage("An unexpected error occurred.");
     }
   };
 
   return (
-    <Section id="contact" className="relative overflow-hidden">
+    <Section id="contact" aria-labelledby="contact-heading" className="relative overflow-x-clip">
       {/* Background visual flair */}
       <div className="absolute inset-0 z-0 flex items-center justify-center pointer-events-none opacity-40">
         <div className="w-[100vw] h-[100vw] sm:w-[60vw] sm:h-[60vw] rounded-full bg-primary/10 blur-[100px] mix-blend-screen" />
@@ -82,26 +82,37 @@ export function ContactSection() {
           Next Steps
         </p>
         
-        <h2 className="text-5xl font-extrabold tracking-tight text-foreground sm:text-6xl md:text-7xl lg:text-8xl text-balance">
-          Let&apos;s build something <span className="text-primary bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">great.</span>
+        <h2
+          id="contact-heading"
+          className="text-balance text-5xl font-bold tracking-tight text-foreground sm:text-6xl md:text-7xl lg:text-8xl"
+        >
+          Let&apos;s build something <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">great.</span>
         </h2>
         
         <p className="max-w-2xl text-lg text-text-secondary md:text-xl">
           Currently looking for new opportunities. Whether you have a question or just want to say hi, I&apos;ll try my best to get back to you!
         </p>
 
-        <form onSubmit={handleSubmit} className="glass w-full max-w-2xl rounded-3xl p-6 sm:p-8 text-left flex flex-col gap-6 shadow-2xl relative">
+        <form onSubmit={handleSubmit} className="glass relative flex w-full max-w-2xl flex-col gap-6 rounded-2xl p-6 text-left shadow-[var(--shadow-xl)] sm:p-8">
           
           {/* Status Overlays or Messages */}
           {status === "success" && (
-            <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-green-500/20 text-green-400 border border-green-500/30 px-4 py-2 rounded-full text-sm font-medium flex items-center gap-2 shadow-lg backdrop-blur-md">
-              <CheckCircle className="size-4" />
+            <div
+              role="status"
+              aria-live="polite"
+              className="absolute -top-4 left-1/2 flex -translate-x-1/2 items-center gap-2 rounded-full border border-success/30 bg-success/20 px-4 py-2 text-sm font-medium text-success shadow-lg backdrop-blur-md"
+            >
+              <CheckCircle className="size-4" aria-hidden="true" />
               Message sent successfully!
             </div>
           )}
           {status === "error" && (
-            <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-red-500/20 text-red-400 border border-red-500/30 px-4 py-2 rounded-full text-sm font-medium flex items-center gap-2 shadow-lg backdrop-blur-md">
-              <AlertCircle className="size-4" />
+            <div
+              role="alert"
+              aria-live="assertive"
+              className="absolute -top-4 left-1/2 flex -translate-x-1/2 items-center gap-2 rounded-full border border-destructive/30 bg-destructive/20 px-4 py-2 text-sm font-medium text-destructive shadow-lg backdrop-blur-md"
+            >
+              <AlertCircle className="size-4" aria-hidden="true" />
               {errorMessage}
             </div>
           )}
@@ -114,7 +125,7 @@ export function ContactSection() {
                 id="name"
                 name="name"
                 required
-                className="rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-foreground outline-none transition-all placeholder:text-text-muted/50 hover:border-white/20 focus:border-primary focus:bg-white/10 focus:ring-1 focus:ring-primary"
+                className="rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-foreground outline-none transition-all placeholder:text-text-muted/50 hover:border-white/20 focus:border-primary focus:bg-white/10 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                 placeholder="John Doe"
               />
             </div>
@@ -125,7 +136,7 @@ export function ContactSection() {
                 id="email"
                 name="email"
                 required
-                className="rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-foreground outline-none transition-all placeholder:text-text-muted/50 hover:border-white/20 focus:border-primary focus:bg-white/10 focus:ring-1 focus:ring-primary"
+                className="rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-foreground outline-none transition-all placeholder:text-text-muted/50 hover:border-white/20 focus:border-primary focus:bg-white/10 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                 placeholder="john@example.com"
               />
             </div>
@@ -137,32 +148,35 @@ export function ContactSection() {
               name="message"
               required
               rows={5}
-              className="rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-foreground outline-none transition-all placeholder:text-text-muted/50 hover:border-white/20 focus:border-primary focus:bg-white/10 focus:ring-1 focus:ring-primary"
+              className="rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-foreground outline-none transition-all placeholder:text-text-muted/50 hover:border-white/20 focus:border-primary focus:bg-white/10 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
               placeholder="How can we collaborate?"
             />
           </div>
           <button
             type="submit"
             disabled={status === "loading" || status === "success"}
-            className="group relative mt-2 inline-flex w-full items-center justify-center gap-2 overflow-hidden rounded-xl bg-primary px-8 py-4 text-sm font-bold text-primary-foreground transition-all duration-300 hover:-translate-y-0.5 hover:bg-primary-hover hover:shadow-[0_0_30px_rgba(59,130,246,0.3)] disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:-translate-y-0 sm:w-auto"
+            className="group relative mt-2 inline-flex h-12 w-full items-center justify-center gap-2 overflow-hidden rounded-xl bg-primary px-6 text-sm font-medium text-primary-foreground transition-all duration-300 hover:-translate-y-0.5 hover:bg-primary-hover hover:shadow-[0_16px_40px_-16px_var(--primary)] disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:translate-y-0 sm:w-auto"
           >
             <span className="relative z-10 flex items-center gap-2">
               {status === "loading" ? (
-                <Loader2 className="size-4 animate-spin" />
+                <Loader2 className="size-4 animate-spin" aria-hidden="true" />
               ) : status === "success" ? (
-                <CheckCircle className="size-4" />
+                <CheckCircle className="size-4" aria-hidden="true" />
               ) : (
-                <Send className="size-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                <Send className="size-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden="true" />
               )}
               {status === "loading" ? "Sending..." : status === "success" ? "Sent!" : "Send Message"}
             </span>
             {status === "idle" && (
-              <div className="absolute inset-0 z-0 translate-x-[-100%] bg-gradient-to-r from-transparent via-white/20 to-transparent group-hover:animate-[shimmer_1.5s_infinite]" />
+              <div
+                aria-hidden="true"
+                className="absolute inset-0 z-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-700 group-hover:translate-x-full"
+              />
             )}
           </button>
         </form>
 
-        <div className="mt-8 flex flex-col items-center gap-2 text-sm text-text-muted sm:flex-row">
+        <address className="mt-8 flex flex-col items-center gap-2 text-sm text-text-muted not-italic sm:flex-row">
           <span>Or reach out directly via</span>
           <a
             href={`mailto:${siteConfig.email}`}
@@ -170,7 +184,7 @@ export function ContactSection() {
           >
             {siteConfig.email}
           </a>
-        </div>
+        </address>
       </motion.div>
 
       {/* Social Links */}
@@ -191,11 +205,11 @@ export function ContactSection() {
               href={link.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex flex-col items-center gap-2 text-text-secondary transition-colors hover:text-primary"
+              className="group flex flex-col items-center gap-2 text-text-secondary transition-colors duration-300 hover:text-foreground"
               aria-label={link.label}
             >
-              <div className="flex size-12 items-center justify-center rounded-full border border-white/10 bg-white/5 transition-transform duration-300 group-hover:-translate-y-2 group-hover:bg-primary/10 group-hover:border-primary/30">
-                <Icon className="size-5" />
+              <div className="glass flex size-11 items-center justify-center rounded-xl transition-all duration-300 group-hover:-translate-y-1 group-hover:border-primary/40 group-hover:shadow-[var(--glow-primary)]">
+                <Icon className="size-5" aria-hidden="true" />
               </div>
               <span className="text-xs font-semibold uppercase tracking-widest">{link.label}</span>
             </Link>

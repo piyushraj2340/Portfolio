@@ -1,7 +1,13 @@
 "use client";
 
 import { type ReactNode, useRef, useState } from "react";
-import { motion, useMotionValue, useSpring, useMotionTemplate, HTMLMotionProps } from "framer-motion";
+import {
+  motion,
+  useMotionTemplate,
+  useMotionValue,
+  useSpring,
+  type HTMLMotionProps,
+} from "framer-motion";
 
 type CardProps = HTMLMotionProps<"div"> & {
   children: ReactNode;
@@ -15,50 +21,60 @@ export function Card({
   className = "",
   ...rest
 }: CardProps) {
-  const ref = useRef<HTMLDivElement>(null);
-  
-  // Spotlight Glow
+  const frameRef = useRef(0);
+  const pendingRef = useRef<{ clientX: number; clientY: number } | null>(null);
+  const [isHovered, setIsHovered] = useState(false);
+
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
-
-  // 3D Tilt
-  const [isHovered, setIsHovered] = useState(false);
-  const rotateX = useSpring(0, { stiffness: 300, damping: 30, mass: 1 });
-  const rotateY = useSpring(0, { stiffness: 300, damping: 30, mass: 1 });
+  const rotateX = useSpring(0, { stiffness: 220, damping: 24, mass: 0.6 });
+  const rotateY = useSpring(0, { stiffness: 220, damping: 24, mass: 0.6 });
+  const lift = useSpring(0, { stiffness: 260, damping: 22, mass: 0.5 });
+  const spotlight = useMotionTemplate`
+    radial-gradient(
+      380px circle at ${mouseX}px ${mouseY}px,
+      rgba(37, 99, 235, 0.16),
+      transparent 68%
+    )
+  `;
 
   function handleMouseMove({ currentTarget, clientX, clientY }: React.MouseEvent) {
     if (!hoverable) return;
-    const { left, top, width, height } = currentTarget.getBoundingClientRect();
-    
-    // For spotlight
-    mouseX.set(clientX - left);
-    mouseY.set(clientY - top);
+    pendingRef.current = { clientX, clientY };
+    if (frameRef.current) return;
 
-    // For tilt
-    const centerX = width / 2;
-    const centerY = height / 2;
-    const x = clientX - left - centerX;
-    const y = clientY - top - centerY;
-    
-    rotateX.set((y / centerY) * -5); // max 5 deg rotation
-    rotateY.set((x / centerX) * 5);
+    frameRef.current = requestAnimationFrame(() => {
+      frameRef.current = 0;
+      const pending = pendingRef.current;
+      if (!pending) return;
+      const { left, top, width, height } = currentTarget.getBoundingClientRect();
+
+      mouseX.set(pending.clientX - left);
+      mouseY.set(pending.clientY - top);
+
+      const x = pending.clientX - left - width / 2;
+      const y = pending.clientY - top - height / 2;
+      rotateX.set((y / (height / 2)) * -6);
+      rotateY.set((x / (width / 2)) * 6);
+    });
   }
 
   function handleMouseEnter() {
     setIsHovered(true);
+    if (hoverable) lift.set(-6);
   }
 
   function handleMouseLeave() {
     setIsHovered(false);
     rotateX.set(0);
     rotateY.set(0);
+    lift.set(0);
   }
 
   const baseClass = hoverable ? "glass-card-hover" : "glass-card";
 
   return (
     <motion.div
-      ref={ref}
       className={`relative overflow-hidden ${baseClass} ${className}`}
       onMouseMove={handleMouseMove}
       onMouseEnter={handleMouseEnter}
@@ -66,28 +82,20 @@ export function Card({
       style={{
         rotateX: hoverable ? rotateX : 0,
         rotateY: hoverable ? rotateY : 0,
-        transformPerspective: 1000,
+        y: hoverable ? lift : 0,
+        transformPerspective: 1100,
       }}
       {...rest}
     >
-      {/* Spotlight Glow */}
       {hoverable && (
         <motion.div
-          className="pointer-events-none absolute -inset-px rounded-2xl opacity-0 transition duration-300 group-hover:opacity-100"
-          style={{
-            background: useMotionTemplate`
-              radial-gradient(
-                450px circle at ${mouseX}px ${mouseY}px,
-                rgba(59, 130, 246, 0.1),
-                transparent 80%
-              )
-            `,
-          }}
+          aria-hidden="true"
+          className="pointer-events-none absolute -inset-px rounded-[inherit]"
+          style={{ background: spotlight }}
           animate={{ opacity: isHovered ? 1 : 0 }}
+          transition={{ duration: 0.25 }}
         />
       )}
-      
-      {/* Content wrapper */}
       <div className="relative z-10 h-full">{children}</div>
     </motion.div>
   );

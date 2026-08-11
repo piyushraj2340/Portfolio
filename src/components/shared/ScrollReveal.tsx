@@ -24,8 +24,8 @@ export function ScrollReveal({
   const variants: Variants = {
     hidden: {
       opacity: 0,
-      y: variant === "slideUp" ? 30 : 0,
-      scale: variant === "scale" ? 0.95 : 1,
+      y: variant === "slideUp" ? 18 : 0,
+      scale: variant === "scale" ? 0.97 : 1,
     },
     visible: {
       opacity: 1,

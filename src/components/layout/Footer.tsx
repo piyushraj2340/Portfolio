@@ -4,9 +4,7 @@ import Link from "next/link";
 import { ArrowUp } from "lucide-react";
 import { motion } from "framer-motion";
 import { FaGithub, FaLinkedin, FaEnvelope, FaGlobe } from "react-icons/fa";
-import { siteConfig } from "@/config/site";
 import { profile } from "@/content/profile";
-import { navigationItems } from "@/content/navigation";
 import { socialLinks } from "@/content/social";
 import { Container } from "./Container";
 
@@ -50,10 +48,10 @@ export function Footer() {
                   href={link.href}
                   target={normalized === "email" ? undefined : "_blank"}
                   rel={normalized === "email" ? undefined : "noopener noreferrer"}
-                  className="text-text-secondary transition-colors duration-200 hover:text-foreground"
+                  className="grid size-8 place-items-center rounded-lg text-text-secondary transition-all duration-300 hover:-translate-y-0.5 hover:bg-white/5 hover:text-foreground"
                   aria-label={link.label}
                 >
-                  <Icon className="size-4" />
+                  <Icon className="size-4" aria-hidden="true" />
                 </Link>
               );
             })}
@@ -61,14 +59,14 @@ export function Footer() {
 
           {/* Back to top */}
           <motion.button
-            whileHover={{ y: -5 }}
-            whileTap={{ scale: 0.95 }}
+            whileHover={{ y: -2 }}
+            whileTap={{ scale: 0.98 }}
             type="button"
             onClick={scrollToTop}
-            className="group flex items-center gap-2 text-sm font-medium text-text-secondary transition-colors hover:text-foreground"
+            className="group flex items-center gap-2 text-sm font-medium text-text-secondary transition-colors duration-300 hover:text-foreground"
           >
             Back to top
-            <ArrowUp className="size-4" />
+            <ArrowUp className="size-4" aria-hidden="true" />
           </motion.button>
         </div>
       </Container>
