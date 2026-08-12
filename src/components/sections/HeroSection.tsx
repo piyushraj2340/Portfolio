@@ -23,12 +23,12 @@ const socialIconMap: Record<string, React.ElementType> = {
 const techStack = [
   { name: "C#", position: { top: "8%", right: "36%" }, size: 40, delay: 0 },
   { name: ".NET", position: { top: "26%", right: "51%" }, size: 38, delay: 0.6 },
-  { name: "SQL Server", position: { top: "48%", right: "13%" }, size: 36, delay: 1.2 },
+  { name: "SQL Server", position: { top: "8%", right: "53%" }, size: 36, delay: 1.2 },
   { name: "React", position: { top: "14%", right: "46%" }, size: 42, delay: 0.3 },
   { name: "Azure", position: { top: "12%", right: "6%" }, size: 38, delay: 1.5 },
   { name: "Git", position: { top: "53%", right: "45%" }, size: 34, delay: 0.9 },
   { name: "Docker", position: { top: "62%", right: "26%" }, size: 40, delay: 1.8 },
-  { name: "Node.js", position: { top: "25%", right: "12%" }, size: 38, delay: 0.4 },
+  { name: "Node.js", position: { top: "19%", right: "6%" }, size: 38, delay: 0.4 },
   { name: "MongoDB", position: { top: "12%", right: "25%" }, size: 34, delay: 2.1 },
   { name: "SQL", position: { top: "37%", right: "43%" }, size: 34, delay: 2.4 },
   { name: "REST APIs", position: { top: "34%", right: "3%" }, size: 34, delay: 2.4 },
@@ -93,7 +93,7 @@ export function HeroSection() {
 
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 z-[5] hidden lg:block"
+        className="pointer-events-none absolute inset-0 z-[11] hidden lg:block"
       >
         {techStack.map((tech, idx) => {
           const Icon = getTechIcon(tech.name);
