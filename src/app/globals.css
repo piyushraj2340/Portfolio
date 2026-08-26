@@ -294,6 +294,54 @@ h1, h2, h3, h4, h5, h6 {
   text-wrap: balance;
 }
 
+/* Animated diagonal-shine sweeping across featured project cards on hover */
+.card-shine {
+  background: linear-gradient(
+    120deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.06) 45%,
+    rgba(255, 255, 255, 0.12) 50%,
+    rgba(255, 255, 255, 0.06) 55%,
+    transparent 70%
+  );
+  background-size: 300% 100%;
+  animation: card-shine-sweep 1.8s ease-in-out infinite;
+}
+
+@keyframes card-shine-sweep {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Styled bullet points for the impact / achievements section on project detail pages */
+.prose-impact ul {
+  list-style: none;
+  padding: 0;
+}
+
+.prose-impact li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.75rem;
+  line-height: 1.75;
+}
+
+.prose-impact li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.6rem;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--primary);
+  box-shadow: 0 0 8px rgba(37, 99, 235, 0.4);
+}
+
 .grid-pattern {
   background-image:
     linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),

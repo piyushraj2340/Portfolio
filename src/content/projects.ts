@@ -12,6 +12,8 @@ export const projects: Project[] = [
     problem: "Teams struggled with inefficient task management and a lack of real-time visibility into workflow progress.",
     impact: "• Improved project completion rates by 30% for early adopters.\n• Reduced manual task management overhead by 50% through automated background jobs.\n• Enhanced cross-functional collaboration via real-time status synchronization.",
     featured: true,
+    category: "SaaS Platform",
+    status: "Production",
   },
   {
     slug: "plant-seller",
@@ -38,6 +40,8 @@ export const projects: Project[] = [
     liveUrl: "https://plantseller.vercel.app/",
     imageUrl: "https://res.cloudinary.com/dcd6y2awx/image/upload/v1786395281/Portfolio%20Website/Projects/PlantSeller/7c1c2581-b32f-471f-980a-872b1e359070.png",
     featured: true,
+    category: "E-commerce",
+    status: "Production",
   },
   {
     slug: "whatsapp-privacy-extension",
@@ -59,6 +63,8 @@ export const projects: Project[] = [
     repositoryUrl: "https://github.com/piyushraj2340/Whatsapp-Privacy-Extension",
     imageUrl: "https://res.cloudinary.com/dcd6y2awx/image/upload/v1786395790/Portfolio%20Website/Projects/WhatsApp%20Privacy%20Extension/whatsappPrivacy_ts3qgj.png",
     featured: false,
+    category: "Chrome Extension",
+    status: "Published",
   }, 
   {
     slug: "file-sharing-app-backend",
@@ -81,5 +87,7 @@ export const projects: Project[] = [
     repositoryUrl: "https://github.com/piyushraj2340/LocalFile-Sharing-App",
     imageUrl: "https://res.cloudinary.com/dcd6y2awx/image/upload/v1786396734/Portfolio%20Website/Projects/Local%20File%20Sharing%20App/75298b7a-d30c-467d-8263-b9f711c39b9c.png",
     featured: false,
+    category: "Backend API",
+    status: "Production",
   }
-];
+];

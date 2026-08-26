@@ -9,4 +9,6 @@ export type Project = {
   liveUrl?: string;
   imageUrl?: string;
   featured?: boolean;
+  category?: string;
+  status?: string;
 };
