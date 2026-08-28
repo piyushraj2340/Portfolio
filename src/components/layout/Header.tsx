@@ -14,8 +14,12 @@ export function Header() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-  const [active, setActive] = useState<string>("#hero");
+  const [activeSection, setActiveSection] = useState<string>("#hero");
   const [hovered, setHovered] = useState<string | null>(null);
+
+  const active = pathname === "/" 
+    ? activeSection 
+    : (pathname.startsWith("/projects/") ? "#projects" : "");
 
   const initials = profile.name
     .split(" ")
@@ -38,14 +42,7 @@ export function Header() {
   }, []);
 
   useEffect(() => {
-    if (pathname !== "/") {
-      if (pathname.startsWith("/projects/")) {
-        setActive("#projects");
-      } else {
-        setActive("");
-      }
-      return;
-    }
+    if (pathname !== "/") return;
 
     const ids = navigationItems.map((link) => link.href.slice(1));
     const sections = ids
@@ -57,7 +54,7 @@ export function Header() {
         const visible = entries
           .filter((entry) => entry.isIntersecting)
           .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-        if (visible) setActive(`#${visible.target.id}`);
+        if (visible) setActiveSection(`#${visible.target.id}`);
       },
       { rootMargin: "-45% 0px -50% 0px", threshold: [0, 0.25, 0.5, 1] }
     );
