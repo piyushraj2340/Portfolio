@@ -1,12 +1,20 @@
 import type { MetadataRoute } from "next";
 import { siteConfig } from "@/config/site";
+import { projects } from "@/content/projects";
 
 export const dynamic = "force-static";
 
 /** Stable lastModified — avoid regenerating a new date on every build. */
-const LAST_CONTENT_UPDATE = new Date("2026-08-08");
+const LAST_CONTENT_UPDATE = new Date("2026-08-27");
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  const projectEntries: MetadataRoute.Sitemap = projects.map((project) => ({
+    url: `${siteConfig.url}/projects/${project.slug}`,
+    lastModified: LAST_CONTENT_UPDATE,
+    changeFrequency: "monthly",
+    priority: 0.8,
+  }));
+
   return [
     {
       url: siteConfig.url,
@@ -14,5 +22,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 1,
     },
+    ...projectEntries,
   ];
 }
+

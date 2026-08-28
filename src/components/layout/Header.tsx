@@ -7,12 +7,19 @@ import { cn } from "@/lib/utils";
 import { profile } from "@/content/profile";
 import { siteConfig } from "@/config/site";
 import { navigationItems } from "@/content/navigation";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export function Header() {
+  const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-  const [active, setActive] = useState<string>("#hero");
+  const [activeSection, setActiveSection] = useState<string>("#hero");
   const [hovered, setHovered] = useState<string | null>(null);
+
+  const active = pathname === "/" 
+    ? activeSection 
+    : (pathname.startsWith("/projects/") ? "#projects" : "");
 
   const initials = profile.name
     .split(" ")
@@ -35,6 +42,8 @@ export function Header() {
   }, []);
 
   useEffect(() => {
+    if (pathname !== "/") return;
+
     const ids = navigationItems.map((link) => link.href.slice(1));
     const sections = ids
       .map((id) => document.getElementById(id))
@@ -45,14 +54,14 @@ export function Header() {
         const visible = entries
           .filter((entry) => entry.isIntersecting)
           .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-        if (visible) setActive(`#${visible.target.id}`);
+        if (visible) setActiveSection(`#${visible.target.id}`);
       },
       { rootMargin: "-45% 0px -50% 0px", threshold: [0, 0.25, 0.5, 1] }
     );
 
     for (const section of sections) observer.observe(section);
     return () => observer.disconnect();
-  }, []);
+  }, [pathname]);
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -94,8 +103,8 @@ export function Header() {
               : "border border-transparent"
           )}
         >
-          <a
-            href="#hero"
+          <Link
+            href={pathname === "/" ? "#hero" : "/#hero"}
             className="group flex items-center gap-2.5 rounded-xl px-1 py-1"
           >
             <span className="relative grid size-9 place-items-center overflow-hidden rounded-xl bg-gradient-to-br from-primary via-secondary to-accent font-mono text-sm font-semibold text-primary-foreground transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3 group-hover:shadow-[0_0_20px_-6px_var(--primary)]">
@@ -107,7 +116,7 @@ export function Header() {
                 {profile.role}
               </span>
             </span>
-          </a>
+          </Link>
 
           <ul
             className="hidden items-center gap-1 lg:flex"
@@ -118,8 +127,8 @@ export function Header() {
               const isHot = hovered === link.href || (hovered === null && isActive);
               return (
                 <li key={link.href}>
-                  <a
-                    href={link.href}
+                  <Link
+                    href={pathname === "/" ? link.href : `/${link.href}`}
                     aria-current={isActive ? "page" : undefined}
                     onMouseEnter={() => setHovered(link.href)}
                     className={cn(
@@ -144,7 +153,7 @@ export function Header() {
                         className="absolute inset-x-3 -bottom-0.5 z-10 h-px rounded-full bg-gradient-to-r from-primary to-accent"
                       />
                     )}
-                  </a>
+                  </Link>
                 </li>
               );
             })}
@@ -192,8 +201,8 @@ export function Header() {
           <ul className="flex flex-col">
             {navigationItems.map((link) => (
               <li key={link.href}>
-                <a
-                  href={link.href}
+                <Link
+                  href={pathname === "/" ? link.href : `/${link.href}`}
                   onClick={() => setOpen(false)}
                   className={cn(
                     "flex items-center justify-between rounded-xl px-4 py-3 text-sm transition-colors",
@@ -209,7 +218,7 @@ export function Header() {
                   >
                     {link.href}
                   </span>
-                </a>
+                </Link>
               </li>
             ))}
           </ul>

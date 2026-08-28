@@ -27,14 +27,15 @@ const techStack = [
   { name: "React", position: { top: "14%", right: "46%" }, size: 42, delay: 0.3 },
   { name: "Azure", position: { top: "12%", right: "6%" }, size: 38, delay: 1.5 },
   { name: "Git", position: { top: "53%", right: "45%" }, size: 34, delay: 0.9 },
-  { name: "Docker", position: { top: "62%", right: "26%" }, size: 40, delay: 1.8 },
-  { name: "Node.js", position: { top: "19%", right: "6%" }, size: 38, delay: 0.4 },
+  { name: "Docker", position: { top: "58%", right: "23%" }, size: 40, delay: 1.8 },
+  { name: "Node.js", position: { top: "25%", right: "16%" }, size: 38, delay: 0.4 },
   { name: "MongoDB", position: { top: "12%", right: "25%" }, size: 34, delay: 2.1 },
   { name: "SQL", position: { top: "37%", right: "43%" }, size: 34, delay: 2.4 },
-  { name: "REST APIs", position: { top: "34%", right: "3%" }, size: 34, delay: 2.4 },
-  { name: "GitHub", position: { top: "64%", right: "39%" }, size: 34, delay: 2.4 },
+  { name: "REST APIs", position: { top: "32%", right: "4%" }, size: 34, delay: 2.4 },
+  { name: "GitHub", position: { top: "59%", right: "39%" }, size: 34, delay: 2.4 },
   { name: "PostgreSQL", position: { top: "9%", right: "17%" }, size: 34, delay: 2.4 },
   { name: "JavaScript/TypeScript", position: { top: "54%", right: "5%" }, size: 34, delay: 2.4 },
+  { name: "JWT", position: { top: "44%", right: "12%" }, size: 34, delay: 2.4 },
 ];
 
 const typingRoles = ["Full Stack Engineer", "Backend Specialist", ".NET Core & React"];

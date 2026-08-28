@@ -29,9 +29,10 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable} dark antialiased`}
     >
-      <body className="min-h-screen bg-background text-foreground">
+      <body className="min-h-screen bg-background text-foreground" suppressHydrationWarning>
         <StructuredData />
         <DeferredManifest />
         <SplashScreen />
